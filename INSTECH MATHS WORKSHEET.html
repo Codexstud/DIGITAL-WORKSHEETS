@@ -1,75 +1,199 @@
-<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Inspired School of Technology | Fun Maths Digital Worksheet</title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Year 4 Digital Literacy E-Worksheet</title>
 <style>
-:root{--navy:#14213d;--blue:#2563eb;--purple:#7c3aed;--teal:#0f9d8a;--orange:#ea580c;--ink:#182338;--muted:#64748b;--line:#dbe4f2}*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:radial-gradient(circle at 10% 0%,#dbeafe 0,transparent 28%),radial-gradient(circle at 95% 10%,#f3e8ff 0,transparent 27%),#f8fafc}.wrap{max-width:1120px;margin:auto;padding:20px}.top{display:flex;justify-content:space-between;align-items:center;gap:15px;background:#fff;border:1px solid var(--line);border-radius:22px;padding:20px 24px;box-shadow:0 12px 30px #17255410}.brand{display:flex;align-items:center;gap:13px}.logo{width:52px;height:52px;display:grid;place-items:center;border-radius:16px;background:linear-gradient(135deg,var(--blue),var(--purple));color:#fff;font-size:25px;font-weight:900}.top h1{font-size:clamp(20px,3vw,29px);margin:0;color:var(--navy)}.sub{color:var(--muted);font-size:13px;line-height:1.5;margin-top:5px}.count{white-space:nowrap;background:#eef2ff;color:#4338ca;padding:10px 13px;border-radius:12px;font-size:13px;font-weight:800}.panel{background:#fff;border:1px solid var(--line);border-radius:22px;padding:22px;margin-top:17px;box-shadow:0 10px 28px #1725540a}.hero{position:relative;overflow:hidden;background:linear-gradient(115deg,#1d4ed8,#6d28d9 72%,#9333ea);border-radius:18px;color:#fff;padding:25px}.hero:after{content:'✦';position:absolute;right:24px;top:8px;font-size:90px;color:#ffffff20}.hero h2{margin:0 0 9px;font-size:clamp(25px,4vw,36px)}.hero p{max-width:760px;line-height:1.6;color:#e9eaff;margin:0}.fields{display:grid;grid-template-columns:2fr 1fr;gap:14px;margin:18px 0}.fields label,.studentline label{font-size:13px;font-weight:800;color:#475569}.fields input,.studentline input{display:block;width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:10px;margin-top:7px;font:inherit;background:#fff}.instructions{background:#f8fafc;border:1px solid var(--line);border-radius:13px;padding:13px 16px;color:#475569;font-size:14px;line-height:1.65}.btn{border:0;border-radius:12px;padding:12px 16px;font-weight:800;cursor:pointer;margin:5px 7px 0 0;transition:transform .15s,filter .15s}.btn:hover{filter:brightness(.97);transform:translateY(-1px)}.primary{background:#fbbf24;color:#422006}.blue{background:#2563eb;color:white}.purple{background:#ede9fe;color:#5b21b6}.light{background:#e2e8f0;color:#334155}.worksheet-head{text-align:center;padding:6px 0 17px;border-bottom:3px solid var(--blue)}.worksheet-head .eyebrow{font-size:11px;font-weight:900;letter-spacing:2px;color:var(--blue)}.worksheet-head h2{margin:7px 0;color:var(--navy);font-size:clamp(22px,3vw,30px)}.worksheet-head p{margin:0;color:var(--muted);font-size:14px;line-height:1.5}.studentline{display:grid;grid-template-columns:2fr 1fr;gap:14px;margin:16px 0 22px}.section{margin:24px 0 12px;padding:13px 16px;border-radius:12px;color:white;font-weight:900;letter-spacing:.2px;display:flex;align-items:center;gap:10px}.section small{margin-left:auto;font-weight:600;opacity:.9}.a{background:linear-gradient(90deg,#2563eb,#3b82f6)}.b{background:linear-gradient(90deg,#7c3aed,#9333ea)}.c{background:linear-gradient(90deg,#0f9d8a,#14b8a6)}.d{background:linear-gradient(90deg,#ea580c,#f97316)}.qgrid{display:grid;grid-template-columns:1fr 1fr;gap:13px}.q{border:1px solid var(--line);border-radius:15px;padding:15px;background:linear-gradient(145deg,#fff,#fbfdff);break-inside:avoid;box-shadow:0 3px 9px #17255406}.q:focus-within{border-color:#93c5fd;box-shadow:0 0 0 3px #dbeafe}.qtop{display:flex;justify-content:space-between;align-items:center;gap:8px}.qnum{font-size:11px;color:var(--blue);font-weight:900;letter-spacing:1px;text-transform:uppercase}.tag{font-size:10px;font-weight:800;color:#64748b;background:#f1f5f9;border-radius:20px;padding:5px 8px}.prompt{font-size:15px;line-height:1.55;font-weight:750;margin:11px 0}.hint{font-size:12px;line-height:1.5;color:#64748b;background:#f8fafc;border-left:3px solid #c4b5fd;padding:7px 9px;margin-bottom:9px;border-radius:0 7px 7px 0}.answer{width:100%;padding:10px 11px;border:1px solid #cbd5e1;border-radius:9px;font:inherit;min-height:42px;resize:vertical}.reason{margin-top:8px}.reason label{display:block;font-size:11px;font-weight:800;color:#64748b;margin:0 0 5px}.reason input{width:100%;padding:9px 10px;border:1px dashed #cbd5e1;border-radius:9px;font:inherit}.progress-wrap{margin:17px 0 0;background:#e2e8f0;height:9px;border-radius:20px;overflow:hidden}.progress{height:100%;width:0;background:linear-gradient(90deg,#2563eb,#7c3aed,#0f9d8a);transition:width .2s}.progress-note{font-size:12px;color:#64748b;margin-top:7px}.endline{text-align:center;padding:17px;background:#eff6ff;color:#1e40af;border-radius:13px;margin-top:22px;font-weight:800;line-height:1.6}.actions{background:#fff;border:1px solid var(--line);padding:16px;border-radius:16px;margin-top:16px;position:sticky;bottom:8px;box-shadow:0 8px 24px #17255420;z-index:3}.foot{text-align:center;color:#64748b;font-size:12px;padding:16px}.hidden{display:none}@media(max-width:700px){.wrap{padding:10px}.top{padding:15px}.count{font-size:11px;padding:8px}.logo{width:42px;height:42px}.panel{padding:14px}.fields,.studentline,.qgrid{grid-template-columns:1fr}.hero{padding:20px}.section{font-size:13px}.section small{font-size:10px}}@media print{body{background:white}.wrap{padding:0}.top,.intro,.actions,.foot,.progress-wrap,.progress-note{display:none}.panel{box-shadow:none;border:0;padding:0}.q{box-shadow:none}}
-</style></head><body><div class="wrap">
-<header class="top"><div class="brand"><div class="logo">∑</div><div><h1>Inspired School of Technology</h1><div class="sub">Fun Maths Digital Worksheet · Reasoning · Problem Solving · Explain your thinking</div></div></div><div class="count">30 CHALLENGES</div></header>
-<section class="panel intro" id="intro"><div class="hero"><h2>Welcome, Maths Detective! 🧠</h2><p>These are fresh challenges. Some ask you to spot mistakes, compare methods, find missing values or explain whether a statement is always true. A correct answer is great; a clear explanation is even better.</p></div><div class="fields"><label>Student's name<input id="studentName" placeholder="Type your full name" autocomplete="name"></label><label>Class<input id="studentClass" value="Year 4"></label></div><div class="instructions"><b>How to play:</b> Answer every question in your own words. Use the reasoning box to show how you know. Read carefully: some questions have more than one possible answer. When you finish, select <b>Download answered worksheet as image</b> to save a PNG of your work.</div><div class="progress-wrap"><div class="progress" id="progress"></div></div><div class="progress-note" id="progressNote">0 of 30 questions answered</div><button class="btn primary" onclick="document.getElementById('worksheet').scrollIntoView({behavior:'smooth'})">Start solving ↓</button><button class="btn light" id="clearTop">Clear answers</button></section>
-<section class="panel" id="worksheet"><div class="worksheet-head"><div class="eyebrow">THINK · SOLVE · EXPLAIN</div><h2>Fun Maths Digital Worksheet</h2><p>Year 4 · Addition & Subtraction · Roman Numerals · Rounding · Multiplication<br>Inspired School of Technology</p></div><div class="studentline"><label>Student's name<input id="printName" placeholder="Enter your name"></label><label>Class / Date<input id="printClass" placeholder="Year 4 / Date"></label></div>
-<div class="section a">🔢 PART A — ADDITION & SUBTRACTION <small>Questions 1–10</small></div><div class="qgrid" id="addition"></div>
-<div class="section b">🏛️ PART B — ROMAN NUMERALS <small>Questions 11–15</small></div><div class="qgrid" id="roman"></div>
-<div class="section c">🎯 PART C — ROUND TO THE NEAREST 100 <small>Questions 16–22</small></div><div class="qgrid" id="rounding"></div>
-<div class="section d">✖️ PART D — MULTIPLICATION & DIVISION <small>Questions 23–30</small></div><div class="qgrid" id="multiplication"></div>
-<div class="endline">🌟 Brilliant mathematicians explain their thinking!<br><span style="font-weight:500">Check your calculations before downloading your work.</span></div></section>
-<div class="actions"><button class="btn blue" id="download">⬇ Download answered worksheet as image</button><button class="btn purple" id="print">🖨 Print worksheet</button><button class="btn light" id="clear">↻ Clear answers</button></div><p class="foot">Inspired School of Technology · Fun Maths Digital Worksheet · Keep thinking, checking and explaining!</p></div>
+:root{--navy:#172554;--blue:#2563eb;--cyan:#06b6d4;--purple:#7c3aed;--orange:#f97316;--green:#16a34a;--ink:#172033;--muted:#64748b}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:linear-gradient(135deg,#dbeafe,#f5d0fe 50%,#cffafe);color:var(--ink);padding:22px}
+.shell{max-width:980px;margin:auto}
+.hero{background:linear-gradient(120deg,#172554,#4c1d95 58%,#0891b2);color:white;border-radius:22px;padding:28px;text-align:center;box-shadow:0 12px 30px #1e293b22}
+.hero .tag{display:inline-block;background:#ffffff22;border:1px solid #ffffff55;padding:7px 13px;border-radius:30px;font-weight:bold;font-size:12px;letter-spacing:1px}
+h1{margin:13px 0 7px;font-size:clamp(25px,5vw,38px)}.hero p{margin:0;color:#e0f2fe}
+.meta{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;background:white;padding:20px;border-radius:18px;margin:18px 0;box-shadow:0 8px 22px #1e293b12}
+label{display:block;font-weight:700;font-size:14px;margin-bottom:7px;color:#334155}
+input[type=text]{width:100%;padding:12px;border:2px solid #dbeafe;border-radius:10px;font:inherit;outline:none}
+input[type=text]:focus{border-color:var(--blue);box-shadow:0 0 0 3px #2563eb18}
+.instructions{background:#fff7ed;border-left:5px solid var(--orange);padding:13px 16px;border-radius:10px;margin:14px 0 18px;line-height:1.5}
+.progress-wrap{background:#ffffffbd;border-radius:14px;padding:12px 15px;margin-bottom:15px;display:flex;align-items:center;gap:12px}
+.progress{height:9px;background:#e2e8f0;border-radius:20px;overflow:hidden;flex:1}.bar{height:100%;width:0;background:linear-gradient(90deg,#06b6d4,#7c3aed);transition:width .2s}
+.question{background:#fff;border:1px solid #e0e7ff;border-radius:16px;padding:18px 19px;margin:13px 0;box-shadow:0 5px 16px #1e293b0a}
+.qhead{display:flex;gap:11px;align-items:flex-start}.num{flex:0 0 35px;height:35px;border-radius:11px;background:#dbeafe;color:#1d4ed8;display:grid;place-items:center;font-weight:800}
+.qtext{font-weight:700;line-height:1.5;padding-top:5px}.mark{margin-left:auto;white-space:nowrap;font-size:12px;color:#64748b;background:#f1f5f9;padding:5px 8px;border-radius:20px}
+.options{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:14px 0 0 46px}
+.option{display:flex;gap:9px;align-items:flex-start;padding:11px;border:1.5px solid #e2e8f0;border-radius:10px;cursor:pointer;line-height:1.4;transition:.15s}
+.option:hover{border-color:#93c5fd;background:#eff6ff}.option:has(input:checked){border-color:#6366f1;background:#eef2ff}
+.option input{margin-top:3px;accent-color:#4f46e5}
+.actions{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:24px 0}
+button{border:0;border-radius:12px;padding:13px 18px;font-weight:800;font-size:15px;cursor:pointer;box-shadow:0 5px 12px #0f172a12}
+.primary{background:linear-gradient(100deg,#2563eb,#7c3aed);color:white}.secondary{background:white;color:#1e293b;border:1px solid #cbd5e1}.success{background:#16a34a;color:white}
+button:hover{filter:brightness(1.04);transform:translateY(-1px)}
+#result{display:none;background:white;border-radius:18px;padding:22px;margin:18px 0;text-align:center;border:2px solid #bfdbfe}
+.score{font-size:38px;font-weight:900;color:#4f46e5;margin:5px}
+footer{text-align:center;color:#475569;font-size:12px;padding:12px}
+@media(max-width:650px){body{padding:10px}.meta{grid-template-columns:1fr}.options{grid-template-columns:1fr;margin-left:0}.question{padding:14px}.mark{margin-left:auto}.hero{padding:23px 15px}}
+/* Clean print/download snapshot layout */
+.snapshot{background:white!important;color:#172033!important}
+.snapshot .question{box-shadow:none;border:1px solid #cbd5e1;break-inside:avoid}
+.snapshot .hero{box-shadow:none}
+.snapshot .option{cursor:default}
+.snapshot .actions,.snapshot .progress-wrap,.snapshot .instructions{display:none!important}
+.snapshot .meta{box-shadow:none;border:1px solid #e2e8f0}
+</style>
+</head>
+<body>
+<div class="shell" id="worksheet">
+  <header class="hero">
+    <span class="tag">DIGITAL LITERACY • YEAR 4</span>
+    <h1>Think Like a Computer Scientist!</h1>
+    <p>Reasoning &amp; Problem-Solving E-Worksheet</p>
+    <p style="margin-top:12px;font-weight:bold">20 Questions · 1 mark each · Total: 20 marks</p>
+  </header>
+
+  <section class="meta" aria-label="Student details">
+    <div><label for="studentName">Student's Name *</label><input id="studentName" type="text" placeholder="Enter your full name" required></div>
+    <div><label for="classArm">Class Arm *</label><input id="classArm" type="text" placeholder="e.g. Blue, A, B" required></div>
+    <div><label for="className">Class *</label><input id="className" type="text" placeholder="e.g. Year 4" required></div>
+  </section>
+
+  <div class="instructions"><strong>Instructions:</strong> Read each situation carefully and choose the best answer. Every question carries <strong>1 mark</strong>. You have a maximum of <strong>2 marking attempts</strong>. After the second attempt, your answers are locked and you cannot try again. Download your completed worksheet as an image to submit to your teacher.</div>
+  <div class="progress-wrap"><strong id="progressText">0 of 20 answered</strong><div class="progress"><div class="bar" id="progressBar"></div></div></div>
+  <main id="questions"></main>
+
+  <section id="result" aria-live="polite">
+    <div style="font-weight:800;color:#475569">YOUR RESULT</div>
+    <div class="score" id="scoreText">0 / 20</div>
+    <div id="feedback"></div>
+    <p id="studentSummary"></p>
+  </section>
+
+  <div id="attemptNotice" style="text-align:center;font-weight:800;color:#4338ca;margin:8px 0">Marking attempts remaining: 2</div>
+  <div class="actions">
+    <button class="primary" type="button" id="markBtn">✓ Mark My Worksheet (Attempt 1 of 2)</button>
+    <button class="success" type="button" id="downloadBtn">⬇ Download Answered Worksheet as Image</button>
+    <button class="secondary" type="button" id="resetBtn">↻ Start Again</button>
+  </div>
+  <footer>Year 4 Digital Literacy • Answer independently • Check your name and class details before downloading.</footer>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script>
-const groups={
-addition:[
-["A school orders 2,685 exercise books. It receives 1,475 on Monday and the rest on Tuesday. How many arrive on Tuesday?","Work out the total first, then subtract."],
-["A pupil writes 5,003 − 2,678 = 2,435. Find the first place where the calculation goes wrong and give the correct answer.","Use place value or check by adding your answer to 2,678."],
-["Two numbers add to 4,500. One number is 2,765. What is the other number? Explain why subtraction helps.","Think about the inverse operation."],
-["A theatre has 3,250 seats. There are 2,786 people inside. How many empty seats are there? Is your answer closer to 400 or 500?","Calculate the difference before estimating."],
-["Which calculation has the greater answer: 3,406 + 895 or 5,000 − 725? Find both answers and compare them.","Do not decide just by looking at the numbers."],
-["A number is increased by 1,250 to make 6,000. Then the original number is increased by 500 instead. What would the new total be?","Find the original number first."],
-["A charity wants to collect 7,500 cans. It has collected 2,875, then 1,968 more. How many more cans are needed?","Use two steps and label each total."],
-["Fill the boxes: 4,□75 + 1,248 = 6,023. What digit belongs in the box? Show how you worked backwards.","Subtract 1,248 from 6,023 first."],
-["Ada says adding 999 is the same as adding 1,000 and subtracting 1. Is she right? Demonstrate with 2,347 + 999.","Try the shortcut and the standard calculation."],
-["Make a subtraction calculation using two 4-digit numbers that has an answer of 2,650. Give one possible calculation and prove it works.","There is more than one possible answer."]
-],
-roman:[
-["A museum label says XXVII. Write the number in ordinary digits.","Split the numeral into tens, fives and ones."],
-["Write 44 using Roman numerals.","Think about 40 and 4 separately."],
-["Which is larger: XXXVI or XLII? Write both values and find the difference.","Convert each numeral to a number first."],
-["A learner writes 19 as XVIIII. Write the usual Roman numeral for 19 and explain what is wrong with the learner's version.","Remember the subtractive form for 9."],
-["A Roman numeral is one less than XXX. What is the numeral? If you add V to it, what numeral do you get?","Give both answers in Roman numerals."]
-],
-rounding:[
-["Round 2,649 to the nearest 100. Explain which digit decides whether the hundreds stay the same or increase.","Look at the tens digit."],
-["A number rounds to 1,300 to the nearest 100. What is the smallest whole number it could be? What is the largest?","Remember what happens at the halfway point."],
-["Sam rounds 975 to 900. Explain the mistake and give the correct rounded number.","Check how far 975 is from 900 and 1,000."],
-["A delivery driver travels 468 km on Monday and 327 km on Tuesday. Estimate the total distance by rounding each distance to the nearest 100. Then compare it with the exact total.","Round each amount before adding."],
-["Which of these round to 2,500 to the nearest 100: 2,449; 2,451; 2,549; 2,550? Explain your choices.","The rounding interval includes a lower and upper boundary."],
-["I am a whole number between 3,150 and 3,250. I round to 3,200 to the nearest 100. Give two possible numbers and one number in the interval that would not round to 3,200.","Use the halfway boundaries."],
-["A stadium estimate is 4,700 people when rounded to the nearest 100. Could the exact number be 4,749? Could it be 4,751? Explain both decisions.","Check each number against the nearest hundreds."]
-],
-multiplication:[
-["A box holds 9 markers. There are 7 full boxes and 5 extra markers. How many markers are there altogether?","Use a multiplication and an addition."],
-["Without counting in ones, calculate 6 × 14. Show how you can split 14 into two easier numbers.","For example, split 14 into 10 and 4."],
-["A pupil says 9 × 6 is 3 more than 6 × 6. Is the pupil correct? Explain using the difference between the facts.","Compare the number of groups of six."],
-["There are 63 biscuits. They are packed equally into bags of 9. How many bags are needed? Write a related multiplication fact to check.","Use the inverse relationship."],
-["Complete the number sentence: 6 × □ = 3 × 18. Explain how you can find the missing number without calculating both sides from scratch.","Think about doubling and halving."],
-["A class has 8 tables with 6 pupils at each table. Another 9 pupils join. How many pupils are there now?","Write the calculation in two parts."],
-["Mina says every multiple of 9 is also a multiple of 3, but every multiple of 3 is not a multiple of 9. Is she correct? Give examples to support your answer.","Test each part of the statement."],
-["A secret number is greater than 30 and less than 60. It is in both the 6 times-table and the 9 times-table. What is the number? Explain how you know it is the only possibility.","List the multiples in that range and compare them."]
-]};
-let qno=0;for(const [group,qs] of Object.entries(groups)){for(const [prompt,hint] of qs){qno++;const card=document.createElement('article');card.className='q';card.innerHTML=`<div class="qtop"><div class="qnum">Challenge ${String(qno).padStart(2,'0')}</div><span class="tag">${group==='addition'?'CALCULATE':group==='roman'?'DECODE':group==='rounding'?'ESTIMATE':'REASON'}</span></div><div class="prompt">${prompt}</div><div class="hint">💡 ${hint}</div><textarea class="answer" data-q="${qno}" rows="2" aria-label="Answer to question ${qno}" placeholder="Type your answer..."></textarea><div class="reason"><label for="reason${qno}">SHOW YOUR THINKING</label><input id="reason${qno}" data-reason="${qno}" placeholder="Explain, prove or check your answer..."></div>`;document.getElementById(group).appendChild(card)}}
-const $=id=>document.getElementById(id);$('studentName').addEventListener('input',()=>{$('printName').value=$('studentName').value;updateProgress()});$('studentClass').addEventListener('input',()=>{$('printClass').value=$('studentClass').value});
-function updateProgress(){const fields=[...document.querySelectorAll('.answer')];const n=fields.filter(x=>x.value.trim()).length;$('progress').style.width=(n/fields.length*100)+'%';$('progressNote').textContent=`${n} of ${fields.length} questions answered`;}
-document.addEventListener('input',e=>{if(e.target.matches('.answer'))updateProgress()});
-function clearAnswers(){if(!confirm('Clear all answers and explanations? This cannot be undone.'))return;document.querySelectorAll('.answer,.reason input').forEach(x=>x.value='');updateProgress()}
-$('clear').onclick=clearAnswers;$('clearTop').onclick=clearAnswers;$('print').onclick=()=>window.print();
-function wrapText(ctx,text,maxWidth){const words=String(text||'').split(/\s+/),out=[];let line='';for(const word of words){const test=line?line+' '+word:word;if(ctx.measureText(test).width>maxWidth&&line){out.push(line);line=word}else line=test}if(line)out.push(line);return out.length?out:['']}
-function downloadImage(){
-$('printName').value=$('studentName').value;$('printClass').value=$('studentClass').value;
-const canvas=document.createElement('canvas'),ctx=canvas.getContext('2d'),W=1400,margin=58,contentW=W-margin*2,items=[];
-const sectionNames={addition:'PART A — ADDITION & SUBTRACTION',roman:'PART B — ROMAN NUMERALS',rounding:'PART C — ROUND TO THE NEAREST 100',multiplication:'PART D — MULTIPLICATION & DIVISION'};
-for(const [group,qs] of Object.entries(groups)){items.push({type:'section',text:sectionNames[group],group});const base=Object.keys(groups).slice(0,Object.keys(groups).indexOf(group)).reduce((s,k)=>s+groups[k].length,0);qs.forEach(([prompt,hint],i)=>{const n=base+i+1;items.push({type:'q',n,prompt,hint,answer:document.querySelector(`[data-q="${n}"]`).value.trim()||'(No answer entered)',reason:document.querySelector(`[data-reason="${n}"]`).value.trim()})})}
-function measure(){let y=margin;y+=178;for(const it of items){if(it.type==='section'){y+=54;continue}ctx.font='bold 21px Arial';const pl=wrapText(ctx,`Q${it.n}. ${it.prompt}`,contentW-40);ctx.font='16px Arial';const hl=wrapText(ctx,`Hint: ${it.hint}`,contentW-40),al=wrapText(ctx,`Answer: ${it.answer}`,contentW-40),rl=it.reason?wrapText(ctx,`Reasoning: ${it.reason}`,contentW-40):[];y+=23+pl.length*29+hl.length*22+al.length*24+rl.length*23+24}return y+margin}
-canvas.width=W;canvas.height=measure();ctx.fillStyle='#f8fafc';ctx.fillRect(0,0,W,canvas.height);let y=margin;
-const grad=ctx.createLinearGradient(margin,y,W-margin,y+130);grad.addColorStop(0,'#1d4ed8');grad.addColorStop(1,'#7c3aed');ctx.fillStyle=grad;ctx.fillRect(margin,y,contentW,145);ctx.fillStyle='#fff';ctx.font='bold 29px Arial';ctx.fillText('INSPIRED SCHOOL OF TECHNOLOGY',margin+24,y+38);ctx.font='bold 34px Arial';ctx.fillText('Fun Maths Digital Worksheet',margin+24,y+82);ctx.font='17px Arial';ctx.fillText('Year 4 · Reasoning & Problem Solving · 30 Fresh Challenges',margin+24,y+112);ctx.font='16px Arial';ctx.fillText('Name: '+($('printName').value||'Not provided')+'     Class / Date: '+($('printClass').value||'Not provided'),margin+24,y+136);y+=170;
-for(const it of items){if(it.type==='section'){const colors={addition:'#2563eb',roman:'#7c3aed',rounding:'#0f9d8a',multiplication:'#ea580c'};ctx.fillStyle=colors[it.group];ctx.fillRect(margin,y,contentW,38);ctx.fillStyle='#fff';ctx.font='bold 19px Arial';ctx.fillText(it.text,margin+14,y+25);y+=53;continue}
-ctx.font='bold 21px Arial';const pl=wrapText(ctx,`Q${it.n}. ${it.prompt}`,contentW-40);ctx.font='italic 15px Arial';const hl=wrapText(ctx,`Hint: ${it.hint}`,contentW-40);ctx.font='16px Arial';const al=wrapText(ctx,`Answer: ${it.answer}`,contentW-40),rl=it.reason?wrapText(ctx,`Reasoning: ${it.reason}`,contentW-40):[];const h=23+pl.length*29+hl.length*22+al.length*24+rl.length*23+24;ctx.fillStyle='#fff';ctx.strokeStyle='#dbe4f2';ctx.lineWidth=1.5;ctx.fillRect(margin,y,contentW,h);ctx.strokeRect(margin,y,contentW,h);let ty=y+28;ctx.fillStyle='#172033';ctx.font='bold 21px Arial';pl.forEach(l=>{ctx.fillText(l,margin+17,ty);ty+=29});ctx.fillStyle='#64748b';ctx.font='italic 15px Arial';hl.forEach(l=>{ctx.fillText(l,margin+17,ty);ty+=22});ctx.fillStyle='#1e293b';ctx.font='16px Arial';ty+=2;al.forEach(l=>{ctx.fillText(l,margin+17,ty);ty+=24});ctx.fillStyle='#475569';rl.forEach(l=>{ctx.fillText(l,margin+17,ty);ty+=23});y+=h+10}
-ctx.fillStyle='#64748b';ctx.font='14px Arial';ctx.fillText('Inspired School of Technology · Keep thinking, checking and explaining!',margin,canvas.height-22);
-canvas.toBlob(blob=>{if(!blob){alert('The image could not be created. Please try again.');return}const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='Inspired_School_Fun_Maths_Digital_Worksheet.png';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1500)},'image/png')}
-$('download').onclick=downloadImage;updateProgress();
-</script></body></html>
+const questions = [
+ {q:"A pupil types a sentence, sees it on the monitor, and saves the file. Which order best describes what happens?",o:["Output → Input → Storage","Input → Processing → Output → Storage","Storage → Output → Input","Processing → Storage → Input"],a:1},
+ {q:"A computer receives a mouse click, but nothing appears on the screen. Which stage is the visible result that is missing?",o:["Input","Processing","Output","Storage"],a:2},
+ {q:"A pupil wants to keep a drawing and open it next week. Which stage is most important for this?",o:["Input","Storage","Output","Turning"],a:1},
+ {q:"The class wants to record a spoken story on a computer. Which device should they use to enter the sound?",o:["Speakers","Monitor","Microphone","Printer"],a:2},
+ {q:"A teacher wants pupils across the room to see a computer presentation on a large screen. Which device is most suitable?",o:["Scanner","Projector","Keyboard","USB flash drive"],a:1},
+ {q:"A pupil says, “Microsoft Word is hardware because I use it on a computer.” Which response is correct?",o:["Correct, because it is on the screen","Incorrect, because Word is software: a programme","Correct, because it stores paper","Incorrect, because Word is an input device"],a:1},
+ {q:"The mouse is broken, but Scratch still opens on the computer. What does this best show?",o:["Hardware and software are exactly the same","Software can be a programme, while the mouse is a physical device","A mouse is software","Scratch is a storage device"],a:1},
+ {q:"A pupil needs to copy a paper drawing into the computer without drawing it again by hand. Which device is best?",o:["Scanner","Speakers","Projector","Mouse"],a:0},
+ {q:"A group is planning a school event. They divide the work into invitations, decorations, food and games. Which computational-thinking skill are they using?",o:["Abstraction","Decomposition","Storage","Output"],a:1},
+ {q:"A pupil notices that a game gives 2 points, then 4, then 6, then 8. Looking for this repeated rule is called:",o:["Pattern recognition","Pen up","Processing","Hardware"],a:0},
+ {q:"A map app shows only the roads and places needed to reach the school, leaving out details such as the colour of every building. Which skill does this demonstrate?",o:["Decomposition","Abstraction","Input","Debugging"],a:1},
+ {q:"A pupil writes clear steps for a robot to move from the door to a desk. What has the pupil created?",o:["A backdrop","An algorithm","A speaker","A costume"],a:1},
+ {q:"A sandwich-making programme says: cut the sandwich, add the filling, then get the bread. What is the main problem?",o:["The steps are not in a sensible order","It uses too much storage","Bread is software","The instructions are already correct"],a:0},
+ {q:"A sprite must draw a square. After moving forward to draw one side, which turn should it make for the next side?",o:["45 degrees","60 degrees","90 degrees","180 degrees"],a:2},
+ {q:"A square has four equal sides. If the script uses Move 100 steps and Turn 90 degrees inside Repeat 4, how many sides should it draw?",o:["2","3","4","8"],a:2},
+ {q:"A pupil puts Move 100 steps inside Repeat 4 but leaves Turn 90 degrees outside the repeat block. What is the likely issue?",o:["The sprite may draw one long line instead of four square sides","The sprite will always draw a circle","The computer will become hardware","The backdrop will save the drawing"],a:0},
+ {q:"The sprite moves but leaves no line on the Stage. Which Pen block should the pupil check is switched on?",o:["Pen up","Erase all","Pen down","Repeat 4"],a:2},
+ {q:"The pupil wants to move the sprite to a new starting point without drawing a line. Which block should be used while moving?",o:["Pen down","Pen up","Erase all","Move 100 only"],a:1},
+ {q:"A square looks wrong after the programme runs. Which two settings should the pupil check first, according to the lesson?",o:["Backdrop colour and sprite name","Turn angle of 90 degrees and Repeat value of 4","Monitor size and speaker volume","File name and costume colour"],a:1},
+ {q:"A pupil has written the same Move and Turn instructions four times. How does Repeat 4 improve the programme?",o:["It makes the instructions shorter by repeating them four times","It changes hardware into software","It removes the need to test the programme","It makes the sprite draw without a Pen block"],a:0}
+];
+const letters=["A","B","C","D"];
+const container=document.getElementById("questions");
+questions.forEach((item,i)=>{
+ const card=document.createElement("section");card.className="question";card.id="question"+i;
+ card.innerHTML=`<div class="qhead"><div class="num">${String(i+1).padStart(2,"0")}</div><div class="qtext">${item.q}</div><span class="mark">1 mark</span></div><div class="options">${item.o.map((opt,j)=>`<label class="option"><input type="radio" name="q${i}" value="${j}"><span><strong>${letters[j]}.</strong> ${opt}</span></label>`).join("")}</div>`;
+ container.appendChild(card);
+});
+function updateProgress(){
+ let n=questions.filter((q,i)=>document.querySelector(`input[name="q${i}"]:checked`)).length;
+ document.getElementById("progressText").textContent=`${n} of 20 answered`;
+ document.getElementById("progressBar").style.width=(n/20*100)+"%";
+}
+document.addEventListener("change",e=>{if(e.target.matches('input[type="radio"]'))updateProgress()});
+function getStudent(){
+ return {name:document.getElementById("studentName").value.trim(),arm:document.getElementById("classArm").value.trim(),cls:document.getElementById("className").value.trim()};
+}
+let markingAttempts = 0;
+let worksheetLocked = false;
+
+function markWorksheet(){
+ if(worksheetLocked || markingAttempts >= 2){
+  alert("You have used both marking attempts. Your worksheet is now locked.");
+  return false;
+ }
+ const s=getStudent();
+ if(!s.name||!s.arm||!s.cls){alert("Please enter the student's name, class arm and class before marking.");(!s.name?document.getElementById("studentName"):!s.arm?document.getElementById("classArm"):document.getElementById("className")).focus();return false}
+ let answered=0,score=0;
+ questions.forEach((q,i)=>{
+  const chosen=document.querySelector(`input[name="q${i}"]:checked`);
+  const card=document.getElementById("question"+i);
+  card.style.borderColor=chosen?(Number(chosen.value)===q.a?"#22c55e":"#fb7185"):"#cbd5e1";
+  card.querySelectorAll(".option").forEach((el,j)=>{
+   el.style.background="";
+   el.style.borderColor="";
+   if(j===q.a){el.style.background="#dcfce7";el.style.borderColor="#22c55e"}
+   else if(chosen&&j===Number(chosen.value)){el.style.background="#ffe4e6";el.style.borderColor="#fb7185"}
+  });
+  if(chosen){answered++;if(Number(chosen.value)===q.a)score++}
+ });
+ document.getElementById("scoreText").textContent=`${score} / 20`;
+ document.getElementById("feedback").textContent=score>=17?"Excellent work!":score>=13?"Good effort — keep practising.":score>=10?"You are making progress. Review your lesson and try again.":"Keep learning and try again. You can do it!";
+ document.getElementById("studentSummary").textContent=`Student: ${s.name} | Class Arm: ${s.arm} | Class: ${s.cls} | Answered: ${answered}/20`;
+ markingAttempts++;
+ const remaining = 2 - markingAttempts;
+ document.getElementById("attemptNotice").textContent = remaining > 0
+   ? `Marking attempts used: ${markingAttempts} of 2 · Attempts remaining: ${remaining}`
+   : "Both marking attempts have been used. Your answers are now locked.";
+ document.getElementById("markBtn").textContent = remaining > 0
+   ? `✓ Mark My Worksheet (Attempt ${markingAttempts + 1} of 2)`
+   : "🔒 Worksheet Locked";
+ if(remaining === 0){
+  worksheetLocked = true;
+  document.getElementById("markBtn").disabled = true;
+  document.getElementById("markBtn").style.opacity = ".55";
+  document.querySelectorAll('#questions input[type="radio"]').forEach(el=>el.disabled=true);
+  document.getElementById("resetBtn").disabled = true;
+  document.getElementById("resetBtn").style.opacity = ".55";
+ }
+ document.getElementById("result").style.display="block";
+ document.getElementById("result").scrollIntoView({behavior:"smooth",block:"center"});
+ return true;
+}
+document.getElementById("markBtn").addEventListener("click",markWorksheet);
+document.getElementById("downloadBtn").addEventListener("click",async()=>{
+ const s=getStudent();
+ if(!s.name||!s.arm||!s.cls){alert("Please enter the student's name, class arm and class first.");return}
+ if(!window.html2canvas){alert("The image tool could not load. Please check your internet connection and reload the page.");return}
+ if(document.getElementById("result").style.display!=="block"&&!markWorksheet())return;
+ const root=document.getElementById("worksheet");
+ root.classList.add("snapshot");
+ const btns=document.querySelector(".actions");
+ btns.style.display="none";
+ try{
+  const canvas=await html2canvas(root,{scale:2,backgroundColor:"#f8fafc",useCORS:true,logging:false,windowWidth:Math.max(document.documentElement.clientWidth,980)});
+  const link=document.createElement("a");
+  const safe=s.name.replace(/[^a-z0-9_-]+/gi,"_");
+  link.download=`Year4_Digital_Literacy_${safe}_answered.png`;
+  link.href=canvas.toDataURL("image/png");link.click();
+ }catch(err){alert("The image could not be created. Please try again or use Print → Save as PDF.");}
+ finally{btns.style.display="flex";root.classList.remove("snapshot")}
+});
+document.getElementById("resetBtn").addEventListener("click",()=>{
+ if(worksheetLocked || markingAttempts >= 2){
+  alert("The worksheet is locked because both marking attempts have been used.");
+  return;
+ }
+ if(!confirm("Clear all answers and student details and start again? This will not restore a marking attempt."))return;
+ document.querySelectorAll('input[type="radio"]').forEach(el=>el.checked=false);
+ ["studentName","classArm","className"].forEach(id=>document.getElementById(id).value="");
+ document.querySelectorAll(".question").forEach(card=>{card.style.borderColor="#e0e7ff";card.querySelectorAll(".option").forEach(el=>{el.style.background="";el.style.borderColor=""})});
+ document.getElementById("result").style.display="none";updateProgress();window.scrollTo({top:0,behavior:"smooth"});
+});
+</script>
+</body>
+</html>
