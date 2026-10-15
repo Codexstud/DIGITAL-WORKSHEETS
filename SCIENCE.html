@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inspired School of Technology | Class 8 Science Weekly Assessment</title>
+<style>
+:root{--navy:#10234f;--blue:#2563eb;--cyan:#06b6d4;--purple:#7c3aed;--orange:#f97316;--green:#16a34a;--ink:#172033;--muted:#5d6b82;--paper:#f4f7ff;--line:#dce5f4}
+*{box-sizing:border-box}body{margin:0;font-family:Tahoma,Arial,sans-serif;background:linear-gradient(135deg,#eaf4ff,#f7efff 55%,#fff5e9);color:var(--ink);line-height:1.55}
+.hero{background:linear-gradient(120deg,#10234f,#244f9e 60%,#6d35bd);color:white;padding:30px 18px 34px;text-align:center;position:relative;overflow:hidden}
+.hero:before,.hero:after{content:"";position:absolute;border-radius:50%;background:#ffffff12}.hero:before{width:230px;height:230px;top:-100px;left:-50px}.hero:after{width:190px;height:190px;right:-45px;bottom:-110px}
+.school{font-size:clamp(22px,4vw,34px);font-weight:900;letter-spacing:.7px;margin:0 0 8px;text-transform:uppercase}.subtitle{font-size:clamp(19px,3vw,26px);font-weight:800;margin:0}.tag{margin:10px auto 0;max-width:700px;color:#dbeafe;font-size:15px}
+.wrap{max-width:1000px;margin:24px auto;padding:0 14px 40px}.panel{background:white;border:1px solid var(--line);border-radius:18px;padding:22px;margin-bottom:18px;box-shadow:0 10px 30px #1b36710b}
+.panel h2{margin:0 0 14px;color:var(--navy);font-size:22px}.instructions{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}.info{padding:14px;border-radius:13px;background:#eff6ff;border-left:5px solid var(--blue)}.info:nth-child(2){background:#f5f3ff;border-color:var(--purple)}.info:nth-child(3){background:#fff7ed;border-color:var(--orange)}
+.fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}.field label{display:block;font-weight:700;margin-bottom:6px}.field input,.field select{width:100%;padding:12px;border:1.5px solid #cbd5e1;border-radius:10px;font:inherit;background:#fff}
+.section-title{display:flex;align-items:center;gap:12px;color:white;border-radius:13px;padding:14px 16px;margin:24px 0 14px}.section-title h2{margin:0;color:white;font-size:20px}.space{background:linear-gradient(100deg,#2563eb,#06b6d4)}.heart{background:linear-gradient(100deg,#dc2626,#f97316)}.repro{background:linear-gradient(100deg,#7c3aed,#db2777)}
+.q{border:1px solid var(--line);border-radius:14px;padding:18px;margin:12px 0;background:#fff}.qhead{display:flex;gap:10px;align-items:flex-start}.num{background:#e8efff;color:#1d4ed8;min-width:34px;height:34px;border-radius:10px;display:grid;place-items:center;font-weight:900}.question{font-weight:700;font-size:16px;margin:3px 0 12px}.type{font-size:11px;font-weight:900;letter-spacing:.5px;text-transform:uppercase;color:#64748b;margin-bottom:5px}.options{display:grid;gap:8px;margin-left:44px}.option{display:flex;align-items:flex-start;gap:10px;border:1px solid #e2e8f0;border-radius:10px;padding:10px 12px;cursor:pointer;transition:.15s}.option:hover{background:#f3f7ff;border-color:#93c5fd}.option input{margin-top:5px;accent-color:#2563eb}.answer{width:100%;min-height:94px;border:1.5px solid #cbd5e1;border-radius:10px;padding:12px;font:inherit;resize:vertical}.hint{font-size:13px;color:var(--muted);margin:8px 0 0 44px}
+.actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin:24px 0}.btn{border:0;border-radius:12px;padding:14px 22px;font:700 16px Tahoma,Arial;cursor:pointer}.primary{color:white;background:linear-gradient(100deg,#2563eb,#7c3aed);box-shadow:0 8px 18px #2563eb30}.secondary{background:white;color:var(--navy);border:1px solid #cbd5e1}.btn:hover{transform:translateY(-1px)}
+#results{display:none}.scorebox{background:#eff6ff;border-radius:14px;padding:20px;text-align:center}.score{font-size:36px;font-weight:900;color:#1d4ed8}.review{padding:12px;border-bottom:1px solid var(--line)}.correct{color:#15803d;font-weight:700}.wrong{color:#b91c1c;font-weight:700}.footer{text-align:center;color:#64748b;font-size:13px;padding:8px}
+@media(max-width:600px){.panel{padding:16px}.q{padding:14px}.options,.hint{margin-left:0}.school{line-height:1.25}}
+@media print{body{background:white}.hero{print-color-adjust:exact}.actions{display:none}.panel,.q{box-shadow:none;break-inside:avoid}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <p class="school">INSPIRED SCHOOL OF TECHNOLOGY</p>
+  <h1 class="subtitle">SCIENCE WEEKLY ASSESSMENT FOR 8TH CLASS</h1>
+  <p class="tag">Think carefully • Apply scientific ideas • Explain your reasoning</p>
+</header>
+<main class="wrap">
+  <section class="panel">
+    <h2>Student Information</h2>
+    <div class="fields">
+      <div class="field"><label for="student">Student's full name</label><input id="student" name="student" placeholder="Enter your full name" required></div>
+      <div class="field"><label for="className">Class</label><input id="className" name="className" value="8th Class"></div>
+      <div class="field"><label for="date">Date</label><input id="date" name="date" type="date"></div>
+    </div>
+  </section>
+  <section class="panel">
+    <h2>Assessment Guide</h2>
+    <div class="instructions">
+      <div class="info"><strong>25 questions</strong><br>15 objective and 10 written-response questions.</div>
+      <div class="info"><strong>Reason it out</strong><br>Use evidence and explain why, not just what.</div>
+      <div class="info"><strong>How marking works</strong><br>Objective answers are marked automatically. Written answers are saved in your result summary for teacher review.</div>
+    </div>
+    <p><strong>Suggested time:</strong> 40–50 minutes. Answer every question. For written questions, use complete sentences and scientific vocabulary.</p>
+  </section>
+
+  <form id="assessment">
+    <div class="section-title space"><span style="font-size:27px">🌌</span><h2>Section A: Celestial Objects</h2></div>
+    <div class="q" data-q="1"><div class="qhead"><span class="num">1</span><div><div class="type">Objective · Reasoning</div><p class="question">A planet is visible in the night sky, but it does not produce its own light. Why can we still see it?</p></div></div><div class="options">
+      <label class="option"><input type="radio" name="q1" value="A"> It reflects light from a star such as the Sun.</label>
+      <label class="option"><input type="radio" name="q1" value="B"> It creates light only at night.</label>
+      <label class="option"><input type="radio" name="q1" value="C"> It reflects light from the Moon.</label>
+      <label class="option"><input type="radio" name="q1" value="D"> It is made entirely of fire.</label></div></div>
+    <div class="q" data-q="2"><div class="qhead"><span class="num">2</span><div><div class="type">Objective · Critical thinking</div><p class="question">Two students say, “The Moon changes shape every week.” Which explanation is most scientifically accurate?</p></div></div><div class="options">
+      <label class="option"><input type="radio" name="q2" value="A"> The Moon grows and shrinks.</label>
+      <label class="option"><input type="radio" name="q2" value="B"> Clouds cover different parts of the Moon.</label>
+      <label class="option"><input type="radio" name="q2" value="C"> We see different portions of its sunlit half as it orbits Earth.</label>
+      <label class="option"><input type="radio" name="q2" value="D"> Earth’s shadow covers the Moon every week.</label></div></div>
+    <div class="q" data-q="3"><div class="qhead"><span class="num">3</span><div><div class="type">Objective · Apply knowledge</div><p class="question">A spacecraft travels from Earth towards the Sun. Which statement about the Sun is correct?</p></div></div><div class="options">
+      <label class="option"><input type="radio" name="q3" value="A"> It is a planet made of solid rock.</label>
+      <label class="option"><input type="radio" name="q3" value="B"> It is a star that releases energy through nuclear fusion.</label>
+      <label class="option"><input type="radio" name="q3" value="C"> It shines by reflecting Earth’s light.</label>
+      <label class="option"><input type="radio" name="q3" value="D"> It is the largest moon in the Solar System.</label></div></div>
+    <div class="q" data-q="4"><div class="qhead"><span class="num">4</span><div><div class="type">Objective · Compare evidence</div><p class="question">A comet and an asteroid are observed in space. Which feature is most likely to help identify a comet when it approaches the Sun?</p></div></div><div class="options">
+      <label class="option"><input type="radio" name="q4" value="A"> It always has rings.</label>
+      <label class="option"><input type="radio" name="q4" value="B"> It develops a glowing coma and sometimes a tail as ice heats up.</label>
+      <label class="option"><input type="radio" name="q4" value="C"> It produces its own light like a star.</label>
+      <label class="option"><input type="radio" name="q4" value="D"> It remains directly above one place on Earth.</label></div></div>
+    <div class="q" data-q="5"><div class="qhead"><span class="num">5</span><div><div class="type">Objective · Explain a phenomenon</div><p class="question">During a lunar eclipse, the Moon becomes darker. What must happen for this to occur?</p></div></div><div class="options">
+      <label class="option"><input type="radio" name="q5" value="A"> The Moon moves between Earth and the Sun.</label>
+      <label class="option"><input type="radio" name="q5" value="B"> The Sun switches off temporarily.</label>
+      <label class="option"><input type="radio" name="q5" value="C"> Earth moves between the Sun and the Moon, casting a shadow on the Moon.</label>
+      <label class="option"><input type="radio" name="q5" value="D"> The Moon stops reflecting light permanently.</label></div></div>
+    <div class="q" data-q="16"><div class="qhead"><span class="num">6</span><div><div class="type">Subjective · Reasoning</div><p class="question">A friend claims that stars are small because they look like tiny points of light. Explain why this conclusion is unreliable. Include one reason stars may look small from Earth.</p></div></div><textarea class="answer" name="q16" placeholder="Write your explanation here..."></textarea></div>
+    <div class="q" data-q="17"><div class="qhead"><span class="num">7</span><div><div class="type">Subjective · Compare and justify</div><p class="question">Explain the difference between a planet, a star and a natural satellite. Give one example of each.</p></div></div><textarea class="answer" name="q17" placeholder="Write your explanation here..."></textarea></div>
+    <div class="q" data-q="18"><div class="qhead"><span class="num">8</span><div><div class="type">Subjective · Use evidence</div><p class="question">A pupil observes that the Sun appears to move across the sky from east to west. Explain what causes this apparent movement and describe how the observation could help someone tell the time approximately.</p></div></div><textarea class="answer" name="q18" placeholder="Write your explanation here..."></textarea></div>
+
+    <div class="section-title heart"><span style="font-size:27px">❤️</span><h2>Section B: The Heart and Circulatory System</h2></div>
+    <div class="q" data-q="6"><div class="qhead"><span class="num">9</span><div><div class="type">Objective · Apply knowledge</div><p class="question">A patient has a damaged valve between the left atrium and left ventricle. What is the most likely effect?</p></div></div><div class="options">
+      <label class="option"><input type="radio" name="q6" value="A"> Blood may flow backwards into the left atrium when the ventricle contracts.</label>
+      <label class="option"><input type="radio" name="q6" value="B"> The lungs stop taking in oxygen immediately.</label>
+      <label class="option"><input type="radio" name="q6" value="C"> The right side of the heart changes into a lung.</label>
+      <label class="option"><input type="radio" name="q6" value="D"> Blood no longer contains plasma.</label></div></div>
+    <div class="q" data-q="7"><div class="qhead"><span class="num">10</span><div><div class="type">Objective · Reasoning</div><p class="question">Why is the muscular wall of the left ventricle thicker than that of the right ventricle?</p></div></div><div class="options">
+      <label class="option"><input type="radio" name="q7" value="A"> It receives all the blood from the body.</label>
+      <label class="option"><input type="radio" name="q7" value="B"> It must pump blood at higher pressure around the whole body.</label>
+      <label class="option"><input type="radio" name="q7" value="C"> It stores oxygen for several days.</label>
+      <label class="option"><input type="radio" name="q7" value="D"> It pumps blood only a short distance to the lungs.</label></div></div>
+    <div class="q" data-q="8"><div class="qhead"><span class="num">11</span><div><div class="type">Objective · Interpret evidence</div><p class="question">After running, a learner’s heart rate rises from 72 to 128 beats per minute. What is the best explanation?</p></div></div><div class="options">
+      <label class="option"><input type="radio" name="q8" value="A"> The muscles need more oxygen and glucose for respiration.</label>
+      <label class="option"><input type="radio" name="q8" value="B"> The heart is trying to remove all the blood from the body.</label>
+      <label class="option"><input type="radio" name="q8" value="C"> The lungs have stopped working.</label>
+      <label class="option"><input type="radio" name="q8" value="D"> Exercise makes red blood cells disappear.</label></div></div>
+    <div class="q" data-q="9"><div class="qhead"><span class="num">12</span><div><div class="type">Objective · Compare structures</div><p class="question">Which blood vessel is best adapted for exchanging oxygen, nutrients and waste products with body cells?</p></div></div><div class="options">
+      <label class="option"><input type="radio" name="q9" value="A"> Aorta, because it has the widest opening.</label>
+      <label class="option"><input type="radio" name="q9" value="B"> Vein, because it always carries oxygen-rich blood.</label>
+      <label class="option"><input type="radio" name="q9" value="C"> Capillary, because its wall is only one cell thick.</label>
+      <label class="option"><input type="radio" name="q9" value="D"> Pulmonary artery, because it has valves throughout.</label></div></div>
+    <div class="q" data-q="10"><div class="qhead"><span class="num">13</span><div><div class="type">Objective · Evaluate a claim</div><p class="question">A student says, “All arteries carry oxygen-rich blood.” Which example best shows why the statement is incorrect?</p></div></div><div class="options">
+      <label class="option"><input type="radio" name="q10" value="A"> The aorta carries blood away from the heart.</label>
+      <label class="option"><input type="radio" name="q10" value="B"> The pulmonary artery carries oxygen-poor blood from the heart to the lungs.</label>
+      <label class="option"><input type="radio" name="q10" value="C"> Capillaries connect small arteries and veins.</label>
+      <label class="option"><input type="radio" name="q10" value="D"> Veins return blood to the heart.</label></div></div>
+    <div class="q" data-q="19"><div class="qhead"><span class="num">14</span><div><div class="type">Subjective · Explain a pathway</div><p class="question">Trace the path of oxygen-poor blood from the body to the lungs, then explain how oxygen-rich blood returns to the body. Name the main heart chambers and vessels involved.</p></div></div><textarea class="answer" name="q19" placeholder="Write the blood pathway here..."></textarea></div>
+    <div class="q" data-q="20"><div class="qhead"><span class="num">15</span><div><div class="type">Subjective · Analyse evidence</div><p class="question">Two learners exercise for five minutes. Learner A’s pulse returns to normal after three minutes; Learner B’s takes eight minutes. Give two possible reasons for the difference and explain why this result alone is not enough to diagnose a health problem.</p></div></div><textarea class="answer" name="q20" placeholder="Write your explanation here..."></textarea></div>
+    <div class="q" data-q="21"><div class="qhead"><span class="num">16</span><div><div class="type">Subjective · Design an investigation</div><p class="question">Plan a fair investigation to test whether exercise affects heart rate. State what you will change, what you will measure, two factors you will keep the same, and how you will improve reliability.</p></div></div><textarea class="answer" name="q21" placeholder="Describe your investigation..."></textarea></div>
+
+    <div class="section-title repro"><span style="font-size:27px">🧬</span><h2>Section C: The Human Reproductive System</h2></div>
+    <div class="q" data-q="11"><div class="qhead"><span class="num">17</span><div><div class="type">Objective · Understand function</div><p class="question">Which statement best describes fertilisation in humans?</p></div></div><div class="options">
+      <label class="option"><input type="radio" name="q11" value="A"> An egg cell divides before any sperm is involved.</label>
+      <label class="option"><input type="radio" name="q11" value="B"> A sperm cell joins with an egg cell, forming a zygote.</label>
+      <label class="option"><input type="radio" name="q11" value="C"> The embryo leaves the uterus to grow in the ovary.</label>
+      <label class="option"><input type="radio" name="q11" value="D"> Menstruation and fertilisation are the same process.</label></div></div>
+    <div class="q" data-q="12"><div class="qhead"><span class="num">18</span><div><div class="type">Objective · Apply knowledge</div><p class="question">If an egg is released from an ovary, which structure is the usual site where fertilisation may occur?</p></div></div><div class="options">
+      <label class="option"><input type="radio" name="q12" value="A"> Uterus lining</label>
+      <label class="option"><input type="radio" name="q12" value="B"> Cervix</label>
+      <label class="option"><input type="radio" name="q12" value="C"> Fallopian tube (oviduct)</label>
+      <label class="option"><input type="radio" name="q12" value="D"> Vagina</label></div></div>
+    <div class="q" data-q="13"><div class="qhead"><span class="num">19</span><div><div class="type">Objective · Reasoning</div><p class="question">Why does the lining of the uterus become thicker during the menstrual cycle?</p></div></div><div class="options">
+      <label class="option"><input type="radio" name="q13" value="A"> To prepare for possible implantation of an embryo.</label>
+      <label class="option"><input type="radio" name="q13" value="B"> To produce sperm cells.</label>
+      <label class="option"><input type="radio" name="q13" value="C"> To stop the ovaries releasing eggs forever.</label>
+      <label class="option"><input type="radio" name="q13" value="D"> To help the lungs absorb oxygen.</label></div></div>
+    <div class="q" data-q="14"><div class="qhead"><span class="num">20</span><div><div class="type">Objective · Sequence events</div><p class="question">Which sequence correctly describes early human development after fertilisation?</p></div></div><div class="options">
+      <label class="option"><input type="radio" name="q14" value="A"> Foetus → sperm → egg → zygote</label>
+      <label class="option"><input type="radio" name="q14" value="B"> Egg → foetus → fertilisation → embryo</label>
+      <label class="option"><input type="radio" name="q14" value="C"> Zygote → cell divisions → embryo → foetus</label>
+      <label class="option"><input type="radio" name="q14" value="D"> Implantation → sperm production → zygote → egg</label></div></div>
+    <div class="q" data-q="15"><div class="qhead"><span class="num">21</span><div><div class="type">Objective · Evaluate a statement</div><p class="question">Which statement about puberty is the most accurate?</p></div></div><div class="options">
+      <label class="option"><input type="radio" name="q15" value="A"> Everyone begins puberty at exactly the same age.</label>
+      <label class="option"><input type="radio" name="q15" value="B"> Puberty causes only physical changes and no emotional changes.</label>
+      <label class="option"><input type="radio" name="q15" value="C"> Puberty is a stage of development involving hormonal, physical and often emotional changes; timing varies.</label>
+      <label class="option"><input type="radio" name="q15" value="D"> Puberty means a person has stopped growing completely.</label></div></div>
+    <div class="q" data-q="22"><div class="qhead"><span class="num">22</span><div><div class="type">Subjective · Explain and sequence</div><p class="question">Describe what happens from ovulation to implantation if fertilisation occurs. Include the roles of the ovary, oviduct and uterus.</p></div></div><textarea class="answer" name="q22" placeholder="Write your answer here..."></textarea></div>
+    <div class="q" data-q="23"><div class="qhead"><span class="num">23</span><div><div class="type">Subjective · Correct a misconception</div><p class="question">A learner says, “Menstruation means that an egg has been fertilised.” Explain why this is incorrect and what usually happens during menstruation.</p></div></div><textarea class="answer" name="q23" placeholder="Write your answer here..."></textarea></div>
+    <div class="q" data-q="24"><div class="qhead"><span class="num">24</span><div><div class="type">Subjective · Compare functions</div><p class="question">Compare the functions of the testes and ovaries. Explain why both are important for human reproduction.</p></div></div><textarea class="answer" name="q24" placeholder="Write your answer here..."></textarea></div>
+    <div class="q" data-q="25"><div class="qhead"><span class="num">25</span><div><div class="type">Subjective · Critical thinking</div><p class="question">A student is worried because their body is developing earlier or later than some classmates. Give a scientifically accurate and supportive response, including one reason development may differ and one trusted source of help if they have concerns.</p></div></div><textarea class="answer" name="q25" placeholder="Write your response here..."></textarea></div>
+    <div class="actions">
+      <button type="button" class="btn primary" id="submitBtn">Submit Assessment &amp; Mark Objective Questions</button>
+      <button type="button" class="btn secondary" id="saveBtn">Download My Answers</button>
+      <button type="reset" class="btn secondary">Clear Answers</button>
+    </div>
+  </form>
+  <section class="panel" id="results" aria-live="polite">
+    <h2>Assessment Result</h2>
+    <div class="scorebox"><div class="score" id="score">0/15</div><strong id="studentResult"></strong><p id="message">Objective score only; written responses require teacher marking.</p></div>
+    <h2 style="margin-top:22px">Objective Answer Review</h2>
+    <div id="review"></div>
+    <p><strong>Important:</strong> Your written answers are not automatically graded. Download your answers and submit them to your teacher if required.</p>
+    <div class="actions"><button type="button" class="btn primary" id="downloadResult">Download Result and Written Answers</button><button type="button" class="btn secondary" onclick="window.print()">Print Assessment</button></div>
+  </section>
+  <div class="footer">Inspired School of Technology • Science Weekly Assessment • Class 8</div>
+</main>
+<script>
+const key = {
+ q1:{a:"A",why:"Planets are visible because they reflect light from the Sun."},
+ q2:{a:"C",why:"The Moon's phases are caused by the changing view of its sunlit half as it orbits Earth."},
+ q3:{a:"B",why:"The Sun is a star that releases energy through nuclear fusion."},
+ q4:{a:"B",why:"Sunlight heats a comet's ice, releasing gas and dust that can form a coma and tail."},
+ q5:{a:"C",why:"A lunar eclipse occurs when Earth is between the Sun and Moon and its shadow falls on the Moon."},
+ q6:{a:"A",why:"A faulty valve may allow blood to flow backwards when the ventricle contracts."},
+ q7:{a:"B",why:"The left ventricle pumps blood around the whole body and needs a thicker muscular wall."},
+ q8:{a:"A",why:"Working muscles need more oxygen and glucose, so the heart pumps faster."},
+ q9:{a:"C",why:"Capillary walls are one cell thick, allowing substances to diffuse between blood and tissues."},
+ q10:{a:"B",why:"The pulmonary artery is an artery because it carries blood away from the heart, even though the blood is oxygen-poor."},
+ q11:{a:"B",why:"Fertilisation occurs when a sperm cell joins with an egg cell, forming a zygote."},
+ q12:{a:"C",why:"Fertilisation usually occurs in the fallopian tube (oviduct)."},
+ q13:{a:"A",why:"The uterine lining prepares to support implantation if an embryo develops."},
+ q14:{a:"C",why:"After fertilisation, the zygote divides, develops into an embryo and later a foetus."},
+ q15:{a:"C",why:"Puberty includes physical and hormonal changes, and its timing varies between individuals."}
+};
+const labels={q1:1,q2:2,q3:3,q4:4,q5:5,q6:9,q7:10,q8:11,q9:12,q10:13,q11:17,q12:18,q13:19,q14:20,q15:21};
+function collect(){
+ const f=document.getElementById('assessment'), data={};
+ data.student=document.getElementById('student').value.trim();
+ data.className=document.getElementById('className').value.trim();
+ data.date=document.getElementById('date').value;
+ for(let i=1;i<=25;i++){
+  const el=f.elements['q'+i];
+  if(!el)continue;
+  if(el instanceof RadioNodeList){data['q'+i]=el.value||''}
+  else data['q'+i]=el.value.trim();
+ }
+ return data;
+}
+function makeText(data, includeReview=true){
+ let out='INSPIRED SCHOOL OF TECHNOLOGY\nSCIENCE WEEKLY ASSESSMENT FOR 8TH CLASS\n\nStudent: '+(data.student||'Not entered')+'\nClass: '+(data.className||'Not entered')+'\nDate: '+(data.date||'Not entered')+'\n\n';
+ let score=0;
+ Object.keys(key).forEach(k=>{if(data[k]===key[k].a)score++});
+ out+='OBJECTIVE SCORE: '+score+'/15 (written answers require teacher marking)\n\n';
+ const prompts={q16:'Q6. Explain why a star can look small from Earth.',q17:'Q7. Explain the difference between a planet, star and natural satellite.',q18:'Q8. Explain the Sun’s apparent movement and how it can help tell time.',q19:'Q14. Trace blood flow from body to lungs and back.',q20:'Q15. Explain different pulse recovery times.',q21:'Q16. Plan a fair investigation of exercise and heart rate.',q22:'Q22. Describe ovulation, fertilisation and implantation.',q23:'Q23. Correct the statement about menstruation.',q24:'Q24. Compare testes and ovaries.',q25:'Q25. Respond supportively to differences in puberty timing.'};
+ for(let i=1;i<=15;i++){let k='q'+i;out+='Objective question '+i+': '+(data[k]||'Not answered')+' | Correct: '+key[k].a+'\n';}
+ out+='\nWRITTEN RESPONSES\n';
+ Object.keys(prompts).forEach(k=>{out+='\n'+prompts[k]+'\n'+(data[k]||'No response entered')+'\n'});
+ return out;
+}
+document.getElementById('submitBtn').addEventListener('click',()=>{
+ const data=collect();
+ if(!data.student){alert("Please enter your full name before submitting.");document.getElementById('student').focus();return;}
+ let score=0, review='';
+ Object.keys(key).forEach(k=>{
+  const given=data[k]||'';
+  const ok=given===key[k].a;if(ok)score++;
+  const n=labels[k];
+  review+=`<div class="review"><strong>Question ${n}:</strong> Your answer: ${given||'Not answered'} — <span class="${ok?'correct':'wrong'}">${ok?'Correct':'Incorrect'}</span><br><span>Correct answer: ${key[k].a}. ${key[k].why}</span></div>`;
+ });
+ document.getElementById('score').textContent=score+'/15';
+ document.getElementById('studentResult').textContent=data.student+' • '+(data.className||'Class 8');
+ document.getElementById('message').textContent=score>=12?'Excellent objective score. Keep explaining your reasoning in the written section.':score>=8?'Good effort. Review the explanations below and strengthen your written reasoning.':'Review the feedback below, then revise the topics before trying again.';
+ document.getElementById('review').innerHTML=review;
+ document.getElementById('results').style.display='block';
+ document.getElementById('results').scrollIntoView({behavior:'smooth'});
+});
+function download(){
+ const data=collect();
+ if(!data.student){alert("Please enter your full name first.");document.getElementById('student').focus();return;}
+ const blob=new Blob([makeText(data)],{type:'text/plain;charset=utf-8'});
+ const url=URL.createObjectURL(blob);const a=document.createElement('a');
+ a.href=url;a.download='Class_8_Science_Assessment_'+data.student.replace(/[^a-z0-9_-]/gi,'_')+'.txt';
+ document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);
+}
+document.getElementById('saveBtn').addEventListener('click',download);
+document.getElementById('downloadResult').addEventListener('click',download);
+document.getElementById('assessment').addEventListener('reset',()=>{setTimeout(()=>{document.getElementById('results').style.display='none'},0)});
+</script>
+</body>
+</html>
