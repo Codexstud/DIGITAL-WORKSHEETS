@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mighty Maths — 2nd Class Interactive Worksheet</title>
+<style>
+:root{--blue:#08a9dc;--deep:#145477;--pale:#eaf9ff;--yellow:#ffdb54;--coral:#ff8173;--purple:#a16bd0;--green:#39b98b;--ink:#20394a}
+*{box-sizing:border-box}body{margin:0;padding:18px;background:linear-gradient(140deg,#e7f8ff,#fff8db);font-family:Arial,Helvetica,sans-serif;color:var(--ink);line-height:1.45}
+.wrap{max-width:1080px;margin:auto}header{background:var(--blue);color:#fff;border-radius:22px;padding:24px;box-shadow:0 5px 0 #0786b3}
+h1{margin:0;font-size:clamp(27px,4vw,42px)}header p{margin:6px 0 0;font-size:17px}.pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.pill{background:#fff;color:var(--deep);padding:6px 11px;border-radius:99px;font-size:14px;font-weight:bold}
+.student{display:flex;gap:12px;flex-wrap:wrap;margin:16px 0}.student label{background:white;border:2px solid #b9eafa;border-radius:12px;padding:10px;flex:1;min-width:190px;font-weight:bold}.student input{font:inherit;border:0;border-bottom:2px solid #b9eafa;max-width:75%;outline:none}
+.welcome,.lesson-note{background:#fff;border-radius:14px;padding:13px 16px;margin:13px 0;border-left:6px solid var(--yellow)}
+h2{margin:0 -15px 12px;padding:11px 15px;color:white;background:var(--blue);font-size:21px;border-radius:14px 14px 0 0}
+h3{margin:12px 0 5px;color:var(--deep);font-size:17px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.card{background:white;border:2px solid #bce9f7;border-radius:17px;padding:15px;box-shadow:0 3px 0 #cceef8;break-inside:avoid}.card:nth-child(2) h2{background:var(--purple)}.card:nth-child(3) h2{background:var(--coral)}.card:nth-child(4) h2{background:var(--green)}.card:nth-child(5) h2{background:#e6ad27}.card:nth-child(6) h2{background:#397dc0}
+.explain{background:#f0fbff;padding:10px 12px;border-radius:11px;margin:9px 0 12px}.example{display:inline-block;background:#fff0b7;border:1px solid #f1d45c;border-radius:9px;padding:6px 10px;margin-top:5px;font-weight:bold}
+.q{display:flex;align-items:center;justify-content:space-between;gap:9px;padding:8px 2px;border-bottom:1px dashed #d6e8ef;font-size:17px}.q:last-child{border-bottom:0}.qtext{flex:1}.ans{width:78px;max-width:30%;padding:8px 5px;border:2px solid #91d9ed;border-radius:9px;font:inherit;font-size:17px;text-align:center;background:#fcfeff;color:var(--ink)}.ans:focus{outline:3px solid #ffe68a}.ans.good{background:#e4fff2;border-color:#25a878}.ans.bad{background:#fff0ed;border-color:#ff8173}
+.mini-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.mini{background:#f0fbff;border-radius:10px;padding:9px;text-align:center}.mini input{width:65px;padding:7px;border:2px solid #91d9ed;border-radius:8px;text-align:center;font:inherit}
+.numberline{display:flex;flex-wrap:wrap;gap:3px;margin:10px 0}.numberline span{flex:1 0 4%;min-width:23px;text-align:center;padding:4px 0;background:#eaf9ff;border:1px solid #b8e5f3;border-radius:4px;font-size:12px}
+.challenge{background:#fff5cf;border:2px solid #f0d45e;border-radius:15px;padding:14px;margin-top:16px}.challenge input{width:100%;padding:10px;margin:5px 0;border:2px solid #f0d45e;border-radius:8px;font:inherit}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}button{cursor:pointer;border:0;border-radius:12px;padding:12px 17px;font-size:16px;font-weight:bold}#check{background:var(--deep);color:white}#reset{background:white;border:2px solid #b9eafa;color:var(--deep)}#print{background:#ffe28a;color:#553f00}
+#feedback{display:none;background:white;padding:15px;border-radius:12px;font-weight:bold;font-size:18px;margin-bottom:15px}footer{text-align:center;margin:20px 0;color:#5c7280;font-size:13px}
+@media(max-width:720px){body{padding:9px}.grid{grid-template-columns:1fr}.q{font-size:16px}.card{padding:13px}.card h2{margin:-13px -13px 11px}}
+@media print{body{background:white;padding:0}.actions,#feedback{display:none!important}.card{box-shadow:none}.wrap{max-width:none}header{box-shadow:none}}
+</style></head><body><div class="wrap">
+<header><h1>🌟 MIGHTY MATHS</h1><p>Interactive maths worksheet • 2nd Class • Addition & Subtraction</p><div class="pills"><span class="pill">Number bonds</span><span class="pill">Doubles</span><span class="pill">Bridge to 10</span><span class="pill">Take away</span><span class="pill">Try it online!</span></div></header>
+<div class="student"><label>My name: <input id="studentName" type="text" aria-label="My name"></label><label>Date: <input id="date" type="date" aria-label="Date"></label></div>
+<div class="welcome"><strong>Welcome, mathematician! 👋</strong> Read each short explanation and example first. Then type your answers in the boxes. Press <strong>Check my answers</strong> when you finish. Green means correct; pink means have another go.</div>
+<div class="grid">
+<section class="card"><h2>🔟 A. Number bonds to 10</h2><div class="explain"><strong>What does it mean?</strong><br>Number bonds are two numbers that fit together to make a total. Think of 10 as a full ten-frame: if 4 counters are there, 6 more make 10.<div class="example">Example: 4 + 6 = 10</div></div>
+<div class="q"><span class="qtext">1. 4 + ___ = 10</span><input class="ans" data-answer="6" inputmode="numeric" aria-label="Question 1"></div>
+<div class="q"><span class="qtext">2. 3 + ___ = 10</span><input class="ans" data-answer="7" inputmode="numeric" aria-label="Question 2"></div>
+<div class="q"><span class="qtext">3. 2 + ___ = 10</span><input class="ans" data-answer="8" inputmode="numeric" aria-label="Question 3"></div>
+<div class="q"><span class="qtext">4. 1 + ___ = 10</span><input class="ans" data-answer="9" inputmode="numeric" aria-label="Question 4"></div>
+<div class="q"><span class="qtext">5. 10 − 4 =</span><input class="ans" data-answer="6" inputmode="numeric" aria-label="Question 5"></div>
+<div class="q"><span class="qtext">6. 10 − 7 =</span><input class="ans" data-answer="3" inputmode="numeric" aria-label="Question 6"></div>
+<div class="q"><span class="qtext">7. 8 + 2 =</span><input class="ans" data-answer="10" inputmode="numeric" aria-label="Question 7"></div>
+<div class="q"><span class="qtext">8. 6 + 4 =</span><input class="ans" data-answer="10" inputmode="numeric" aria-label="Question 8"></div>
+</section>
+<section class="card"><h2>🐞 B. Doubles and near doubles</h2><div class="explain"><strong>What is a double?</strong><br>A double means adding the same number twice. Near doubles use a number next to a double, so you can work it out quickly.<div class="example">Example: double 5 = 5 + 5 = 10<br>Near double: 5 + 6 = 10 + 1 = 11</div></div>
+<div class="q"><span class="qtext">9. Double 6</span><input class="ans" data-answer="12" inputmode="numeric" aria-label="Question 9"></div>
+<div class="q"><span class="qtext">10. Double 8</span><input class="ans" data-answer="16" inputmode="numeric" aria-label="Question 10"></div>
+<div class="q"><span class="qtext">11. Double 7</span><input class="ans" data-answer="14" inputmode="numeric" aria-label="Question 11"></div>
+<div class="q"><span class="qtext">12. Double 9</span><input class="ans" data-answer="18" inputmode="numeric" aria-label="Question 12"></div>
+<div class="q"><span class="qtext">13. 6 + 7 (near double)</span><input class="ans" data-answer="13" inputmode="numeric" aria-label="Question 13"></div>
+<div class="q"><span class="qtext">14. 8 + 7 (near double)</span><input class="ans" data-answer="15" inputmode="numeric" aria-label="Question 14"></div>
+<div class="q"><span class="qtext">15. 9 + 8 (near double)</span><input class="ans" data-answer="17" inputmode="numeric" aria-label="Question 15"></div>
+<div class="q"><span class="qtext">16. 5 + 4 (near double)</span><input class="ans" data-answer="9" inputmode="numeric" aria-label="Question 16"></div>
+</section>
+<section class="card"><h2>🌉 C. Bridge through 10</h2><div class="explain"><strong>How does bridging work?</strong><br>Break the second number into two parts. First, make 10; then add what is left. For 8 + 5, split 5 into 2 and 3. So 8 + 2 = 10, then 10 + 3 = 13.<div class="example">Example: 8 + 5 = 8 + 2 + 3 = 13</div></div>
+<div class="q"><span class="qtext">17. 8 + 4 =</span><input class="ans" data-answer="12" inputmode="numeric" aria-label="Question 17"></div>
+<div class="q"><span class="qtext">18. 8 + 5 =</span><input class="ans" data-answer="13" inputmode="numeric" aria-label="Question 18"></div>
+<div class="q"><span class="qtext">19. 9 + 6 =</span><input class="ans" data-answer="15" inputmode="numeric" aria-label="Question 19"></div>
+<div class="q"><span class="qtext">20. 7 + 5 =</span><input class="ans" data-answer="12" inputmode="numeric" aria-label="Question 20"></div>
+<div class="q"><span class="qtext">21. 7 + 6 =</span><input class="ans" data-answer="13" inputmode="numeric" aria-label="Question 21"></div>
+<div class="q"><span class="qtext">22. 8 + 7 =</span><input class="ans" data-answer="15" inputmode="numeric" aria-label="Question 22"></div>
+<div class="q"><span class="qtext">23. 9 + 8 =</span><input class="ans" data-answer="17" inputmode="numeric" aria-label="Question 23"></div>
+<div class="q"><span class="qtext">24. 6 + 5 =</span><input class="ans" data-answer="11" inputmode="numeric" aria-label="Question 24"></div>
+</section>
+<section class="card"><h2>🤖 D. Subtraction: count back</h2><div class="explain"><strong>How do we take away?</strong><br>Start at the first number and count backwards by the number you are taking away. For 17 − 5, start at 17 and jump back five steps: 16, 15, 14, 13, 12.<div class="example">Example: 17 − 5 = 12</div></div>
+<div class="numberline" aria-label="Number line from 0 to 20"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span></div>
+<div class="q"><span class="qtext">25. 18 − 3 =</span><input class="ans" data-answer="15" inputmode="numeric" aria-label="Question 25"></div>
+<div class="q"><span class="qtext">26. 19 − 5 =</span><input class="ans" data-answer="14" inputmode="numeric" aria-label="Question 26"></div>
+<div class="q"><span class="qtext">27. 15 − 4 =</span><input class="ans" data-answer="11" inputmode="numeric" aria-label="Question 27"></div>
+<div class="q"><span class="qtext">28. 12 − 3 =</span><input class="ans" data-answer="9" inputmode="numeric" aria-label="Question 28"></div>
+<div class="q"><span class="qtext">29. 20 − 6 =</span><input class="ans" data-answer="14" inputmode="numeric" aria-label="Question 29"></div>
+<div class="q"><span class="qtext">30. 17 − 8 =</span><input class="ans" data-answer="9" inputmode="numeric" aria-label="Question 30"></div>
+<div class="q"><span class="qtext">31. 18 − 9 =</span><input class="ans" data-answer="9" inputmode="numeric" aria-label="Question 31"></div>
+<div class="q"><span class="qtext">32. 13 − 8 =</span><input class="ans" data-answer="5" inputmode="numeric" aria-label="Question 32"></div>
+</section>
+<section class="card"><h2>🧩 E. Find the missing number</h2><div class="explain"><strong>Look at the whole sum.</strong><br>The missing number is the number that makes the sum true. Think: “What number do I need to add or take away?”<div class="example">Example: 11 − □ = 3. Count back from 11 to 3: 8 steps, so the answer is 8.</div></div>
+<div class="q"><span class="qtext">33. 12 − ___ = 7</span><input class="ans" data-answer="5" inputmode="numeric" aria-label="Question 33"></div>
+<div class="q"><span class="qtext">34. 20 − ___ = 17</span><input class="ans" data-answer="3" inputmode="numeric" aria-label="Question 34"></div>
+<div class="q"><span class="qtext">35. 15 − ___ = 8</span><input class="ans" data-answer="7" inputmode="numeric" aria-label="Question 35"></div>
+<div class="q"><span class="qtext">36. 14 − ___ = 10</span><input class="ans" data-answer="4" inputmode="numeric" aria-label="Question 36"></div>
+<div class="q"><span class="qtext">37. 18 − ___ = 6</span><input class="ans" data-answer="12" inputmode="numeric" aria-label="Question 37"></div>
+<div class="q"><span class="qtext">38. 17 − ___ = 12</span><input class="ans" data-answer="5" inputmode="numeric" aria-label="Question 38"></div>
+<div class="q"><span class="qtext">39. 9 − ___ = 5</span><input class="ans" data-answer="4" inputmode="numeric" aria-label="Question 39"></div>
+<div class="q"><span class="qtext">40. 8 − ___ = 3</span><input class="ans" data-answer="5" inputmode="numeric" aria-label="Question 40"></div>
+</section>
+<section class="card"><h2>🎯 F. Mixed maths practice</h2><div class="explain"><strong>Choose a strategy.</strong><br>Use number bonds, doubles, bridging to 10, or counting back. You can use the number line if it helps. Take your time and check each answer.</div>
+<div class="q"><span class="qtext">41. 6 + 8 =</span><input class="ans" data-answer="14" inputmode="numeric" aria-label="Question 41"></div>
+<div class="q"><span class="qtext">42. 7 + 7 =</span><input class="ans" data-answer="14" inputmode="numeric" aria-label="Question 42"></div>
+<div class="q"><span class="qtext">43. 11 − 6 =</span><input class="ans" data-answer="5" inputmode="numeric" aria-label="Question 43"></div>
+<div class="q"><span class="qtext">44. 18 − 6 =</span><input class="ans" data-answer="12" inputmode="numeric" aria-label="Question 44"></div>
+<div class="q"><span class="qtext">45. 9 + 3 =</span><input class="ans" data-answer="12" inputmode="numeric" aria-label="Question 45"></div>
+<div class="q"><span class="qtext">46. 16 − 7 =</span><input class="ans" data-answer="9" inputmode="numeric" aria-label="Question 46"></div>
+<div class="q"><span class="qtext">47. 5 + 5 + 5 =</span><input class="ans" data-answer="15" inputmode="numeric" aria-label="Question 47"></div>
+<div class="q"><span class="qtext">48. 20 − 5 =</span><input class="ans" data-answer="15" inputmode="numeric" aria-label="Question 48"></div>
+</section></div>
+<div class="challenge"><strong>🚀 Super Challenge — show your own thinking!</strong><p>49. Write two different number bonds that make 20.</p><input type="text" aria-label="Challenge answer one" placeholder="Way 1: ____ + ____ = 20"><input type="text" aria-label="Challenge answer two" placeholder="Way 2: ____ + ____ = 20"><p>50. Complete the pattern: 1, 2, 4, 8, ___, ___</p><input type="text" aria-label="Pattern answer" placeholder="Next two numbers"></div>
+<div class="actions"><button id="check" type="button">✅ Check my answers</button><button id="reset" type="button">🔄 Try again</button><button id="print" type="button" onclick="window.print()">🖨️ Print worksheet</button></div><div id="feedback" role="status" aria-live="polite"></div>
+<footer>Made for 2nd Class learners • Keep practising — you're getting stronger at maths! 🌈</footer></div>
+<script>
+const fields=[...document.querySelectorAll('.ans')],feedback=document.getElementById('feedback');
+document.getElementById('check').addEventListener('click',()=>{let correct=0,attempted=0;fields.forEach(f=>{f.classList.remove('good','bad');if(f.value.trim())attempted++;if(f.value.trim()!==''&&Number(f.value.trim())===Number(f.dataset.answer)){correct++;f.classList.add('good')}else{f.classList.add('bad')}});feedback.style.display='block';const name=document.getElementById('studentName').value.trim();feedback.textContent=correct===fields.length?`🌟 Brilliant${name?', '+name:''}! You got all ${fields.length} marked questions correct!`:`You have ${correct} out of ${fields.length} marked questions correct, and you attempted ${attempted}. Green means correct; pink means check it and try again. Keep going! 💪`;feedback.scrollIntoView({behavior:'smooth',block:'nearest'})});
+document.getElementById('reset').addEventListener('click',()=>{fields.forEach(f=>{f.value='';f.classList.remove('good','bad')});document.querySelectorAll('.challenge input').forEach(f=>f.value='');feedback.style.display='none';feedback.textContent=''});
+</script></body></html>
