@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Multiplication & Division Checkerboard</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:linear-gradient(135deg,#fff2a8,#ffd5e8,#c8f6ff);color:#24204e}main{max-width:1200px;margin:auto;padding:16px}header{text-align:center;padding:12px}h1{color:#6828bd;font-size:clamp(2rem,5vw,3.2rem);margin:12px 0}.tag{display:inline-block;background:white;border:3px solid #24204e;border-radius:30px;padding:9px 14px;font-weight:900;box-shadow:4px 4px #24204e}.panel{background:#ffffffed;border:3px solid #24204e;border-radius:20px;padding:16px;margin:16px 0;box-shadow:5px 5px #24204e}.levels,.stats,.actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}.level,.btn{padding:11px 15px;border:2px solid #24204e;border-radius:12px;font-weight:900;cursor:pointer;box-shadow:3px 3px #24204e}.level{background:white}.level.active{background:#ffdf45}.stat{padding:10px 13px;border-radius:12px;background:#7437d1;color:white;font-weight:900}.stat:nth-child(2){background:#db2777}.stat:nth-child(3){background:#087fb9}.info,.instructions{text-align:center;font-weight:800;line-height:1.5}.info{color:#5b21b6;margin:13px}.progress{height:14px;background:#e5e7eb;border:2px solid #24204e;border-radius:20px;overflow:hidden;margin:12px 0 5px}.fill{height:100%;width:0;background:linear-gradient(90deg,#22c55e,#bef264,#facc15)}.board{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border:4px solid #24204e;border-radius:12px;overflow:hidden;margin-top:16px}.square{min-height:135px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:8px 4px;text-align:center;border:2px solid white}.square:nth-child(8n+1),.square:nth-child(8n+4),.square:nth-child(8n+6),.square:nth-child(8n+7){background:#7437d1;color:white}.square:nth-child(8n+2),.square:nth-child(8n+3),.square:nth-child(8n+5),.square:nth-child(8n+8){background:#ffdf45;color:#24204e}.square.active{outline:5px solid #f97316;outline-offset:-6px}.square.locked{opacity:.58}.square.done{background:#bbf7d0!important;color:#14532d!important;opacity:1}.fact{font-size:clamp(1rem,2vw,1.3rem);font-weight:900;white-space:nowrap}.answer{width:82px;height:46px;border:3px solid #24204e;border-radius:8px;text-align:center;background:white;color:#111827;font-size:1.3rem;font-weight:900}.answer:disabled{background:#d1fae5;color:#166534;border-color:#15803d}.status{font-size:.7rem;font-weight:900;min-height:12px}.btn.check{background:#7437d1;color:white}.btn.hint{background:#ffdf45}.btn.reset{background:white}.feedback{text-align:center;min-height:26px;margin:14px 0;font-weight:900}.good{color:#15803d}.bad{color:#b91c1c}.complete{display:none;text-align:center;padding:16px;margin-top:16px;background:#fef3c7;border:3px dashed #d97706;border-radius:15px}.complete h2{color:#92400e}@media(max-width:760px){main{padding:9px}.panel{padding:11px}.board{grid-template-columns:repeat(2,minmax(0,1fr))}.square{min-height:105px}.fact{font-size:1.1rem}}
+</style>
+</head>
+<body>
+<main>
+<header><div class="tag">🟪🟨 CHECKERBOARD MATHS 🟨🟪</div><h1>Multiplication & Division</h1><p class="instructions">Fill the missing number in each colourful square. Get it right to unlock the next square!</p></header>
+<section class="panel">
+<div class="levels"><button class="level active" data-level="1">🌈 Level 1</button><button class="level" data-level="2">⚡ Level 2</button><button class="level" data-level="3">🏆 Level 3</button></div>
+<div class="info" id="levelInfo">Level 1: 3, 6 and 9</div>
+<div class="stats"><div class="stat">⭐ Points: <span id="score">0</span></div><div class="stat">☑ Filled: <span id="filled">0/12</span></div><div class="stat">🔥 Streak: <span id="streak">0</span></div></div>
+<div class="progress"><div class="fill" id="fill"></div></div><div class="instructions" id="progressText">0% complete</div>
+</section>
+<section class="panel">
+<p class="instructions">Type the answer in the white box in the highlighted square. Press Enter or click <b>Check Square</b>.</p>
+<div class="board" id="board"></div>
+<div class="feedback" id="feedback" aria-live="polite">Ready? Start with the highlighted square! 🎯</div>
+<div class="actions"><button class="btn check" id="check">☑ Check Square</button><button class="btn hint" id="hint">💡 Hint</button><button class="btn reset" id="restart">↻ Restart Level</button></div>
+<div class="complete" id="complete"><div style="font-size:2.2rem">🎉🏆🎉</div><h2>Checkerboard Complete!</h2><p id="completeText"></p><button class="btn check" id="next">Next Level ➜</button></div>
+</section>
+</main>
+<script>
+(function(){
+'use strict';
+const settings={
+ 1:{tables:[3,6,9],title:'Level 1: 3, 6 and 9 times tables'},
+ 2:{tables:[7,9],title:'Level 2: 7 and 9 times tables'},
+ 3:{tables:[10,11,12],title:'Level 3: 10, 11 and 12 times tables'}
+};
+const byId=id=>document.getElementById(id);
+let level=1, questions=[],active=0,score=0,streak=0,usedHint=false;
+function buildQuestions(){
+ const all=[];
+ settings[level].tables.forEach(t=>{
+  for(let n=1;n<=12;n++){
+   const product=t*n;
+   all.push({text:t+' × '+n+' =',answer:product,hint:t+' × '+n+' = '+product,done:false});
+   all.push({text:product+' ÷ '+t+' =',answer:n,hint:t+' × '+n+' = '+product+', so '+product+' ÷ '+t+' = '+n,done:false});
+  }
+ });
+ // Shuffle the full set, then take 12 mixed facts.
+ for(let i=all.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[all[i],all[j]]=[all[j],all[i]];}
+ questions=all.slice(0,20);
+ // Ensure at least one multiplication and one division fact appear.
+ if(!questions.some(q=>q.text.includes('×'))){questions[0]=all.find(q=>q.text.includes('×'));}
+ if(!questions.some(q=>q.text.includes('÷'))){questions[1]=all.find(q=>q.text.includes('÷'));}
+ for(let i=questions.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[questions[i],questions[j]]=[questions[j],questions[i]];}
+ active=0;score=0;streak=0;usedHint=false;
+ byId('complete').style.display='none';byId('feedback').className='feedback';byId('feedback').textContent='Ready? Start with the highlighted square! 🎯';render();
+}
+function render(){
+ byId('levelInfo').textContent=settings[level].title+' · multiplication and division';
+ const done=questions.filter(q=>q.done).length;
+ byId('score').textContent=score;byId('filled').textContent=done+'/'+questions.length;byId('streak').textContent=streak;
+ byId('fill').style.width=(done/questions.length*100)+'%';byId('progressText').textContent=Math.round(done/questions.length*100)+'% complete';
+ const board=byId('board');board.innerHTML='';
+ questions.forEach((q,i)=>{
+  const square=document.createElement('div');
+  square.className='square '+(q.done?'done':i===active?'active':'locked');
+  const fact=document.createElement('div');fact.className='fact';fact.textContent=q.text;
+  const input=document.createElement('input');input.className='answer';input.type='number';input.inputMode='numeric';input.placeholder='?';input.id='answer'+i;input.disabled=q.done||i!==active;
+  input.setAttribute('aria-label','Missing answer for '+q.text);if(q.done)input.value=q.answer;
+  const status=document.createElement('div');status.className='status';status.textContent=q.done?'✓ CORRECT':i===active?'FILL THIS SQUARE':'🔒 LOCKED';
+  square.appendChild(fact);square.appendChild(input);square.appendChild(status);board.appendChild(square);
+  input.addEventListener('keydown',function(e){if(e.key==='Enter')checkAnswer();});
+ });
+ if(active<questions.length){const current=byId('answer'+active);if(current)setTimeout(()=>current.focus(),20);}
+ byId('check').disabled=done===questions.length;byId('hint').disabled=done===questions.length;
+}
+function checkAnswer(){
+ if(active>=questions.length||questions[active].done)return;
+ const input=byId('answer'+active),q=questions[active];
+ if(input.value.trim()===''){byId('feedback').className='feedback bad';byId('feedback').textContent='Type an answer in the white box first.';input.focus();return;}
+ if(Number(input.value)===q.answer){
+  q.done=true;score+=usedHint?5:10;streak++;usedHint=false;
+  byId('feedback').className='feedback good';byId('feedback').textContent='Correct! Square filled — the next one is unlocked! 🔓';
+  active=questions.findIndex(x=>!x.done);render();
+  if(active===-1){byId('complete').style.display='block';byId('completeText').textContent='You filled all '+questions.length+' squares and earned '+score+' points. Brilliant!';byId('next').textContent=level===3?'Play Level 3 Again ↻':'Go to Level '+(level+1)+' ➜';}
+ }else{
+  streak=0;byId('streak').textContent='0';byId('feedback').className='feedback bad';byId('feedback').textContent='Not quite. Try again using the related multiplication or division fact. 💪';input.select();
+ }
+}
+function showHint(){if(active>=questions.length)return;usedHint=true;byId('feedback').className='feedback';byId('feedback').textContent='💡 Hint: '+questions[active].hint+'. Use this fact to work out the missing number.';}
+document.querySelectorAll('.level').forEach(button=>button.addEventListener('click',function(){level=Number(button.dataset.level);document.querySelectorAll('.level').forEach(b=>b.classList.toggle('active',b===button));buildQuestions();}));
+byId('check').addEventListener('click',checkAnswer);byId('hint').addEventListener('click',showHint);byId('restart').addEventListener('click',buildQuestions);
+byId('next').addEventListener('click',function(){if(level<3){level++;document.querySelectorAll('.level').forEach(b=>b.classList.toggle('active',Number(b.dataset.level)===level));}buildQuestions();window.scrollTo({top:0,behavior:'smooth'});});
+buildQuestions();
+})();
+</script>
+</body>
+</html>
