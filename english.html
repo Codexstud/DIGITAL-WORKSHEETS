@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Year 2 English Digital Worksheet</title>
+<style>
+  :root { --navy:#173b68; --blue:#2878c8; --pale:#eef6ff; --gold:#ffc857; --green:#21845b; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:#f1f5f9; color:#1e293b; font-family:Tahoma,Arial,sans-serif; line-height:1.55; }
+  .page { max-width:900px; margin:24px auto; background:#fff; padding:clamp(18px,4vw,40px); border-radius:16px; box-shadow:0 8px 28px #18324b16; }
+  header { background:linear-gradient(135deg,#173b68,#2878c8); color:white; padding:24px; border-radius:14px; margin-bottom:22px; }
+  h1 { margin:0 0 5px; font-size:clamp(24px,4vw,34px); }
+  header p { margin:0; }
+  .student-info { display:grid; grid-template-columns:2fr 1fr; gap:14px; margin:18px 0 24px; }
+  label { font-weight:700; display:block; margin-bottom:6px; }
+  input[type="text"], textarea, select { width:100%; border:1.5px solid #b9c8d8; background:#fff; color:#111827; border-radius:7px; padding:10px 11px; font:inherit; }
+  input[type="text"]:focus, textarea:focus, select:focus { outline:3px solid #bfdbfe; border-color:var(--blue); }
+  .section { border:1px solid #dbe5ef; border-radius:12px; padding:18px; margin:20px 0; }
+  h2 { color:var(--navy); margin:0 0 12px; font-size:22px; }
+  h3 { margin:16px 0 8px; color:#244a75; font-size:17px; }
+  .passage { background:var(--pale); border-left:5px solid var(--blue); border-radius:8px; padding:17px; }
+  .passage p { margin:0 0 9px; }
+  .passage p:last-child { margin-bottom:0; }
+  .q { margin:15px 0; }
+  .q label { font-weight:600; }
+  .short { max-width:430px; }
+  .options { display:flex; flex-wrap:wrap; gap:10px 18px; margin-top:7px; }
+  .options label { display:flex; align-items:center; gap:7px; font-weight:400; margin:0; }
+  input[type="radio"], input[type="checkbox"] { accent-color:var(--blue); width:17px; height:17px; }
+  .hint { font-size:13px; color:#526579; margin-top:5px; }
+  .buttons { display:flex; flex-wrap:wrap; gap:10px; margin-top:24px; }
+  button { border:0; border-radius:8px; padding:12px 18px; font:700 15px Tahoma,Arial,sans-serif; cursor:pointer; }
+  .primary { background:var(--blue); color:white; }
+  .secondary { background:#e2e8f0; color:#1e293b; }
+  .result { display:none; padding:16px; margin-top:18px; border-radius:10px; background:#ecfdf5; border:1px solid #86efac; }
+  .result h2 { color:#166534; }
+  .correct { color:#166534; font-weight:700; }
+  .incorrect { color:#b91c1c; font-weight:700; }
+  footer { text-align:center; color:#64748b; font-size:13px; margin-top:24px; }
+  @media(max-width:600px) { .student-info { grid-template-columns:1fr; } .section { padding:14px; } }
+  @media print { body { background:#fff; } .page { box-shadow:none; margin:0; max-width:none; } .buttons,.result { display:none!important; } input,textarea,select { border:1px solid #777; } }
+</style>
+</head>
+<body>
+<main class="page">
+  <header>
+    <h1>Year 2 English Digital Worksheet</h1>
+    <p>Reading Comprehension • Rhyming Words • Nouns</p>
+  </header>
+
+  <div class="student-info">
+    <div><label for="studentName">Pupil's name</label><input id="studentName" type="text" placeholder="Type your name here"></div>
+    <div><label for="worksheetDate">Date</label><input id="worksheetDate" type="text" placeholder="DD/MM/YYYY"></div>
+  </div>
+
+  <section class="section">
+    <h2>Part A: Reading Comprehension</h2>
+    <h3>The Helpful Little Girl</h3>
+    <div class="passage">
+      <p>Ada was a little girl who was kind and bright.</p>
+      <p>She helped her mother from morning till night.</p>
+      <p>Every day, she made her bed and kept her room neat.</p>
+      <p>She watered flowers and pulled out weeds beneath her feet.</p>
+      <p>One sunny day, she saw an old woman walking down the street.</p>
+      <p>The woman carried oranges in a basket, but she moved her tired feet.</p>
+      <p>Ada ran to help her and carried the basket with care.</p>
+      <p>The woman smiled and thanked Ada for being kind and fair.</p>
+      <p>She gave Ada three oranges, all juicy and sweet.</p>
+      <p>Ada shared them with her brother, who thought they were a treat!</p>
+      <p>Their mother smiled proudly and said, “You have done what is right.</p>
+      <p>Kindness makes the world a better place and fills our hearts with light.”</p>
+    </div>
+
+    <div class="q"><label for="c1">1. What was the name of the little girl?</label><input id="c1" type="text" data-answer="Ada"></div>
+    <div class="q"><label for="c2">2. What did Ada do to help her mother?</label><textarea id="c2" rows="2" data-answer="She made her bed, kept her room neat, watered flowers and pulled out weeds."></textarea></div>
+    <div class="q"><label for="c3">3. Who did Ada meet on the street?</label><input id="c3" type="text" data-answer="An old woman"></div>
+    <div class="q"><label for="c4">4. What was the old woman carrying?</label><input id="c4" type="text" data-answer="A basket of oranges"></div>
+    <div class="q"><label for="c5">5. How many oranges did the old woman give Ada?</label><input id="c5" type="text" data-answer="Three"></div>
+    <div class="q"><label for="c6">6. Who did Ada share the oranges with?</label><input id="c6" type="text" data-answer="Her brother"></div>
+    <div class="q"><label for="c7">7. Why was Ada's mother proud of her?</label><textarea id="c7" rows="2" data-answer="Because Ada was kind and helpful."></textarea></div>
+    <div class="q"><label for="c8">8. What lesson can we learn from the story?</label><textarea id="c8" rows="2" data-answer="We should be kind and help others."></textarea></div>
+  </section>
+
+  <section class="section">
+    <h2>Part B: Rhyming Words</h2>
+    <p>Rhyming words have the same or similar ending sounds, such as <strong>cat</strong> and <strong>hat</strong>.</p>
+    <h3>1. Find a rhyming word in the passage.</h3>
+    <div class="q"><label for="r1">1. Bright rhymes with:</label><input id="r1" type="text" data-answer="right|night|light"></div>
+    <div class="q"><label for="r2">2. Neat rhymes with:</label><input id="r2" type="text" data-answer="feet|street|sweet|treat"></div>
+    <div class="q"><label for="r3">3. Street rhymes with:</label><input id="r3" type="text" data-answer="feet|neat|sweet|treat"></div>
+    <div class="q"><label for="r4">4. Care rhymes with:</label><input id="r4" type="text" data-answer="fair"></div>
+    <div class="q"><label for="r5">5. Sweet rhymes with:</label><input id="r5" type="text" data-answer="neat|feet|street|treat"></div>
+
+    <h3>2. Choose the correct rhyming word.</h3>
+    <div class="q"><label>6. Which word rhymes with <em>cat</em>?</label><div class="options">
+      <label><input type="radio" name="r6" value="Cup"> Cup</label><label><input type="radio" name="r6" value="Hat" data-correct="true"> Hat</label><label><input type="radio" name="r6" value="Dog"> Dog</label></div></div>
+    <div class="q"><label>7. Which word rhymes with <em>sun</em>?</label><div class="options">
+      <label><input type="radio" name="r7" value="Run" data-correct="true"> Run</label><label><input type="radio" name="r7" value="Sit"> Sit</label><label><input type="radio" name="r7" value="Bed"> Bed</label></div></div>
+    <div class="q"><label>8. Which word rhymes with <em>tree</em>?</label><div class="options">
+      <label><input type="radio" name="r8" value="Free" data-correct="true"> Free</label><label><input type="radio" name="r8" value="Try"> Try</label><label><input type="radio" name="r8" value="Top"> Top</label></div></div>
+    <div class="q"><label>9. Which word rhymes with <em>book</em>?</label><div class="options">
+      <label><input type="radio" name="r9" value="Back"> Back</label><label><input type="radio" name="r9" value="Look" data-correct="true"> Look</label><label><input type="radio" name="r9" value="Bake"> Bake</label></div></div>
+    <div class="q"><label>10. Which word rhymes with <em>cake</em>?</label><div class="options">
+      <label><input type="radio" name="r10" value="Make" data-correct="true"> Make</label><label><input type="radio" name="r10" value="Cook"> Cook</label><label><input type="radio" name="r10" value="Kick"> Kick</label></div></div>
+  </section>
+
+  <section class="section">
+    <h2>Part C: Nouns</h2>
+    <p>A <strong>noun</strong> is a naming word. It names a person, place, animal or thing. Examples: <em>girl, school, dog, book</em>.</p>
+    <h3>1. Find the nouns.</h3>
+    <div class="q"><label for="n1">1. Write two names of people from the passage.</label><input id="n1" type="text" placeholder="Example: Ada, ..." data-answer="Ada, mother|Ada and mother|Ada, her mother|Ada and her mother|Ada, Ben|Ada and Ben"></div>
+    <div class="q"><label for="n2">2. Write the name of one place mentioned in the passage.</label><input id="n2" type="text" data-answer="Room|street|world|house|garden"></div>
+    <div class="q"><label for="n3">3. Write the name of one thing the old woman carried.</label><input id="n3" type="text" data-answer="Basket"></div>
+    <div class="q"><label for="n4">4. Write the name of one fruit in the passage.</label><input id="n4" type="text" data-answer="Orange|Oranges"></div>
+
+    <h3>2. Choose the correct answer.</h3>
+    <div class="q"><label>5. Which of these is a noun?</label><div class="options">
+      <label><input type="radio" name="n5" value="Run"> Run</label><label><input type="radio" name="n5" value="Happy"> Happy</label><label><input type="radio" name="n5" value="Teacher" data-correct="true"> Teacher</label></div></div>
+    <div class="q"><label>6. Which word names a place?</label><div class="options">
+      <label><input type="radio" name="n6" value="School" data-correct="true"> School</label><label><input type="radio" name="n6" value="Jump"> Jump</label><label><input type="radio" name="n6" value="Soft"> Soft</label></div></div>
+    <div class="q"><label>7. Which word names an animal?</label><div class="options">
+      <label><input type="radio" name="n7" value="Quickly"> Quickly</label><label><input type="radio" name="n7" value="Rabbit" data-correct="true"> Rabbit</label><label><input type="radio" name="n7" value="Sing"> Sing</label></div></div>
+    <div class="q"><label>8. Which word names a thing?</label><div class="options">
+      <label><input type="radio" name="n8" value="Pencil" data-correct="true"> Pencil</label><label><input type="radio" name="n8" value="Beautiful"> Beautiful</label><label><input type="radio" name="n8" value="Walk"> Walk</label></div></div>
+    <div class="q"><label>9. Tick all the nouns.</label><div class="options">
+      <label><input type="checkbox" name="n9" value="book" data-correct="true"> Book</label><label><input type="checkbox" name="n9" value="run"> Run</label><label><input type="checkbox" name="n9" value="doctor" data-correct="true"> Doctor</label><label><input type="checkbox" name="n9" value="blue"> Blue</label><label><input type="checkbox" name="n9" value="market" data-correct="true"> Market</label></div></div>
+    <div class="q"><label for="n10">10. Write one sentence containing a noun. Underline the noun by putting it in CAPITAL LETTERS.</label><textarea id="n10" rows="2" placeholder="Example: The GIRL reads a book."></textarea></div>
+  </section>
+
+  <section class="section">
+    <h2>Part D: True or False</h2>
+    <div class="q"><label>1. Ada was a kind girl.</label><div class="options"><label><input type="radio" name="t1" value="True" data-correct="true"> True</label><label><input type="radio" name="t1" value="False"> False</label></div></div>
+    <div class="q"><label>2. Ada refused to help the old woman.</label><div class="options"><label><input type="radio" name="t2" value="True"> True</label><label><input type="radio" name="t2" value="False" data-correct="true"> False</label></div></div>
+    <div class="q"><label>3. The old woman gave Ada three oranges.</label><div class="options"><label><input type="radio" name="t3" value="True" data-correct="true"> True</label><label><input type="radio" name="t3" value="False"> False</label></div></div>
+    <div class="q"><label>4. Ada shared the oranges with her brother.</label><div class="options"><label><input type="radio" name="t4" value="True" data-correct="true"> True</label><label><input type="radio" name="t4" value="False"> False</label></div></div>
+    <div class="q"><label>5. Ada's mother was angry with her.</label><div class="options"><label><input type="radio" name="t5" value="True"> True</label><label><input type="radio" name="t5" value="False" data-correct="true"> False</label></div></div>
+  </section>
+
+  <div class="buttons">
+    <button class="primary" type="button" onclick="markWorksheet()">Mark My Answers</button>
+    <button class="secondary" type="button" onclick="window.print()">Print Worksheet</button>
+    <button class="secondary" type="button" onclick="downloadAnswers()">Download My Answers</button>
+    <button class="secondary" type="button" onclick="resetWorksheet()">Clear Answers</button>
+  </div>
+  <div class="result" id="result" aria-live="polite">
+    <h2 id="scoreHeading">Your results</h2>
+    <p id="scoreText"></p>
+    <p><strong>Remember:</strong> Read each question carefully and try your best.</p>
+    <div id="feedback"></div>
+  </div>
+  <footer>Year 2 English • Complete every section before submitting your answers.</footer>
+</main>
+<script>
+function norm(s) { return (s || '').toLowerCase().trim().replace(/[.,!?;:]/g,'').replace(/\s+/g,' '); }
+function markWorksheet() {
+  let score = 0, total = 0, feedback = [];
+  document.querySelectorAll('[data-correct="true"]').forEach(el => {
+    if (el.type === 'radio') {
+      const group = document.querySelectorAll('input[name="'+el.name+'"]');
+      if ([...group].some(x => x.checked)) {
+        total++;
+        const chosen = [...group].find(x => x.checked);
+        if (chosen && chosen.dataset.correct === 'true') score++;
+      }
+    }
+  });
+  // Score each multiple-choice radio group once
+  const radioNames = [...new Set([...document.querySelectorAll('input[type=radio][data-correct]')].map(x=>x.name))];
+  radioNames.forEach(name => {
+    const group = [...document.querySelectorAll('input[name="'+name+'"]')];
+    if (!group.some(x=>x.checked)) total--; // unanswered is not included in attempted score
+  });
+  // Text answers: give simple exact/accepted-answer checking where possible
+  document.querySelectorAll('input[data-answer], textarea[data-answer]').forEach(el => {
+    const val = norm(el.value);
+    if (!val) return;
+    total++;
+    const accepted = el.dataset.answer.split('|').map(norm);
+    if (accepted.includes(val) || accepted.some(a => a && val.includes(a) && a.length > 4)) score++;
+    else feedback.push(el.previousElementSibling ? el.previousElementSibling.textContent + ' — check your answer.' : 'Review one of your written answers.');
+  });
+  // Checkbox question is correct only if all intended choices, and no incorrect choices, are selected
+  const checks = [...document.querySelectorAll('input[name="n9"]')];
+  if (checks.some(x=>x.checked)) {
+    total++;
+    if (checks.filter(x=>x.checked).every(x=>x.dataset.correct==='true') && checks.filter(x=>x.dataset.correct==='true').every(x=>x.checked)) score++;
+  }
+  document.getElementById('result').style.display = 'block';
+  document.getElementById('scoreHeading').textContent = 'Your results';
+  document.getElementById('scoreText').textContent = 'Automatically marked score: ' + score + ' out of ' + total + ' attempted auto-marked questions. Written answers may need a teacher to review them.';
+  document.getElementById('feedback').textContent = feedback.slice(0,5).join(' ');
+  document.getElementById('result').scrollIntoView({behavior:'smooth',block:'center'});
+}
+function downloadAnswers() {
+  const lines = ['Year 2 English Digital Worksheet', 'Pupil: ' + (document.getElementById('studentName').value || ''), 'Date: ' + (document.getElementById('worksheetDate').value || ''), ''];
+  document.querySelectorAll('.section').forEach(section => {
+    lines.push(section.querySelector('h2')?.innerText || 'Section');
+    section.querySelectorAll('.q').forEach(q => {
+      const label = q.querySelector('label')?.innerText || '';
+      const fields = [...q.querySelectorAll('input[type=text], textarea, select')];
+      let answers = fields.map(x => x.value).filter(Boolean);
+      const radios = [...q.querySelectorAll('input[type=radio]:checked')].map(x => x.parentElement.innerText.trim());
+      const checks = [...q.querySelectorAll('input[type=checkbox]:checked')].map(x => x.parentElement.innerText.trim());
+      lines.push(label + ' ' + [...answers, ...radios, ...checks].join(', '));
+    });
+    lines.push('');
+  });
+  const blob = new Blob([lines.join('\\n')], {type:'text/plain;charset=utf-8'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'year-2-english-answers.txt'; a.click(); URL.revokeObjectURL(a.href);
+}
+function resetWorksheet() {
+  if (!confirm('Clear all your answers?')) return;
+  document.querySelectorAll('input[type=text], textarea').forEach(x=>x.value='');
+  document.querySelectorAll('input[type=radio], input[type=checkbox]').forEach(x=>x.checked=false);
+  document.getElementById('result').style.display='none';
+}
+</script>
+</body>
+</html>
