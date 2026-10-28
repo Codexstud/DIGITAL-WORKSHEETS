@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Year 5 English Digital Worksheet — Sentences</title>
+<style>
+:root{--navy:#17345c;--blue:#2463a6;--pale:#edf5ff;--gold:#f0b429;--ink:#172033;--muted:#5b6575;--line:#d7dfeb;--green:#167647;--red:#b42318}
+*{box-sizing:border-box}
+body{margin:0;background:#f3f6fb;color:var(--ink);font-family:Tahoma,Arial,sans-serif;line-height:1.55}
+header{background:linear-gradient(120deg,#17345c,#2463a6);color:white;padding:28px 18px}
+.wrap{max-width:980px;margin:auto}
+.kicker{text-transform:uppercase;letter-spacing:1.6px;font-size:12px;font-weight:bold;color:#ffe29a}
+h1{margin:5px 0 8px;font-size:clamp(25px,4vw,36px);line-height:1.2}
+header p{margin:0;max-width:700px;color:#edf4ff}
+main{max-width:980px;margin:22px auto;padding:0 14px 40px}
+.student{display:grid;grid-template-columns:2fr 1fr 1fr;gap:12px;background:white;border:1px solid var(--line);padding:16px;border-radius:12px;margin-bottom:18px}
+label{display:block;font-weight:bold;font-size:13px;margin-bottom:5px}
+input[type=text],textarea,select{width:100%;background:#fff!important;color:#111!important;border:1px solid #9ba9bd;border-radius:7px;padding:10px;font:inherit}
+input[type=text]:focus,textarea:focus,select:focus{outline:2px solid #8ab9f5;border-color:var(--blue)}
+.section{background:white;border:1px solid var(--line);border-radius:13px;margin:16px 0;overflow:hidden}
+.section h2{font-size:19px;margin:0;padding:14px 17px;background:var(--pale);border-bottom:1px solid var(--line);color:var(--navy)}
+.section .inside{padding:16px 18px}
+.instructions{color:var(--muted);margin-top:0}
+.question{padding:12px 0;border-bottom:1px solid #edf0f5}
+.question:last-child{border-bottom:0}
+.qtitle{font-weight:bold;margin-bottom:8px}
+.options{display:grid;gap:7px}
+.options label{font-weight:normal;display:flex;gap:9px;align-items:flex-start;margin:0;padding:8px 10px;border:1px solid #e0e6ef;border-radius:7px;cursor:pointer}
+.options label:hover{background:#f7faff}
+input[type=radio],input[type=checkbox]{margin-top:5px;accent-color:var(--blue)}
+.answer{margin-top:6px}
+textarea{min-height:66px;resize:vertical}
+.small{font-size:13px;color:var(--muted)}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0}
+button{border:0;border-radius:8px;padding:12px 17px;font:inherit;font-weight:bold;cursor:pointer}
+.primary{background:var(--blue);color:white}.secondary{background:white;color:var(--navy);border:1px solid var(--line)}.primary:hover{background:#174d87}
+#results{display:none;background:white;border:2px solid var(--blue);border-radius:12px;padding:18px;margin-top:18px}
+.score{font-size:24px;font-weight:bold;color:var(--navy)}
+.feedback{font-size:13px;margin-top:5px}
+.correct{color:var(--green)}.incorrect{color:var(--red)}
+footer{text-align:center;color:var(--muted);font-size:12px;padding:18px}
+@media(max-width:650px){.student{grid-template-columns:1fr}.section h2{font-size:17px}.inside{padding:13px!important}}
+@media print{body{background:white}.actions,button,#results{display:none!important}header{background:white;color:#111;padding:10px 0}header p,.kicker{color:#111}main{margin:0;max-width:none}.section,.student{break-inside:avoid;box-shadow:none}.section h2{background:#eee;color:#111}}
+</style>
+</head>
+<body>
+<header>
+ <div class="wrap">
+  <div class="kicker">English Language • Year 5</div>
+  <h1>Digital Worksheet: Sentences</h1>
+  <p>Sentences, fragments and run-ons • Sentence types • Subjects and predicates • Clauses • Simple, compound and complex sentences • Word order</p>
+ </div>
+</header>
+<main>
+ <div class="student">
+  <div><label for="pupil">Pupil's name</label><input id="pupil" type="text" placeholder="Type your name"></div>
+  <div><label for="class">Class</label><input id="class" type="text" value="Year 5"></div>
+  <div><label for="date">Date</label><input id="date" type="text" placeholder="DD/MM/YYYY"></div>
+ </div>
+
+ <section class="section">
+  <h2>Section A — Understanding sentences</h2><div class="inside">
+   <p class="instructions">Choose the best answer for each question.</p>
+   <div class="question" data-q="q1" data-answer="b"><div class="qtitle">1. What is a sentence?</div><div class="options">
+    <label><input type="radio" name="q1" value="a"> A group of words that always has one word.</label>
+    <label><input type="radio" name="q1" value="b"> A group of words arranged to express a complete thought.</label>
+    <label><input type="radio" name="q1" value="c"> Any group of words, even if it has no clear meaning.</label>
+   </div></div>
+   <div class="question" data-q="q2" data-answer="c"><div class="qtitle">2. Which sentence is interrogative?</div><div class="options">
+    <label><input type="radio" name="q2" value="a"> Please sit down.</label>
+    <label><input type="radio" name="q2" value="b"> The children are reading.</label>
+    <label><input type="radio" name="q2" value="c"> Where is your pencil?</label>
+    <label><input type="radio" name="q2" value="d"> What a lovely day!</label>
+   </div></div>
+   <div class="question" data-q="q3" data-answer="a"><div class="qtitle">3. “Please close the window.” is which type of sentence?</div><div class="options">
+    <label><input type="radio" name="q3" value="a"> Imperative</label><label><input type="radio" name="q3" value="b"> Interrogative</label><label><input type="radio" name="q3" value="c"> Exclamatory</label><label><input type="radio" name="q3" value="d"> Declarative</label>
+   </div></div>
+   <div class="question" data-q="q4" data-answer="d"><div class="qtitle">4. “What an amazing goal!” is which type of sentence?</div><div class="options">
+    <label><input type="radio" name="q4" value="a"> Declarative</label><label><input type="radio" name="q4" value="b"> Imperative</label><label><input type="radio" name="q4" value="c"> Interrogative</label><label><input type="radio" name="q4" value="d"> Exclamatory</label>
+   </div></div>
+  </div>
+ </section>
+
+ <section class="section">
+  <h2>Section B — Subjects and predicates</h2><div class="inside">
+   <div class="question" data-q="q5" data-answer="b"><div class="qtitle">5. In “The tall boy in the blue shirt kicked the ball”, what is the complete subject?</div><div class="options">
+    <label><input type="radio" name="q5" value="a"> boy</label><label><input type="radio" name="q5" value="b"> The tall boy in the blue shirt</label><label><input type="radio" name="q5" value="c"> kicked the ball</label>
+   </div></div>
+   <div class="question" data-q="q6" data-answer="c"><div class="qtitle">6. In the same sentence, what is the complete predicate?</div><div class="options">
+    <label><input type="radio" name="q6" value="a"> The tall boy</label><label><input type="radio" name="q6" value="b"> the blue shirt</label><label><input type="radio" name="q6" value="c"> kicked the ball</label>
+   </div></div>
+   <div class="question"><div class="qtitle">7. Write the simple subject in this sentence: “The small cat slept peacefully.”</div><input class="answer" type="text" id="q7" placeholder="Type your answer"></div>
+   <div class="question"><div class="qtitle">8. Write the simple predicate in this sentence: “The teacher has marked our books.”</div><input class="answer" type="text" id="q8" placeholder="Type your answer"></div>
+  </div>
+ </section>
+
+ <section class="section">
+  <h2>Section C — Complete sentences, fragments and run-ons</h2><div class="inside">
+   <div class="question" data-q="q9" data-answer="a"><div class="qtitle">9. “The children played outside after school.” is a…</div><div class="options">
+    <label><input type="radio" name="q9" value="a"> Complete sentence</label><label><input type="radio" name="q9" value="b"> Fragment</label><label><input type="radio" name="q9" value="c"> Run-on sentence</label>
+   </div></div>
+   <div class="question" data-q="q10" data-answer="b"><div class="qtitle">10. “Because the teacher was absent.” is a…</div><div class="options">
+    <label><input type="radio" name="q10" value="a"> Complete sentence</label><label><input type="radio" name="q10" value="b"> Fragment</label><label><input type="radio" name="q10" value="c"> Run-on sentence</label>
+   </div></div>
+   <div class="question" data-q="q11" data-answer="c"><div class="qtitle">11. “I finished my work I went outside.” is a…</div><div class="options">
+    <label><input type="radio" name="q11" value="a"> Complete sentence</label><label><input type="radio" name="q11" value="b"> Fragment</label><label><input type="radio" name="q11" value="c"> Run-on sentence</label>
+   </div></div>
+   <div class="question"><div class="qtitle">12. Rewrite this fragment as a complete sentence: “Ran quickly to the bus stop.”</div><textarea id="q12" class="answer" placeholder="Write your complete sentence here"></textarea></div>
+   <div class="question"><div class="qtitle">13. Correct this run-on sentence using a full stop: “The sun was shining we went swimming.”</div><textarea id="q13" class="answer" placeholder="Write the corrected sentence here"></textarea></div>
+  </div>
+ </section>
+
+ <section class="section">
+  <h2>Section D — Independent and dependent clauses</h2><div class="inside">
+   <div class="question" data-q="q14" data-answer="a"><div class="qtitle">14. Which is an independent clause?</div><div class="options">
+    <label><input type="radio" name="q14" value="a"> The children laughed.</label><label><input type="radio" name="q14" value="b"> Although I was tired</label><label><input type="radio" name="q14" value="c"> Because we were late</label>
+   </div></div>
+   <div class="question" data-q="q15" data-answer="b"><div class="qtitle">15. In “Although she was tired, she completed her homework”, which is the dependent clause?</div><div class="options">
+    <label><input type="radio" name="q15" value="a"> she completed her homework</label><label><input type="radio" name="q15" value="b"> Although she was tired</label>
+   </div></div>
+   <div class="question"><div class="qtitle">16. Write two words that can introduce a dependent clause.</div><input class="answer" type="text" id="q16" placeholder="Example: because, when"></div>
+  </div>
+ </section>
+
+ <section class="section">
+  <h2>Section E — Simple, compound and complex sentences</h2><div class="inside">
+   <div class="question" data-q="q17" data-answer="a"><div class="qtitle">17. “The birds flew over the trees.” is a…</div><div class="options">
+    <label><input type="radio" name="q17" value="a"> Simple sentence</label><label><input type="radio" name="q17" value="b"> Compound sentence</label><label><input type="radio" name="q17" value="c"> Complex sentence</label>
+   </div></div>
+   <div class="question" data-q="q18" data-answer="b"><div class="qtitle">18. “I wanted to go out, but I had homework.” is a…</div><div class="options">
+    <label><input type="radio" name="q18" value="a"> Simple sentence</label><label><input type="radio" name="q18" value="b"> Compound sentence</label><label><input type="radio" name="q18" value="c"> Complex sentence</label>
+   </div></div>
+   <div class="question" data-q="q19" data-answer="c"><div class="qtitle">19. “When the lesson ended, we packed our bags.” is a…</div><div class="options">
+    <label><input type="radio" name="q19" value="a"> Simple sentence</label><label><input type="radio" name="q19" value="b"> Compound sentence</label><label><input type="radio" name="q19" value="c"> Complex sentence</label>
+   </div></div>
+   <div class="question"><div class="qtitle">20. Write one compound sentence.</div><textarea class="answer" id="q20" placeholder="Write your sentence here"></textarea></div>
+   <div class="question"><div class="qtitle">21. Write one complex sentence.</div><textarea class="answer" id="q21" placeholder="Write your sentence here"></textarea></div>
+  </div>
+ </section>
+
+ <section class="section">
+  <h2>Section F — Arrange the words</h2><div class="inside">
+   <div class="question"><div class="qtitle">22. Arrange these words to make a sentence: every / reads / night / Chidi</div><input class="answer" type="text" id="q22" placeholder="Type the sentence"></div>
+   <div class="question"><div class="qtitle">23. Arrange these words to make a sentence: was / because / late / missed / she / the bus / she</div><input class="answer" type="text" id="q23" placeholder="Type the sentence"></div>
+   <div class="question"><div class="qtitle">24. Arrange these words to make a question: your / where / book / is</div><input class="answer" type="text" id="q24" placeholder="Type the question"></div>
+   <div class="question"><div class="qtitle">25. Arrange these words to make an exclamatory sentence: beautiful / what / day / a</div><input class="answer" type="text" id="q25" placeholder="Type the sentence"></div>
+  </div>
+ </section>
+
+ <div class="actions">
+  <button class="primary" onclick="markWorksheet()">Check my answers</button>
+  <button class="secondary" onclick="window.print()">Print worksheet</button>
+  <button class="secondary" onclick="downloadAnswers()">Download my answers</button>
+  <button class="secondary" onclick="resetWorksheet()">Clear all answers</button>
+ </div>
+ <div id="results" aria-live="polite"></div>
+ <p class="small">For written questions, your teacher should review the answer. The automatic score covers the multiple-choice questions and gives written answers for review.</p>
+</main>
+<footer>Year 5 English Language • Digital Worksheet • Sentences, Fragments and Run-ons</footer>
+<script>
+function norm(s){return (s||"").toLowerCase().trim().replace(/[.!?,;:]/g,"").replace(/\s+/g,"");}
+function markWorksheet(){
+ const questions=[...document.querySelectorAll('.question[data-q]')];
+ let correct=0,answered=0,feedback=[];
+ questions.forEach(el=>{
+  const name=el.dataset.q, answer=el.dataset.answer;
+  const selected=document.querySelector('input[name="'+name+'"]:checked');
+  const old=el.querySelector('.feedback'); if(old)old.remove();
+  if(selected){answered++;let ok=selected.value===answer;if(ok)correct++;
+   let f=document.createElement('div');f.className='feedback '+(ok?'correct':'incorrect');f.textContent=ok?'Correct!':'Review this answer and try again.';el.appendChild(f);
+  }else{let f=document.createElement('div');f.className='feedback';f.textContent='Not answered yet.';el.appendChild(f)}
+ });
+ const writtenIds=['q7','q8','q12','q13','q16','q20','q21','q22','q23','q24','q25'];
+ const filled=writtenIds.filter(id=>document.getElementById(id).value.trim()).length;
+ const result=document.getElementById('results');result.style.display='block';
+ result.innerHTML='<div class="score">Multiple-choice score: '+correct+' / '+questions.length+'</div><p>You answered '+answered+' of '+questions.length+' multiple-choice questions.</p><p>Written response boxes completed: '+filled+' / '+writtenIds.length+'. These answers need to be checked by your teacher.</p>';
+ result.scrollIntoView({behavior:'smooth',block:'center'});
+}
+function downloadAnswers(){
+ const lines=['YEAR 5 ENGLISH DIGITAL WORKSHEET — ANSWERS','Name: '+(document.getElementById('pupil').value||''),'Class: '+(document.getElementById('class').value||''),'Date: '+(document.getElementById('date').value||''),''];
+ document.querySelectorAll('.question').forEach((el,i)=>{
+  const title=el.querySelector('.qtitle')?.innerText||'';
+  const selected=el.querySelector('input[type=radio]:checked');
+  const field=el.querySelector('input.answer, textarea.answer');
+  if(title)lines.push(title, 'Answer: '+(selected?selected.parentElement.innerText.trim():(field?field.value.trim():'Not answered')), '');
+ });
+ const blob=new Blob([lines.join('\n')],{type:'text/plain;charset=utf-8'});
+ const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='Year5_Sentences_Worksheet_Answers.txt';a.click();URL.revokeObjectURL(a.href);
+}
+function resetWorksheet(){
+ if(!confirm('Clear all answers from this worksheet?'))return;
+ document.querySelectorAll('input[type=radio]').forEach(x=>x.checked=false);
+ document.querySelectorAll('.answer').forEach(x=>x.value='');
+ document.querySelectorAll('.feedback').forEach(x=>x.remove());
+ document.getElementById('results').style.display='none';
+}
+</script>
+</body>
+</html>
