@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inspired School of Technology - Intermediate Coding Assessment</title>
+<style>
+:root{--navy:#142d55;--blue:#2563a6;--gold:#f4c64e;--line:#dce3ec;--green:#16845b}
+*{box-sizing:border-box}body{margin:0;padding:18px 12px;background:#f3f6fb;color:#1d2939;font-family:Arial,Helvetica,sans-serif}
+.sheet{max-width:880px;margin:auto;background:#fff;border:1px solid #e1e7ef;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px #18315312}
+header{background:var(--navy);color:white;text-align:center;padding:28px 16px}h1{font-size:clamp(20px,4vw,28px);margin:0;font-weight:800}
+.heading{font-size:24px;font-weight:800;color:var(--gold);margin:10px 0 5px}.subtitle{margin:0;color:#e2eaf5}
+.meta{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-top:17px;font-size:13px;color:#e2eaf5}
+main{padding:22px}.details{display:grid;grid-template-columns:2fr 1fr;gap:14px;margin-bottom:18px}
+.field label{display:block;font-weight:bold;font-size:13px;margin-bottom:7px}.field input{width:100%;padding:12px;border:1px solid var(--line);border-radius:8px;font-size:15px}
+.instructions{background:#eef4fb;border-left:4px solid var(--blue);padding:13px;border-radius:7px;font-size:14px;line-height:1.5}
+.progressline{display:flex;justify-content:space-between;font-size:13px;font-weight:bold;margin:20px 0 8px}.track{height:9px;background:#e8edf3;border-radius:20px;overflow:hidden}
+.bar{height:100%;width:0;background:var(--green);transition:width .2s}.section-title{margin:25px 0 10px;padding:10px 12px;background:#edf3fa;border-radius:8px;color:var(--navy);font-weight:800;font-size:14px}
+.question{border:1px solid var(--line);border-radius:11px;padding:16px;margin:14px 0}.qhead{display:flex;align-items:flex-start;gap:10px;margin-bottom:12px;font-weight:bold;line-height:1.45}
+.number{width:30px;height:30px;flex:0 0 30px;display:grid;place-items:center;background:#e9f1fb;color:var(--blue);border-radius:8px}
+.options{display:grid;gap:8px}.option{display:flex;gap:10px;align-items:flex-start;padding:10px;border:1px solid #e7ebf1;border-radius:8px;cursor:pointer;line-height:1.4}
+.option:hover{background:#f7faff;border-color:#a9c4e3}.option input{margin-top:3px;accent-color:var(--blue);flex:0 0 auto}
+.block{font-family:Consolas,monospace;font-weight:700;color:#174b86;background:#edf3fa;padding:1px 5px;border-radius:4px}
+.result{display:none;text-align:center;margin-top:22px;padding:22px;border:1px solid #b8ddca;background:#f0faf4;border-radius:12px}.result.visible{display:block}
+.result h2{margin:0 0 8px;font-size:20px}.score{font-size:40px;font-weight:800;color:var(--navy)}
+@media(max-width:560px){body{padding:8px}.details{grid-template-columns:1fr}main{padding:14px}.question{padding:13px}}
+</style></head><body><div class="sheet">
+<header><h1>INSPIRED SCHOOL OF TECHNOLOGY</h1><div class="heading">INTERMEDIATE CODING ASSESSMENT</div>
+<p class="subtitle">Block Coding, Programming Concepts and Scratch</p>
+<div class="meta"><span>20 Questions</span><span>Intermediate Level</span><span>Suggested time: 30 minutes</span></div></header>
+<main><div class="details">
+<div class="field"><label for="pupil">Pupil's Name</label><input id="pupil" type="text" placeholder="Enter your full name"></div>
+<div class="field"><label for="date">Date</label><input id="date" type="date"></div></div>
+<div class="instructions"><strong>Instructions:</strong> Read each problem carefully. Think about the Scratch or block-coding instructions needed to complete the task. Choose the best answer. Select one answer for every question. Your score appears automatically after all 20 questions are answered.</div>
+<div class="progressline"><span>Assessment progress</span><span id="progressText">0 of 20 answered</span></div>
+<div class="track"><div class="bar" id="progressBar"></div></div><form id="quiz"></form>
+<section class="result" id="result" aria-live="polite"><h2>Student Score</h2><div class="score" id="score"></div></section>
+</main></div>
+<script>
+"use strict";
+const questions = [{"question": "You are programming a character to walk to a tree. Which instruction should make the character take a step forward?", "options": ["move 10 steps", "say Hello!", "hide", "play sound"], "answer": 0, "section": "PART A: BLOCK CODING AND PROGRAMMING BASICS"}, {"question": "A robot must move forward, turn right and then move forward again. What is important about the order of these instructions?", "options": ["The order does not matter", "The instructions must be in the correct sequence", "The last instruction must always come first", "All instructions must happen at once"], "answer": 1, "section": "PART A: BLOCK CODING AND PROGRAMMING BASICS"}, {"question": "A character should travel to a particular position on the Stage immediately. Which Scratch block is most suitable?", "options": ["glide 1 secs to x: y:", "go to x: y:", "move 10 steps", "turn 15 degrees"], "answer": 1, "section": "PART A: BLOCK CODING AND PROGRAMMING BASICS"}, {"question": "You want a sprite to travel smoothly to another position over two seconds. Which block should you choose?", "options": ["go to x: y:", "glide 2 secs to x: y:", "move 10 steps", "point in direction 90"], "answer": 1, "section": "PART A: BLOCK CODING AND PROGRAMMING BASICS"}, {"question": "A character must perform the same action 5 times. Which block is the best choice?", "options": ["repeat 5", "forever", "stop all", "wait 1 seconds"], "answer": 0, "section": "PART A: BLOCK CODING AND PROGRAMMING BASICS"}, {"question": "Your sprite should keep moving until you stop the programme. Which block should contain the movement instruction?", "options": ["repeat 2", "forever", "if", "wait 1 seconds"], "answer": 1, "section": "PART A: BLOCK CODING AND PROGRAMMING BASICS"}, {"question": "A game asks the player to type their name before playing. What is the typed name?", "options": ["Output", "Input", "A loop", "An event"], "answer": 1, "section": "PART B: INPUT, OUTPUT AND VARIABLES"}, {"question": "After a player types an answer, the game displays 'Well done!' on the screen. What is 'Well done!'?", "options": ["Input", "Output", "A variable", "A sequence"], "answer": 1, "section": "PART B: INPUT, OUTPUT AND VARIABLES"}, {"question": "A quiz stores the number of correct answers in a variable called score. What is the purpose of this variable?", "options": ["To store the player's score", "To move the sprite", "To change the backdrop", "To play music"], "answer": 0, "section": "PART B: INPUT, OUTPUT AND VARIABLES"}, {"question": "At the start of a game, the score should be zero. Which instruction should you use?", "options": ["change score by 1", "set score to 0", "say score", "hide score"], "answer": 1, "section": "PART B: INPUT, OUTPUT AND VARIABLES"}, {"question": "A player collects one star. The score is currently 4. Which instruction will make the score become 5?", "options": ["set score to 0", "change score by 1", "change score by -1", "hide variable score"], "answer": 1, "section": "PART B: INPUT, OUTPUT AND VARIABLES"}, {"question": "A player has 3 lives and loses one life after touching an enemy. Which instruction is correct?", "options": ["change lives by 1", "set lives to 3", "change lives by -1", "show lives"], "answer": 2, "section": "PART B: INPUT, OUTPUT AND VARIABLES"}, {"question": "A programme asks the player to enter a number and stores it in a variable called answer. What is the variable used for?", "options": ["To remember the number entered", "To turn the sprite around", "To change the computer volume", "To erase the question"], "answer": 0, "section": "PART B: INPUT, OUTPUT AND VARIABLES"}, {"question": "You want a sprite to start dancing when the green flag is clicked. Which block should begin the script?", "options": ["when green flag clicked", "when this sprite clicked", "when space key pressed", "when I receive message"], "answer": 0, "section": "PART C: SCRATCH PROBLEM-SOLVING CHALLENGES"}, {"question": "A cat should move 10 steps and then say 'I am here!' for 2 seconds. Which sequence is correct?", "options": ["say, then move 10 steps", "move 10 steps, then say 'I am here!' for 2 seconds", "hide, then say", "wait 2 seconds, then stop all"], "answer": 1, "section": "PART C: SCRATCH PROBLEM-SOLVING CHALLENGES"}, {"question": "A sprite must move 10 steps, wait for one second and move 10 steps again. Which set of blocks will do this?", "options": ["move 10, wait 1, move 10", "wait 1, stop all", "hide, show", "go to, delete"], "answer": 0, "section": "PART C: SCRATCH PROBLEM-SOLVING CHALLENGES"}, {"question": "You want a sprite to turn right when the right arrow key is pressed. Which event block should you use?", "options": ["when green flag clicked", "when right arrow key pressed", "when this sprite clicked", "when backdrop switches"], "answer": 1, "section": "PART C: SCRATCH PROBLEM-SOLVING CHALLENGES"}, {"question": "A player should earn one point whenever the sprite touches a star. Which action is needed?", "options": ["Detect touching the star, then change score by 1", "Always set score to 0", "Hide score when the flag is clicked", "Change score by -1"], "answer": 0, "section": "PART C: SCRATCH PROBLEM-SOLVING CHALLENGES"}, {"question": "A sprite should say 'You win!' only when the score reaches 10. Which condition should the programme check?", "options": ["if score = 10", "if score = 0", "if lives = 3", "if x position = 0"], "answer": 0, "section": "PART C: SCRATCH PROBLEM-SOLVING CHALLENGES"}, {"question": "A sprite should disappear when it touches an obstacle. Which instructions solve this?", "options": ["if touching obstacle then hide", "if touching obstacle then show", "move 10 steps only", "say Hello! only"], "answer": 0, "section": "PART C: SCRATCH PROBLEM-SOLVING CHALLENGES"}];
+const letters = ["A","B","C","D"];
+const quiz = document.getElementById("quiz");
+let currentSection = "";
+questions.forEach((q,i) => {
+  if(q.section !== currentSection) {
+    currentSection = q.section;
+    const heading = document.createElement("div");
+    heading.className = "section-title";
+    heading.textContent = currentSection;
+    quiz.appendChild(heading);
+  }
+  const section = document.createElement("section");
+  section.className = "question";
+  const qhead = document.createElement("div");
+  qhead.className = "qhead";
+  const number = document.createElement("span");
+  number.className = "number";
+  number.textContent = i+1;
+  const text = document.createElement("span");
+  text.textContent = "Question " + (i+1) + ". " + q.question;
+  qhead.append(number,text);
+  const options = document.createElement("div");
+  options.className = "options";
+  q.options.forEach((answer,j) => {
+    const label = document.createElement("label");
+    label.className = "option";
+    const radio = document.createElement("input");
+    radio.type = "radio"; radio.name = "q"+i; radio.value = j;
+    const caption = document.createElement("span");
+    caption.textContent = letters[j] + ". " + answer;
+    label.append(radio,caption); options.appendChild(label);
+    radio.addEventListener("change",updateProgress);
+  });
+  section.append(qhead,options); quiz.appendChild(section);
+});
+function updateProgress(){
+  const answered = questions.reduce((n,q,i) => n + (quiz.querySelector('input[name="q'+i+'"]:checked') ? 1 : 0),0);
+  document.getElementById("progressText").textContent = answered + " of 20 answered";
+  document.getElementById("progressBar").style.width = (answered/20*100) + "%";
+  if(answered === 20) showScore();
+}
+function showScore(){
+  let total = 0;
+  questions.forEach((q,i) => {
+    const selected = quiz.querySelector('input[name="q'+i+'"]:checked');
+    if(selected && Number(selected.value) === q.answer) total++;
+  });
+  document.getElementById("score").textContent = total + " / 20";
+  document.getElementById("result").classList.add("visible");
+  quiz.querySelectorAll('input[type="radio"]').forEach(input => input.disabled = true);
+  document.getElementById("result").scrollIntoView({behavior:"smooth",block:"center"});
+}
+document.getElementById("date").value = new Date().toISOString().slice(0,10);
+</script></body></html>
