@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inspired School of Technology - Coding Assessment</title>
+<style>
+:root{--navy:#142d55;--blue:#2563a6;--gold:#f4c64e;--line:#dce3ec;--green:#16845b}
+*{box-sizing:border-box}
+body{margin:0;padding:20px 12px;background:#f3f6fb;color:#1d2939;font-family:Arial,Helvetica,sans-serif}
+.sheet{max-width:850px;margin:auto;background:#fff;border:1px solid #e1e7ef;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px #18315312}
+header{background:var(--navy);color:#fff;text-align:center;padding:28px 16px}
+h1{font-size:clamp(20px,4vw,28px);margin:0;font-weight:800}
+.heading{font-size:24px;font-weight:800;color:var(--gold);margin:10px 0 5px}
+.subtitle{margin:0;color:#e2eaf5}
+.meta{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-top:17px;font-size:13px;color:#e2eaf5}
+main{padding:22px}
+.details{display:grid;grid-template-columns:2fr 1fr;gap:14px;margin-bottom:18px}
+.field label{display:block;font-weight:bold;font-size:13px;margin-bottom:7px}
+.field input{width:100%;padding:12px;border:1px solid var(--line);border-radius:8px;font-size:15px}
+.instructions{background:#eef4fb;border-left:4px solid var(--blue);padding:13px;border-radius:7px;font-size:14px;line-height:1.5}
+.progressline{display:flex;justify-content:space-between;font-size:13px;font-weight:bold;margin:20px 0 8px}
+.track{height:9px;background:#e8edf3;border-radius:20px;overflow:hidden}
+.bar{height:100%;width:0;background:var(--green);transition:width .2s}
+.question{border:1px solid var(--line);border-radius:11px;padding:16px;margin:14px 0}
+.qhead{display:flex;align-items:center;gap:10px;margin-bottom:12px;font-weight:bold;line-height:1.4}
+.number{width:30px;height:30px;flex:0 0 30px;display:grid;place-items:center;background:#e9f1fb;color:var(--blue);border-radius:8px}
+.options{display:grid;gap:8px}
+.option{display:flex;gap:10px;align-items:flex-start;padding:10px;border:1px solid #e7ebf1;border-radius:8px;cursor:pointer;line-height:1.4}
+.option:hover{background:#f7faff;border-color:#a9c4e3}
+.option input{margin-top:3px;accent-color:var(--blue)}
+.result{display:none;text-align:center;margin-top:22px;padding:22px;border:1px solid #b8ddca;background:#f0faf4;border-radius:12px}
+.result.visible{display:block}
+.result h2{margin:0 0 8px;font-size:20px}
+.score{font-size:40px;font-weight:800;color:var(--navy)}
+@media(max-width:560px){body{padding:8px}.details{grid-template-columns:1fr}main{padding:14px}.question{padding:13px}}
+</style>
+</head>
+<body>
+<div class="sheet">
+<header>
+<h1>INSPIRED SCHOOL OF TECHNOLOGY</h1>
+<div class="heading">CODING ASSESSMENT</div>
+<p class="subtitle">Scratch and Basic Coding</p>
+<div class="meta"><span>Age: 7 years</span><span>15 Questions</span><span>20 minutes</span></div>
+</header>
+<main>
+<div class="details">
+<div class="field"><label for="pupil">Pupil's Name</label><input id="pupil" type="text" placeholder="Enter your full name"></div>
+<div class="field"><label for="date">Date</label><input id="date" type="date"></div>
+</div>
+<div class="instructions"><strong>Instructions:</strong> Read each question carefully and select one correct answer. Your score will appear automatically after you answer all 15 questions.</div>
+<div class="progressline"><span>Assessment progress</span><span id="progressText">0 of 15 answered</span></div>
+<div class="track"><div class="bar" id="progressBar"></div></div>
+<form id="quiz"></form>
+<section class="result" id="result" aria-live="polite">
+<h2>Student Score</h2>
+<div class="score" id="score">0 / 15</div>
+</section>
+</main>
+</div>
+<script>
+"use strict";
+const questions = [
+["What is coding?",["Playing computer games","Giving instructions to a computer","Drawing pictures","Watching videos"],1],
+["What do we call a set of instructions given to a computer?",["Algorithm","Picture","Keyboard","Monitor"],0],
+["Which group of Scratch blocks is used to move a sprite?",["Motion","Sound","Looks","Events"],0],
+["What is a character or object in a Scratch project called?",["Sprite","Backdrop","Stage","Block"],0],
+["Which block starts a programme when the green flag is clicked?",["Move 10 steps","When green flag clicked","Say Hello!","Wait 1 second"],1],
+["What is the area where your Scratch project runs called?",["Toolbar","Stage","Blocks Palette","Costumes"],1],
+["Which block makes a sprite move forward?",["Say Hello!","Move 10 steps","Play sound","Hide"],1],
+["What does an algorithm help us to do?",["Follow instructions step by step","Switch off the computer","Delete files","Change the computer colour"],0],
+["Why should coding instructions be placed in the correct order?",["So the programme works as expected","So the computer breaks","So the screen disappears","So the mouse stops working"],0],
+["Which Scratch block makes a sprite speak in a speech bubble?",["Move 10 steps","Say Hello!","Turn 15 degrees","Forever"],1],
+["What is a backdrop in Scratch?",["The background of the Stage","A type of keyboard","A coding mistake","A sound effect"],0],
+["Which block can make instructions repeat?",["Repeat","Stop","Hide","Go to"],0],
+["What is debugging?",["Finding and correcting mistakes in a programme","Adding more sprites","Changing the background","Drawing a picture"],0],
+["Where can you find the coding blocks in Scratch?",["Blocks Palette","Stage","Menu Bar only","Sprite List only"],0],
+["What should you do if your sprite does not move as expected?",["Give up","Check the code and correct mistakes","Close the computer","Delete Scratch"],1]
+];
+const letters = ["A","B","C","D"];
+const quiz = document.getElementById("quiz");
+questions.forEach((q,i) => {
+  const section = document.createElement("section");
+  section.className = "question";
+  const heading = document.createElement("div");
+  heading.className = "qhead";
+  const number = document.createElement("span");
+  number.className = "number";
+  number.textContent = i + 1;
+  const text = document.createElement("span");
+  text.textContent = "Question " + (i + 1) + ". " + q[0];
+  heading.append(number,text);
+  const options = document.createElement("div");
+  options.className = "options";
+  q[1].forEach((answer,j) => {
+    const label = document.createElement("label");
+    label.className = "option";
+    const radio = document.createElement("input");
+    radio.type = "radio";
+    radio.name = "q" + i;
+    radio.value = j;
+    const caption = document.createElement("span");
+    caption.textContent = letters[j] + ". " + answer;
+    label.append(radio,caption);
+    options.appendChild(label);
+    radio.addEventListener("change", updateProgress);
+  });
+  section.append(heading,options);
+  quiz.appendChild(section);
+});
+function updateProgress() {
+  const answered = questions.reduce((n,q,i) => n + (quiz.querySelector('input[name="q'+i+'"]:checked') ? 1 : 0),0);
+  document.getElementById("progressText").textContent = answered + " of 15 answered";
+  document.getElementById("progressBar").style.width = (answered / 15 * 100) + "%";
+  if (answered === 15) showScore();
+}
+function showScore() {
+  let total = 0;
+  questions.forEach((q,i) => {
+    const selected = quiz.querySelector('input[name="q'+i+'"]:checked');
+    if (selected && Number(selected.value) === q[2]) total++;
+  });
+  document.getElementById("score").textContent = total + " / 15";
+  document.getElementById("result").classList.add("visible");
+  quiz.querySelectorAll('input[type="radio"]').forEach(input => input.disabled = true);
+  document.getElementById("result").scrollIntoView({behavior:"smooth",block:"center"});
+}
+document.getElementById("date").value = new Date().toISOString().slice(0,10);
+</script>
+</body>
+</html>
