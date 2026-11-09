@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,174 +6,686 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>3rd Class Maths – Adding Tens and Units</title>
 <style>
-:root{--blue:#079bd3;--navy:#164b83;--red:#e34b67;--pale:#eaf8ff;--yellow:#fff2b8;--green:#218653;--ink:#263746}
-*{box-sizing:border-box}
-body{margin:0;background:#f3f8fc;color:var(--ink);font-family:"Trebuchet MS",Arial,sans-serif;line-height:1.5}
-header{background:linear-gradient(120deg,#087fc0,#12b8d0);color:white;padding:28px 18px;text-align:center}
-header h1{margin:0;font-size:clamp(1.6rem,4vw,2.5rem)}
-header p{margin:8px 0 0}
-main{max-width:1050px;margin:22px auto;padding:0 15px 45px}
-.panel{background:white;border-radius:18px;padding:20px;margin:18px 0;box-shadow:0 4px 16px #1c527014}
-h2{color:#087fb6;margin:0 0 12px}
-h3{margin:0 0 8px;color:#087fb6}
-.example{background:var(--pale);border-left:6px solid var(--blue);padding:15px;border-radius:12px}
-.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;margin-top:12px}
-.step{background:#fff;border:1px solid #d8eaf4;border-radius:12px;padding:12px}
-.pv{display:inline-grid;grid-template-columns:repeat(2,54px);grid-template-rows:25px 40px 40px 40px;gap:3px;vertical-align:middle;margin:7px 10px}
-.pv .head{font-weight:bold;text-align:center;background:#e7f4fc;color:#087fb6}
-.pv .t{background:#f9dce3}.pv .u{background:#dceeff}
-.pv .digit{display:flex;align-items:center;justify-content:center;font-size:1.25rem;font-weight:bold;border:1px solid #b9cbd6;border-radius:5px}
-.pv .answer{background:#e9f7ed}
-.question-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:14px}
-.qcard{border:1px solid #dce9f0;border-radius:14px;padding:14px;background:#fff}
-.qtitle{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
-.num{background:#dff5ff;color:#007fb8;border-radius:50%;width:30px;height:30px;display:grid;place-items:center;font-weight:bold}
-.small{font-size:.92rem;color:#536674}
-.sum{display:grid;grid-template-columns:25px 1fr 1fr;grid-template-rows:25px 43px 43px 43px;gap:4px;max-width:190px;margin:12px auto 4px}
-.sum .label{font-weight:bold;text-align:center;color:#087fb6}
-.sum .label:nth-child(2){grid-column:2}
-.sum .label:nth-child(3){grid-column:3}
-.sum .op{display:grid;place-items:center;font-size:1.35rem;font-weight:bold}
-.cell{min-width:0;width:100%;border:2px solid #b8d6e5;border-radius:7px;text-align:center;font-size:1.25rem;font-weight:bold;color:var(--navy);background:#fafdff}
-.cell:focus{outline:3px solid #ffe18a;border-color:#e4a900}
-.cell.blank{background:#f4fbff}
-.sum .result{background:#e8f7ed;border-color:#93c9a8}
-.word-list{display:grid;gap:14px}
-.word{border:1px solid #dce9f0;border-radius:14px;padding:15px}
-.word p{margin:5px 0 8px}
-.word .sum{margin-left:0}
-.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
-button{border:0;border-radius:10px;padding:12px 18px;font-size:1rem;font-weight:bold;cursor:pointer}
-.primary{background:#078fc8;color:white}.secondary{background:#e7f3fa;color:#14547b}
-button:hover{filter:brightness(.96)}
-.feedback{min-height:24px;font-weight:bold;margin-top:7px}
-.correct{color:var(--green)}.incorrect{color:#c43e54}
-#score{font-size:1.15rem;font-weight:bold;color:#087fb6}
-footer{text-align:center;color:#667987;font-size:.9rem;padding:18px}
-@media(max-width:480px){.panel{padding:15px}.qcard{padding:12px}.sum{margin-left:auto;margin-right:auto}}
+:root {
+  --blue:#079bd3;
+  --navy:#164b83;
+  --pale:#eaf8ff;
+  --green:#218653;
+  --ink:#263746;
+}
+* { box-sizing:border-box; }
+body {
+  margin:0;
+  background:#f3f8fc;
+  color:var(--ink);
+  font-family:"Trebuchet MS",Arial,sans-serif;
+  line-height:1.5;
+}
+header {
+  background:linear-gradient(120deg,#087fc0,#12b8d0);
+  color:white;
+  padding:28px 18px;
+  text-align:center;
+}
+header h1 {
+  margin:0;
+  font-size:clamp(1.6rem,4vw,2.5rem);
+}
+main {
+  max-width:1050px;
+  margin:22px auto;
+  padding:0 15px 45px;
+}
+.panel {
+  background:white;
+  border-radius:18px;
+  padding:20px;
+  margin:18px 0;
+  box-shadow:0 4px 16px #1c527014;
+}
+h2 { color:#087fb6; margin:0 0 12px; }
+h3 { margin:0 0 8px; color:#087fb6; }
+.example {
+  background:var(--pale);
+  border-left:6px solid var(--blue);
+  padding:15px;
+  border-radius:12px;
+}
+.steps {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+  gap:10px;
+  margin-top:12px;
+}
+.step {
+  background:#fff;
+  border:1px solid #d8eaf4;
+  border-radius:12px;
+  padding:12px;
+}
+.pv {
+  display:inline-grid;
+  grid-template-columns:repeat(2,54px);
+  grid-template-rows:25px 40px 40px 40px;
+  gap:3px;
+  vertical-align:middle;
+  margin:7px 10px;
+}
+.pv .head {
+  font-weight:bold;
+  text-align:center;
+  background:#e7f4fc;
+  color:#087fb6;
+}
+.pv .t { background:#f9dce3; }
+.pv .u { background:#dceeff; }
+.pv .digit {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:1.25rem;
+  font-weight:bold;
+  border:1px solid #b9cbd6;
+  border-radius:5px;
+}
+.pv .answer { background:#e9f7ed; }
+
+.question-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(245px,1fr));
+  gap:14px;
+}
+.qcard {
+  border:1px solid #dce9f0;
+  border-radius:14px;
+  padding:14px;
+  background:#fff;
+}
+.qtitle {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:8px;
+}
+.num {
+  background:#dff5ff;
+  color:#007fb8;
+  border-radius:50%;
+  width:30px;
+  height:30px;
+  display:grid;
+  place-items:center;
+  font-weight:bold;
+}
+.small { font-size:.92rem; color:#536674; }
+
+/* TENS AND UNITS ALWAYS USE THE SAME THREE COLUMNS */
+.sum {
+  display:grid;
+  grid-template-columns:25px minmax(0,1fr) minmax(0,1fr);
+  grid-template-rows:25px 43px 43px 43px;
+  gap:4px;
+  max-width:190px;
+  margin:12px auto 4px;
+}
+.sum .label {
+  font-weight:bold;
+  text-align:center;
+  color:#087fb6;
+}
+.sum .label:nth-child(2) { grid-column:2; }
+.sum .label:nth-child(3) { grid-column:3; }
+.sum .op {
+  display:grid;
+  place-items:center;
+  font-size:1.35rem;
+  font-weight:bold;
+}
+.cell {
+  min-width:0;
+  width:100%;
+  border:2px solid #b8d6e5;
+  border-radius:7px;
+  text-align:center;
+  font-size:1.25rem;
+  font-weight:bold;
+  color:var(--navy);
+  background:#fafdff;
+}
+.cell:focus {
+  outline:3px solid #ffe18a;
+  border-color:#e4a900;
+}
+.sum .result {
+  background:#e8f7ed;
+  border-color:#93c9a8;
+}
+.word-list { display:grid; gap:14px; }
+.word {
+  border:1px solid #dce9f0;
+  border-radius:14px;
+  padding:15px;
+}
+.word p { margin:5px 0 8px; }
+.word .sum { margin-left:0; }
+
+.actions {
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:18px;
+}
+button {
+  border:0;
+  border-radius:10px;
+  padding:12px 18px;
+  font-size:1rem;
+  font-weight:bold;
+  cursor:pointer;
+}
+.primary { background:#078fc8; color:white; }
+.secondary { background:#e7f3fa; color:#14547b; }
+button:hover { filter:brightness(.96); }
+.feedback {
+  min-height:24px;
+  font-weight:bold;
+  margin-top:7px;
+}
+.correct { color:var(--green); }
+.incorrect { color:#c43e54; }
+#score {
+  font-size:1.15rem;
+  font-weight:bold;
+  color:#087fb6;
+}
+footer {
+  text-align:center;
+  color:#667987;
+  font-size:.9rem;
+  padding:18px;
+}
+@media(max-width:480px) {
+  .panel { padding:15px; }
+  .qcard { padding:12px; }
+  .sum { margin-left:auto; margin-right:auto; }
+}
 </style>
 </head>
+
 <body>
+
 <header>
   <h1>🌟 Mighty Maths: Adding Tens and Units 🌟</h1>
   <p>3rd Class • Addition with two-digit numbers</p>
 </header>
+
 <main>
+
 <section class="panel">
   <h2>📘 Let's learn!</h2>
-  <p>When we add two-digit numbers, we add the <b>units first</b>. Then we add the <b>tens</b>.</p>
+
+  <p>
+    When we add two-digit numbers, we add the
+    <b>units first</b>. Then we add the <b>tens</b>.
+  </p>
+
   <div class="example">
     <h3>Worked example: 32 + 14</h3>
+
     <div style="display:flex;align-items:center;flex-wrap:wrap;gap:12px">
-      <div class="pv" aria-label="Place value example">
-        <div class="head">T</div><div class="head">U</div>
-        <div class="digit t">3</div><div class="digit u">2</div>
-        <div class="digit t">1</div><div class="digit u">4</div>
-        <div class="digit answer">4</div><div class="digit answer">6</div>
+      <div class="pv">
+        <div class="head">T</div>
+        <div class="head">U</div>
+
+        <div class="digit t">3</div>
+        <div class="digit u">2</div>
+
+        <div class="digit t">1</div>
+        <div class="digit u">4</div>
+
+        <div class="digit answer">4</div>
+        <div class="digit answer">6</div>
       </div>
-      <div><b>32 + 14 = 46</b><br><span class="small">2 units + 4 units = 6 units<br>3 tens + 1 ten = 4 tens</span></div>
+
+      <div>
+        <b>32 + 14 = 46</b><br>
+        <span class="small">
+          2 units + 4 units = 6 units<br>
+          3 tens + 1 ten = 4 tens
+        </span>
+      </div>
     </div>
+
     <div class="steps">
-      <div class="step"><b>1. Add the units</b><br>2 + 4 = 6. Write 6 in the Units column.</div>
-      <div class="step"><b>2. Add the tens</b><br>3 + 1 = 4. Write 4 in the Tens column.</div>
-      <div class="step"><b>3. Read the answer</b><br>4 tens and 6 units make 46.</div>
+      <div class="step">
+        <b>1. Add the units</b><br>
+        2 + 4 = 6. Write 6 in the Units column.
+      </div>
+
+      <div class="step">
+        <b>2. Add the tens</b><br>
+        3 + 1 = 4. Write 4 in the Tens column.
+      </div>
+
+      <div class="step">
+        <b>3. Read the answer</b><br>
+        4 tens and 6 units make 46.
+      </div>
     </div>
   </div>
-  <p class="small">Remember: keep every digit in its correct column. Tens always go under T and units always go under U.</p>
+
+  <p class="small">
+    Remember: Tens always go under T and units always go under U.
+  </p>
 </section>
 
 <section class="panel">
   <h2>✏️ Part A – Complete the sums</h2>
-  <p>Type one digit in each box. The T and U columns stay in the same place for every question.</p>
+  <p>
+    Type one digit in each answer box.
+    The T and U columns stay in the same place.
+  </p>
   <div class="question-grid" id="sums"></div>
 </section>
 
 <section class="panel">
-  <h2>🧠 Part B – Word problems</h2>
-  <p>Read each problem. Write the two numbers in the T and U columns, then work out the total.</p>
+  <h2>🧠 Part B – 30 Word Problems</h2>
+  <p>
+    Read each problem. Write the answer in the T and U columns.
+  </p>
   <div class="word-list" id="words"></div>
 </section>
 
 <section class="panel">
   <h2>🏁 Check your work</h2>
-  <p>When you have answered all the questions, press the button to see how you did.</p>
+  <p>
+    When you have answered all the questions,
+    press the button to see how you did.
+  </p>
+
   <div class="actions">
-    <button class="primary" onclick="checkAll()">Check my answers</button>
-    <button class="secondary" onclick="showAnswers()">Show answers</button>
-    <button class="secondary" onclick="resetAll()">Try again</button>
+    <button class="primary" onclick="checkAll()">
+      Check my answers
+    </button>
+
+    <button class="secondary" onclick="showAnswers()">
+      Show answers
+    </button>
+
+    <button class="secondary" onclick="resetAll()">
+      Try again
+    </button>
   </div>
+
   <p id="score" aria-live="polite"></p>
   <p id="overall" class="feedback" aria-live="polite"></p>
 </section>
-<footer>Keep practising – you are becoming a maths star! ⭐</footer>
+
+<footer>
+  Keep practising – you are becoming a maths star! ⭐
+</footer>
+
 </main>
+
 <script>
+
+// PART A: ADDITION SUMS
+
 const sums = [
-  [18,11,29],[22,24,46],[15,21,36],[35,12,47],
-  [11,16,27],[14,22,36],[10,36,46],[42,7,49],
-  // Extra practice questions continue the same skill and layout.
-  [12,25,37],[16,13,29],[23,14,37],[30,18,48]
+  [18,11,29],
+  [22,24,46],
+  [15,21,36],
+  [35,12,47],
+  [11,16,27],
+  [14,22,36],
+  [10,36,46],
+  [42,7,49],
+  [12,25,37],
+  [16,13,29],
+  [23,14,37],
+  [30,18,48]
 ];
+
+// PART B: 30 WORD PROBLEMS
+
 const words = [
-  {q:"Tim saw 15 fish in the lake. He then spotted 13 more. How many fish did he see altogether?",a:15,b:13},
-  {q:"A baker baked 42 buns on Monday and 23 buns on Tuesday. What is the total number of buns baked over the 2 days?",a:42,b:23},
-  {q:"Seán bought 15 lollipops in the first shop. He bought 24 lollipops in the second shop. How many lollipops did he buy altogether?",a:15,b:24},
-  {q:"Lucy read 35 pages of her book on Monday morning. That evening she read 23 more pages. How many pages did Lucy read that day?",a:35,b:23},
-  {q:"A class collected 26 shells on the beach and found 12 more later. How many shells did they collect altogether?",a:26,b:12},
-  {q:"There were 31 books on a shelf. The teacher put 17 more books on it. How many books are on the shelf now?",a:31,b:17}
+  {
+    q:"Tim saw 15 fish in the lake. He then spotted 13 more. How many fish did he see altogether?",
+    a:15,b:13
+  },
+  {
+    q:"A baker baked 42 buns on Monday and 23 buns on Tuesday. What is the total number of buns baked over the 2 days?",
+    a:42,b:23
+  },
+  {
+    q:"Seán bought 15 lollipops in the first shop. He bought 24 lollipops in the second shop. How many lollipops did he buy altogether?",
+    a:15,b:24
+  },
+  {
+    q:"Lucy read 35 pages of her book on Monday morning. That evening she read 23 more pages. How many pages did Lucy read that day?",
+    a:35,b:23
+  },
+  {
+    q:"A class collected 26 shells on the beach and found 12 more later. How many shells did they collect altogether?",
+    a:26,b:12
+  },
+  {
+    q:"There were 31 books on a shelf. The teacher put 17 more books on it. How many books are on the shelf now?",
+    a:31,b:17
+  },
+  {
+    q:"Mia has 24 stickers. Her friend gives her 13 more. How many stickers does Mia have now?",
+    a:24,b:13
+  },
+  {
+    q:"There are 32 children in the hall. Then 15 more children come in. How many children are in the hall altogether?",
+    a:32,b:15
+  },
+  {
+    q:"A farmer has 41 red apples and 26 green apples. How many apples does the farmer have altogether?",
+    a:41,b:26
+  },
+  {
+    q:"Noah scored 23 points in the first game and 34 points in the second game. How many points did he score altogether?",
+    a:23,b:34
+  },
+  {
+    q:"A library has 52 storybooks and 16 picture books on a table. How many books are on the table?",
+    a:52,b:16
+  },
+  {
+    q:"Ella picked 18 flowers in the garden and 21 flowers in the park. How many flowers did she pick altogether?",
+    a:18,b:21
+  },
+  {
+    q:"A bus has 34 passengers. At the next stop, 22 more passengers get on. How many passengers are on the bus now?",
+    a:34,b:22
+  },
+  {
+    q:"There are 27 footballs in the sports cupboard and 31 basketballs. How many balls are there altogether?",
+    a:27,b:31
+  },
+  {
+    q:"Jack saves 25 coins in one week and 14 coins the next week. How many coins does he save in total?",
+    a:25,b:14
+  },
+  {
+    q:"A shop sells 43 pencils in the morning and 25 in the afternoon. How many pencils are sold that day?",
+    a:43,b:25
+  },
+  {
+    q:"There are 16 birds in one tree and 32 birds in another tree. How many birds are there altogether?",
+    a:16,b:32
+  },
+  {
+    q:"A football team has 22 red cones and 17 blue cones for practice. How many cones do they have?",
+    a:22,b:17
+  },
+  {
+    q:"Oliver builds a tower with 36 blocks and adds 12 more blocks. How many blocks are in the tower?",
+    a:36,b:12
+  },
+  {
+    q:"A school collected 44 cans on Friday and 23 cans on Monday. How many cans did the school collect?",
+    a:44,b:23
+  },
+  {
+    q:"Grace has 28 beads. She buys another packet with 15 beads. How many beads does she have altogether?",
+    a:28,b:15
+  },
+  {
+    q:"A train has 53 people in one carriage and 24 people in another. How many people are in the two carriages?",
+    a:53,b:24
+  },
+  {
+    q:"A gardener plants 14 tulips and 35 daffodils. How many flowers does the gardener plant?",
+    a:14,b:35
+  },
+  {
+    q:"There are 26 pupils in Class A and 27 pupils in Class B. How many pupils are in both classes altogether?",
+    a:26,b:27
+  },
+  {
+    q:"A toy shop has 31 teddy bears and 18 toy cars on display. How many toys are on display?",
+    a:31,b:18
+  },
+  {
+    q:"Liam reads 42 pages at the weekend and 15 pages on Monday. How many pages does he read altogether?",
+    a:42,b:15
+  },
+  {
+    q:"A picnic basket has 23 sandwiches and 16 rolls. How many pieces of food are there altogether?",
+    a:23,b:16
+  },
+  {
+    q:"A zoo has 35 monkeys and 22 parrots. How many monkeys and parrots are there altogether?",
+    a:35,b:22
+  },
+  {
+    q:"Sofia makes 17 paper stars in the morning and 28 in the afternoon. How many stars does she make?",
+    a:17,b:28
+  },
+  {
+    q:"A school team earns 46 points in one match and 32 points in another match. How many points do they earn altogether?",
+    a:46,b:32
+  }
 ];
-function makeSum(id,a,b){
- const tensA=Math.floor(a/10), unitsA=a%10, tensB=Math.floor(b/10), unitsB=b%10;
- return `<div class="sum" data-id="${id}" data-a="${a}" data-b="${b}">
- <div></div><div class="label">T</div><div class="label">U</div>
- <div></div><input class="cell" aria-label="First number tens" inputmode="numeric" maxlength="1" value="${tensA}" readonly style="background:#f1f5f7">
- <input class="cell" aria-label="First number units" inputmode="numeric" maxlength="1" value="${unitsA}" readonly style="background:#f1f5f7">
- <div class="op">+</div><input class="cell" aria-label="Second number tens" inputmode="numeric" maxlength="1" value="${tensB}" readonly style="background:#f1f5f7">
- <input class="cell" aria-label="Second number units" inputmode="numeric" maxlength="1" value="${unitsB}" readonly style="background:#f1f5f7">
- <div></div><input class="cell result" data-part="t" aria-label="Answer tens" inputmode="numeric" maxlength="1">
- <input class="cell result" data-part="u" aria-label="Answer units" inputmode="numeric" maxlength="1">
- </div>`;
+
+// CREATE THE TENS AND UNITS GRID
+
+function makeSum(id,a,b) {
+  const tensA=Math.floor(a/10);
+  const unitsA=a%10;
+  const tensB=Math.floor(b/10);
+  const unitsB=b%10;
+
+  return `
+  <div class="sum" data-id="${id}"
+       data-a="${a}" data-b="${b}">
+
+    <div></div>
+    <div class="label">T</div>
+    <div class="label">U</div>
+
+    <div></div>
+
+    <input class="cell"
+      aria-label="First number tens"
+      value="${tensA}" readonly
+      style="background:#f1f5f7">
+
+    <input class="cell"
+      aria-label="First number units"
+      value="${unitsA}" readonly
+      style="background:#f1f5f7">
+
+    <div class="op">+</div>
+
+    <input class="cell"
+      aria-label="Second number tens"
+      value="${tensB}" readonly
+      style="background:#f1f5f7">
+
+    <input class="cell"
+      aria-label="Second number units"
+      value="${unitsB}" readonly
+      style="background:#f1f5f7">
+
+    <div></div>
+
+    <input class="cell result"
+      data-part="t"
+      aria-label="Answer tens"
+      inputmode="numeric"
+      maxlength="1">
+
+    <input class="cell result"
+      data-part="u"
+      aria-label="Answer units"
+      inputmode="numeric"
+      maxlength="1">
+
+  </div>`;
 }
-function render(){
- document.getElementById('sums').innerHTML=sums.map((s,i)=>`<article class="qcard"><div class="qtitle"><span class="num">${i+1}</span><span class="small">Addition</span></div><div class="small" style="text-align:center">${s[0]} + ${s[1]} = ?</div>${makeSum('s'+i,s[0],s[1])}<div class="feedback" id="fb-s${i}"></div></article>`).join('');
- document.getElementById('words').innerHTML=words.map((w,i)=>`<article class="word"><div class="qtitle"><h3>Problem ${i+1}</h3><span class="num">${i+1}</span></div><p>${w.q}</p>${makeSum('w'+i,w.a,w.b)}<div class="feedback" id="fb-w${i}"></div></article>`).join('');
+
+// DISPLAY ALL QUESTIONS
+
+function render() {
+
+  document.getElementById('sums').innerHTML =
+    sums.map((s,i)=>`
+      <article class="qcard">
+
+        <div class="qtitle">
+          <span class="num">${i+1}</span>
+          <span class="small">Addition</span>
+        </div>
+
+        <div class="small" style="text-align:center">
+          ${s[0]} + ${s[1]} = ?
+        </div>
+
+        ${makeSum('s'+i,s[0],s[1])}
+
+        <div class="feedback" id="fb-s${i}"></div>
+
+      </article>
+    `).join('');
+
+  document.getElementById('words').innerHTML =
+    words.map((w,i)=>`
+      <article class="word">
+
+        <div class="qtitle">
+          <h3>Problem ${i+1}</h3>
+          <span class="num">${i+1}</span>
+        </div>
+
+        <p>${w.q}</p>
+
+        ${makeSum('w'+i,w.a,w.b)}
+
+        <div class="feedback" id="fb-w${i}"></div>
+
+      </article>
+    `).join('');
 }
-function checkGroup(prefix,data){
- let correct=0;
- data.forEach((item,i)=>{
-  const box=document.querySelector(`[data-id="${prefix}${i}"]`);
-  const answer=item[2]!==undefined?item[2]:item.a+item.b;
-  const t=box.querySelector('[data-part="t"]').value.trim();
-  const u=box.querySelector('[data-part="u"]').value.trim();
-  const ok=t!==''&&u!==''&&Number(t)===Math.floor(answer/10)&&Number(u)===answer%10;
-  const fb=document.getElementById(`fb-${prefix}${i}`);
-  fb.textContent=ok?'✓ Correct – well done!':'Not quite. Check the tens and units columns.';
-  fb.className='feedback '+(ok?'correct':'incorrect');
-  if(ok)correct++;
- });
- return correct;
+
+// MARK ANSWERS
+
+function checkGroup(prefix,data) {
+
+  let correct=0;
+
+  data.forEach((item,i)=>{
+
+    const box=document.querySelector(
+      `[data-id="${prefix}${i}"]`
+    );
+
+    const answer =
+      item[2]!==undefined
+      ? item[2]
+      : item.a+item.b;
+
+    const t=box.querySelector(
+      '[data-part="t"]'
+    ).value.trim();
+
+    const u=box.querySelector(
+      '[data-part="u"]'
+    ).value.trim();
+
+    const ok =
+      t!=='' &&
+      u!=='' &&
+      Number(t)===Math.floor(answer/10) &&
+      Number(u)===answer%10;
+
+    const fb=document.getElementById(
+      `fb-${prefix}${i}`
+    );
+
+    fb.textContent=ok
+      ? '✓ Correct – well done!'
+      : 'Not quite. Check the tens and units columns.';
+
+    fb.className='feedback '+(
+      ok?'correct':'incorrect'
+    );
+
+    if(ok) correct++;
+
+  });
+
+  return correct;
 }
-function checkAll(){
- const a=checkGroup('s',sums), b=checkGroup('w',words), total=a+b, max=sums.length+words.length;
- document.getElementById('score').textContent=`Your score: ${total} out of ${max}`;
- document.getElementById('overall').textContent=total===max?'Amazing work! You got every answer correct! 🌟':total>=max*.7?'Great effort! Check the questions marked in red and try again.':'Good try! Read the worked example and have another go.';
- document.getElementById('overall').className='feedback '+(total===max?'correct':'');
+
+// CHECK ALL ANSWERS
+
+function checkAll() {
+
+  const a=checkGroup('s',sums);
+  const b=checkGroup('w',words);
+
+  const total=a+b;
+  const max=sums.length+words.length;
+
+  document.getElementById('score').textContent =
+    `Your score: ${total} out of ${max}`;
+
+  document.getElementById('overall').textContent =
+    total===max
+    ? 'Amazing work! You got every answer correct! 🌟'
+    : total>=max*.7
+    ? 'Great effort! Check the questions marked in red and try again.'
+    : 'Good try! Read the worked example and have another go.';
+
+  document.getElementById('overall').className =
+    'feedback '+(total===max?'correct':'');
 }
-function showAnswers(){
- document.querySelectorAll('.sum').forEach(box=>{
-  const answer=Number(box.dataset.a)+Number(box.dataset.b);
-  box.querySelector('[data-part="t"]').value=Math.floor(answer/10);
-  box.querySelector('[data-part="u"]').value=answer%10;
- });
- checkAll();
+
+// SHOW CORRECT ANSWERS
+
+function showAnswers() {
+
+  document.querySelectorAll('.sum').forEach(box=>{
+
+    const answer =
+      Number(box.dataset.a)+Number(box.dataset.b);
+
+    box.querySelector('[data-part="t"]').value =
+      Math.floor(answer/10);
+
+    box.querySelector('[data-part="u"]').value =
+      answer%10;
+
+  });
+
+  checkAll();
 }
-function resetAll(){
- document.querySelectorAll('.sum .result').forEach(x=>x.value='');
- document.querySelectorAll('.feedback').forEach(x=>{x.textContent='';x.className='feedback'});
- document.getElementById('score').textContent='';
- document.getElementById('overall').textContent='';
+
+// CLEAR ANSWERS
+
+function resetAll() {
+
+  document.querySelectorAll('.sum .result')
+    .forEach(x=>x.value='');
+
+  document.querySelectorAll('.feedback')
+    .forEach(x=>{
+      x.textContent='';
+      x.className='feedback';
+    });
+
+  document.getElementById('score').textContent='';
+  document.getElementById('overall').textContent='';
 }
+
+// START WORKSHEET
+
 render();
+
 </script>
 </body>
 </html>
