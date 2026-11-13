@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>White Rose Maths Grand Prix</title>
+<style>
+:root{--navy:#101b3d;--blue:#2457d6;--cyan:#39d5e8;--yellow:#ffd447;--pink:#ff5577;--green:#20b879;--paper:#f4f7ff;--ink:#17213d}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:linear-gradient(135deg,#101b3d,#1b3674 60%,#12234c);color:var(--ink);min-height:100vh}
+button,input{font:inherit}button{cursor:pointer;border:0}
+.shell{max-width:1100px;margin:auto;padding:20px}
+.top{display:flex;align-items:center;justify-content:space-between;color:white;gap:12px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px}.logo{width:48px;height:48px;border-radius:14px;background:var(--yellow);display:grid;place-items:center;font-size:27px;box-shadow:0 5px 0 #c18b12}
+.brand h1{font-size:clamp(19px,3vw,28px);margin:0;letter-spacing:.4px}.brand p{margin:4px 0 0;color:#c9d8ff;font-size:12px}
+.pill{background:#ffffff18;border:1px solid #ffffff35;padding:9px 14px;border-radius:30px;font-size:13px;color:white}
+.hero{margin:22px 0 16px;padding:22px;border-radius:22px;background:linear-gradient(110deg,#fff 0%,#eaf4ff 65%,#d6faff);position:relative;overflow:hidden;box-shadow:0 12px 30px #07132c55}
+.hero:after{content:"🏁";position:absolute;right:28px;top:8px;font-size:72px;opacity:.18;transform:rotate(12deg)}
+.hero h2{margin:0 0 7px;color:#142553;font-size:clamp(24px,4vw,36px)}.hero p{margin:0;color:#435477;max-width:700px;line-height:1.5}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0}
+.stat{background:#fff;border-radius:15px;padding:12px 14px;box-shadow:0 5px 14px #07132c22}.stat small{display:block;color:#71809f;font-size:11px;text-transform:uppercase;font-weight:bold;letter-spacing:.7px}.stat strong{display:block;font-size:22px;margin-top:4px;color:#182b5b}
+.racebox{background:#eaf0fa;border-radius:20px;padding:15px;margin-bottom:16px;box-shadow:inset 0 2px 7px #17213d18}
+.track{height:92px;border-radius:14px;background:repeating-linear-gradient(90deg,#323b50 0 42px,#414c63 42px 84px);position:relative;overflow:hidden;border:5px solid #fff}
+.track:before,.track:after{content:"";position:absolute;left:0;right:0;height:5px;background:#f5f5f5}.track:before{top:15px}.track:after{bottom:15px}
+.lane-line{position:absolute;top:44px;left:0;right:0;border-top:3px dashed #ffffffa8}
+.finish{position:absolute;right:12px;top:0;height:100%;width:16px;background:repeating-conic-gradient(#fff 0% 25%,#1d2436 0% 50%) 0/12px 12px;opacity:.9}
+.racer{position:absolute;top:25px;left:2%;font-size:38px;filter:drop-shadow(0 3px 2px #111);transition:left .9s cubic-bezier(.2,.8,.2,1),transform .25s;z-index:2}.racer.boost{transform:translateY(-7px) scale(1.18);filter:drop-shadow(0 0 12px #ffd447)}
+.track-label{display:flex;justify-content:space-between;color:#5b6885;font-size:11px;font-weight:bold;margin-top:8px}
+.main{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(230px,.8fr);gap:16px}
+.panel{background:white;border-radius:20px;padding:22px;box-shadow:0 10px 28px #07132c35;position:relative;overflow:hidden}.panel:before{content:'';position:absolute;left:0;top:0;height:5px;width:100%;background:linear-gradient(90deg,var(--cyan),var(--blue),var(--pink))}
+.qtop{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:14px}.qnum{font-weight:bold;color:#71809f;font-size:13px}.tag{background:#e8f0ff;color:#2457d6;padding:7px 11px;border-radius:30px;font-size:11px;font-weight:bold}
+.question{font-size:clamp(19px,3vw,24px);line-height:1.45;color:#15244d;font-weight:700;margin:10px 0 16px}
+.workhint{font-size:13px;color:#60708f;line-height:1.5;background:#f3f7ff;padding:12px;border-radius:12px;margin-bottom:15px}
+.answer-row{display:flex;gap:9px;align-items:center;flex-wrap:wrap}.answer{flex:1;min-width:150px;padding:15px;border:2px solid #cbd6eb;border-radius:12px;font-size:22px;font-weight:bold;color:#142553;outline:none}.answer:focus{border-color:var(--blue);box-shadow:0 0 0 3px #2457d622}
+.primary{background:linear-gradient(135deg,#3268ed,#1746bd);color:white;padding:15px 22px;border-radius:12px;font-weight:bold;box-shadow:0 5px 0 #12378e;transition:transform .12s,filter .12s}.primary:hover{filter:brightness(1.12);transform:translateY(-2px)}.primary:active{transform:translateY(3px);box-shadow:0 2px 0 #12378e}#next{background:linear-gradient(135deg,#19bd83,#07885c);box-shadow:0 5px 0 #066644;font-size:16px;padding:16px 24px;animation:pop .45s ease both}.race-flash{animation:flash .55s ease}.shake{animation:shake .3s ease}@keyframes pop{0%{transform:scale(.7);opacity:0}100%{transform:scale(1);opacity:1}}@keyframes flash{0%,100%{box-shadow:0 10px 28px #07132c35}40%{box-shadow:0 0 0 5px #20b87966,0 10px 28px #07132c35}}@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}.secondary{background:#edf2fb;color:#34466e;padding:12px 15px;border-radius:11px;font-weight:bold}
+.feedback{min-height:28px;margin-top:13px;font-weight:bold;font-size:14px}.feedback.good{color:#118557}.feedback.bad{color:#d34b58}
+.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:8px}
+.side h3{margin:0 0 12px;color:#1b2c5b}.side p{color:#687795;font-size:13px;line-height:1.5}
+.checkpoints{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;margin-top:14px}.dot{height:30px;border-radius:8px;background:#edf1f8;color:#8491a8;display:grid;place-items:center;font-size:11px;font-weight:bold}.dot.done{background:#d9f7eb;color:#087b50}.dot.current{background:#fff0bd;color:#8d6400;outline:2px solid var(--yellow)}
+.tip{background:#fff7dc;border-radius:13px;padding:13px;margin-top:15px;color:#72571a;font-size:12px;line-height:1.5}
+.overlay{position:fixed;inset:0;background:#08132beF;display:none;place-items:center;padding:18px;z-index:10}.modal{background:white;border-radius:24px;padding:30px;max-width:540px;width:100%;text-align:center}.modal h2{font-size:30px;color:#17306a;margin:8px}.modal p{color:#596987;line-height:1.6}.bigflag{font-size:60px}
+@media(max-width:760px){.main{grid-template-columns:1fr}.side{order:2}.stats{grid-template-columns:repeat(2,1fr)}.hero{padding:18px}.panel{padding:18px}.hero:after{right:8px;font-size:48px}}
+</style>
+</head>
+<body>
+<div class="shell">
+ <header class="top">
+  <div class="brand"><div class="logo">🏎️</div><div><h1>WHITE ROSE MATHS GRAND PRIX</h1><p>THINK • SOLVE • RACE TO THE FINISH</p></div></div>
+  <div class="pill">🏁 30-question championship</div>
+ </header>
+ <section class="hero"><h2>Ready, set, calculate!</h2><p>Race through 30 maths challenges. Submit your answer; when it is correct, press the green NEXT RACE button to unlock the next challenge. Every cleared checkpoint moves your car closer to the finish line!</p></section>
+ <section class="stats">
+  <div class="stat"><small>Question</small><strong id="count">1 / 30</strong></div>
+  <div class="stat"><small>Points</small><strong id="score">0</strong></div>
+  <div class="stat"><small>Race progress</small><strong id="progress">0%</strong></div>
+  <div class="stat"><small>Streak</small><strong id="streak">0 🔥</strong></div>
+ </section>
+ <section class="racebox">
+  <div class="track"><div class="lane-line"></div><div class="racer" id="car">🏎️</div><div class="finish"></div></div>
+  <div class="track-label"><span>🏁 START</span><span id="trackProgress">0 / 30 checkpoints</span><span>FINISH 🏆</span></div>
+ </section>
+ <main class="main">
+  <section class="panel">
+   <div class="qtop"><span class="qnum" id="qnum">CHALLENGE 01</span><span class="tag" id="topic">ADDITION</span></div>
+   <div class="question" id="question"></div>
+   <div class="workhint" id="hint">Think about what the question is asking. You can use a written method, mental maths or jot down notes.</div><div id="advanceHelp" style="font-size:12px;color:#657493;margin:-5px 0 13px">🏁 Your next question unlocks when you get this answer right.</div>
+   <div class="answer-row"><input class="answer" id="answer" type="number" inputmode="numeric" placeholder="Type your answer" autocomplete="off"><button class="primary" id="check">Check answer</button></div>
+   <div class="feedback" id="feedback" aria-live="polite"></div>
+   <div class="actions"><button class="secondary" id="hintBtn">💡 Show me a hint</button><button class="primary" id="next" style="display:none">🏎️ NEXT RACE →</button></div>
+  </section>
+  <aside class="panel side">
+   <h3>🏆 Race dashboard</h3>
+   <p>Complete each challenge to move your car along the track. You can take your time and try again if your first answer is not correct.</p>
+   <div class="checkpoints" id="checkpoints"></div>
+   <div class="tip"><b>Racing tip:</b> For 4-digit addition and subtraction, line up the place values: thousands, hundreds, tens and ones. For multiplication, partition one number if that helps.</div>
+   <p style="margin-top:16px"><b>Skills in this race</b><br>➕ 4-digit addition<br>➖ 4-digit subtraction<br>✖️ 2-digit multiplication<br>🧠 Multi-step reasoning and problem solving</p>
+  </aside>
+ </main>
+</div>
+<div class="overlay" id="finish">
+ <div class="modal"><div class="bigflag">🏁🏆</div><h2>Race completed!</h2><p id="result"></p><p id="message"></p><button class="primary" onclick="location.reload()">Race again</button></div>
+</div>
+<script>
+const questions = [
+{t:"ADDITION",q:"Calculate: 3,478 + 2,659",a:6137,h:"Add the ones, tens, hundreds and thousands. Remember to exchange when a column totals 10 or more.",e:"3,478 + 2,659 = 6,137."},
+{t:"SUBTRACTION",q:"Calculate: 8,204 − 3,687",a:4517,h:"Line up the place values. You will need to exchange across the zero in the tens column.",e:"8,204 − 3,687 = 4,517."},
+{t:"MULTIPLICATION",q:"A box holds 24 racing flags. How many flags are in 6 boxes?",a:144,h:"Find 24 × 6. You could work out 20 × 6 and 4 × 6, then add them.",e:"24 × 6 = 120 + 24 = 144 flags."},
+{t:"PROBLEM SOLVING",q:"A stadium sold 2,785 tickets on Friday and 3,468 on Saturday. How many tickets were sold altogether?",a:6253,h:"The question asks for the total, so add the two amounts.",e:"2,785 + 3,468 = 6,253 tickets."},
+{t:"SUBTRACTION",q:"A delivery lorry carried 7,500 tyres. It delivered 2,846. How many tyres were left?",a:4654,h:"Start with 7,500 and subtract 2,846. Exchange across the zeros carefully.",e:"7,500 − 2,846 = 4,654 tyres."},
+{t:"ADDITION",q:"Find the missing number: 2,736 + □ = 6,000",a:3264,h:"Use the inverse operation. Subtract 2,736 from 6,000.",e:"6,000 − 2,736 = 3,264."},
+{t:"MULTIPLICATION",q:"A school buys 18 packs of pencils. Each pack contains 12 pencils. How many pencils are there?",a:216,h:"Calculate 18 × 12. You could do 18 × 10, then 18 × 2.",e:"180 + 36 = 216 pencils."},
+{t:"REASONING",q:"Mia says 4,206 + 1,895 is 5,091. Is she correct? Enter the correct total.",a:6101,h:"Estimate first: about 4,200 + 1,900 = 6,100. Does Mia's answer make sense?",e:"4,206 + 1,895 = 6,101. Mia is not correct."},
+{t:"SUBTRACTION",q:"Calculate: 9,003 − 4,758",a:4245,h:"Regroup carefully. There are zeros between the thousands and the ones.",e:"9,003 − 4,758 = 4,245."},
+{t:"PROBLEM SOLVING",q:"A charity needs to raise £8,000. It has raised £3,675 in week 1 and £2,948 in week 2. How much more must it raise?",a:1377,h:"First find how much has been raised altogether. Then subtract that total from £8,000.",e:"3,675 + 2,948 = 6,623; 8,000 − 6,623 = £1,377."},
+{t:"ADDITION",q:"A four-digit number is 3,586. Increase it by 2,749. What is the new number?",a:6335,h:"Increase means add. Set out 3,586 + 2,749 in columns.",e:"3,586 + 2,749 = 6,335."},
+{t:"MULTIPLICATION",q:"A cinema has 23 rows with 14 seats in each row. How many seats are there?",a:322,h:"Partition 14 into 10 and 4. Calculate 23 × 10 and 23 × 4.",e:"230 + 92 = 322 seats."},
+{t:"REASONING",q:"Which is greater: 6,405 + 1,298 or 8,000 − 412? Enter the greater answer.",a:7888,h:"Work out both calculations, then compare the totals.",e:"6,405 + 1,298 = 7,703; 8,000 − 412 = 7,588. The greater answer is 7,703.",accept:[7703]},
+{t:"SUBTRACTION",q:"A race is 5,000 metres long. Sam has completed 3,675 metres. How many metres remain?",a:1325,h:"The remaining distance is the total distance minus the distance already completed.",e:"5,000 − 3,675 = 1,325 metres."},
+{t:"ADDITION",q:"Find the total mass: 2,875 g + 3,650 g. Give your answer in grams.",a:6525,h:"Add the two masses. Keep the unit in grams.",e:"2,875 + 3,650 = 6,525 g."},
+{t:"MULTIPLICATION",q:"A coach takes 26 pupils on each trip. How many pupils can travel on 8 trips?",a:208,h:"Calculate 26 × 8. Think of 20 × 8 and 6 × 8.",e:"160 + 48 = 208 pupils."},
+{t:"PROBLEM SOLVING",q:"A shop had 6,250 notebooks. It sold 1,875 in the morning and 2,096 in the afternoon. How many were left?",a:2279,h:"Add the notebooks sold first. Then subtract that amount from 6,250.",e:"1,875 + 2,096 = 3,971; 6,250 − 3,971 = 2,279."},
+{t:"REASONING",q:"A number rounds to 4,000 to the nearest 1,000. Which of these could it be: 3,462, 4,620 or 5,105? Enter the possible number.",a:3462,h:"Numbers from 3,500 up to 4,499 round to 4,000. Check each option.",e:"3,462 rounds to 3,000, not 4,000. 4,620 rounds to 5,000 and 5,105 rounds to 5,000. There is no correct option—this is a challenge about checking the choices!",accept:[0]},
+{t:"SUBTRACTION",q:"Calculate the difference between 8,125 and 3,968.",a:4157,h:"Difference means subtract the smaller number from the larger number.",e:"8,125 − 3,968 = 4,157."},
+{t:"ADDITION",q:"A library has 2,468 fiction books and 3,795 non-fiction books. How many books are there in total?",a:6263,h:"The total number of books is found by adding both groups.",e:"2,468 + 3,795 = 6,263 books."},
+{t:"MULTIPLICATION",q:"A pack of 15 stickers costs 24p. What is the total cost of 15 packs in pence?",a:360,h:"Calculate 15 × 24. Try 10 × 24 plus 5 × 24.",e:"240p + 120p = 360p."},
+{t:"PROBLEM SOLVING",q:"A farmer picked 4,275 apples on Monday and 3,860 on Tuesday. He packed 2,950 apples. How many apples were not packed?",a:5185,h:"Add the apples picked on both days. Then subtract the packed apples.",e:"4,275 + 3,860 = 8,135; 8,135 − 2,950 = 5,185."},
+{t:"REASONING",q:"Complete the calculation: 7,___4 − 2,386 = 5,218. What digit belongs in the hundreds place?",a:6,h:"Add 5,218 and 2,386 to find the missing four-digit number. Then identify its hundreds digit.",e:"5,218 + 2,386 = 7,604. The hundreds digit is 6."},
+{t:"SUBTRACTION",q:"A factory made 9,250 toys. It sent 4,785 toys to shops. How many toys stayed at the factory?",a:4465,h:"Subtract the number sent away from the number made.",e:"9,250 − 4,785 = 4,465 toys."},
+{t:"ADDITION",q:"Two teams scored 3,895 points and 2,876 points. What was their combined score?",a:6771,h:"Combined means the two scores added together.",e:"3,895 + 2,876 = 6,771 points."},
+{t:"MULTIPLICATION",q:"A theatre has 32 seats in each row. There are 12 rows. How many seats are there?",a:384,h:"Calculate 32 × 12. Partition 12 into 10 and 2.",e:"320 + 64 = 384 seats."},
+{t:"PROBLEM SOLVING",q:"A school collected 5,680 cans. Year 4 collected 1,275 and Year 5 collected 1,498. The rest were collected by other years. How many cans did the other years collect?",a:2907,h:"Find the total collected by Years 4 and 5, then subtract from 5,680.",e:"1,275 + 1,498 = 2,773; 5,680 − 2,773 = 2,907 cans."},
+{t:"REASONING",q:"I am thinking of a number. Add 1,875 and the answer is 6,420. What is my number?",a:4545,h:"Use the inverse of addition: subtract 1,875 from 6,420.",e:"6,420 − 1,875 = 4,545."},
+{t:"CHAMPIONSHIP",q:"A racing team travels 2,485 km on Monday, 1,975 km on Tuesday and 2,260 km on Wednesday. Their target is 7,500 km. How many more kilometres must they travel?",a:780,h:"Add the three distances first. Then subtract the total from the 7,500 km target.",e:"2,485 + 1,975 + 2,260 = 6,720; 7,500 − 6,720 = 780 km."}
+];
+// Correct an intentionally ambiguous draft item to a valid place-value reasoning challenge.
+questions[12]={t:"REASONING",q:"Which calculation has the greater answer: 6,405 + 1,298 or 8,000 − 112? Enter the greater answer.",a:7888,h:"Work out both calculations, then compare the totals.",e:"6,405 + 1,298 = 7,703; 8,000 − 112 = 7,888. The greater answer is 7,888."};
+questions[17]={t:"REASONING",q:"A number rounds to 4,000 to the nearest 1,000. Which number could it be: 3,762, 4,620 or 5,105? Enter the number.",a:3762,h:"Numbers from 3,500 to 4,499 round to 4,000. Check each option.",e:"3,762 rounds to 4,000. The other two round to 5,000."};
+let index=0,score=0,streak=0,done=new Set(),hintShown=false;
+const $=id=>document.getElementById(id);
+function render(){
+ const x=questions[index]; $('count').textContent=(index+1)+' / 30';$('qnum').textContent='CHALLENGE '+String(index+1).padStart(2,'0');$('topic').textContent=x.t;$('question').textContent=x.q;
+ $('hint').textContent='Think about what the question is asking. Choose a method and show your working on paper if helpful.';$('advanceHelp').textContent='🏁 Solve this challenge correctly, then click NEXT RACE to continue.';
+ $('answer').value='';$('answer').disabled=false;$('check').disabled=false;$('check').style.opacity=1;$('feedback').textContent='';$('feedback').className='feedback';$('next').style.display='none';hintShown=false;
+ $('hintBtn').style.display='inline-block';$('answer').focus();drawDots();updateStats();
+}
+function drawDots(){ $('checkpoints').innerHTML='';for(let i=0;i<30;i++){let d=document.createElement('div');d.className='dot'+(done.has(i)?' done':'')+(i===index?' current':'');d.textContent=done.has(i)?'✓':i+1;$('checkpoints').appendChild(d)}}
+function updateStats(){ $('score').textContent=score;$('streak').textContent=streak+' 🔥';let p=Math.round(done.size/30*100);$('progress').textContent=p+'%';$('car').style.left=(2+p*.84)+'%';$('trackProgress').textContent=done.size+' / 30 checkpoints';}
+function check(){
+ if(done.has(index))return;let raw=$('answer').value.trim();if(raw===''){$('feedback').textContent='Enter an answer before checking.';$('feedback').className='feedback bad';return}
+ let val=Number(raw),q=questions[index],correct=val===q.a;
+ if(correct){done.add(index);score+=10;streak++;$('feedback').textContent='🏁 PERFECT! You passed this challenge. '+q.e;$('feedback').className='feedback good';$('answer').disabled=true;$('check').disabled=true;$('check').style.opacity=.5;$('next').style.display='inline-block';$('hintBtn').style.display='none';$('advanceHelp').textContent='✅ Challenge cleared! Click NEXT RACE to drive to the next question.';$('car').classList.add('boost');$('question').parentElement.classList.add('race-flash');setTimeout(()=>$('car').classList.remove('boost'),700);setTimeout(()=>$('question').parentElement.classList.remove('race-flash'),600);drawDots();updateStats();}
+ else{streak=0;$('feedback').textContent='🛠️ Not quite! Your car is waiting at this checkpoint. Try again — you can do it.';$('feedback').className='feedback bad';$('answer').classList.remove('shake');void $('answer').offsetWidth;$('answer').classList.add('shake');$('streak').textContent=streak+' 🔥';}
+}
+$('check').addEventListener('click',check);$('answer').addEventListener('keydown',e=>{if(e.key==='Enter')check()});
+$('hintBtn').addEventListener('click',()=>{if(!hintShown){$('hint').textContent='💡 '+questions[index].h;hintShown=true}else{$('hint').textContent='💡 '+questions[index].h}});
+$('next').addEventListener('click',()=>{if(index<29){index++;render();$('question').parentElement.classList.add('race-flash');setTimeout(()=>$('question').parentElement.classList.remove('race-flash'),450)}else finish()});
+function finish(){ $('finish').style.display='grid';$('result').textContent='You scored '+score+' out of 300 points and completed all 30 challenges.';let pct=score/300;if(pct>=.9)$('message').textContent='🏆 Champion driver! Excellent accuracy and problem-solving.';else if(pct>=.7)$('message').textContent='🥇 Fantastic racing! Keep practising your written methods and reasoning.';else if(pct>=.5)$('message').textContent='👏 Good effort! Review the questions you found tricky and race again.';else $('message').textContent='Every champion practises. Look back at the hints, practise the methods and have another go!';}
+render();
+</script>
+</body></html>
