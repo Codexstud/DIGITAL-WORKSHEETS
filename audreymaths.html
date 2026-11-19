@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Number Quest! Year 2 Maths Game</title>
+<style>
+:root{--ink:#183153;--blue:#2575fc;--purple:#7b2ff7;--pink:#ff4f9a;--yellow:#ffd84d;--mint:#54e0b3}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;color:var(--ink);font-family:"Trebuchet MS",Arial,sans-serif;background:radial-gradient(circle at 12% 15%,#ffe48b 0 5%,transparent 5.5%),radial-gradient(circle at 88% 22%,#ff9ac8 0 4%,transparent 4.5%),radial-gradient(circle at 15% 85%,#8bead0 0 5%,transparent 5.5%),linear-gradient(135deg,#6be3ff,#a58bff 55%,#ff9bc7);padding:18px}
+button{font:inherit;cursor:pointer}.game{max-width:980px;margin:auto}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;color:white;margin:0 2px 14px}
+.brand{font-size:clamp(1.3rem,3vw,2rem);font-weight:1000;text-shadow:0 3px 0 #5338a0}
+.pill{background:#ffffff30;border:2px solid #ffffff70;border-radius:99px;padding:8px 14px;font-weight:900}
+.shell{background:#ffffffef;border:5px solid white;border-radius:28px;box-shadow:0 14px 0 #5636a044,0 22px 45px #382d7040;overflow:hidden}
+.hero{padding:25px 24px 18px;text-align:center;background:linear-gradient(120deg,#fff2a9,#ffd6ed 55%,#d8f8ff)}
+.hero h1{font-size:clamp(2rem,6vw,3.6rem);line-height:1;margin:5px 0;color:#5833a5;text-shadow:0 3px #fff}
+.hero p{font-size:1.05rem;font-weight:800;margin:12px 0 0}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;padding:14px 20px;background:#f4f0ff}
+.stat{border-radius:15px;padding:9px;text-align:center;font-weight:900;background:white;box-shadow:0 3px 0 #ded5f5}
+.stat b{display:block;font-size:1.35rem;color:#6736bc}
+.progress-wrap{padding:0 22px 15px;background:#f4f0ff}
+.progress-label{display:flex;justify-content:space-between;font-weight:900;font-size:.9rem;margin-bottom:6px}
+.track{height:14px;border-radius:99px;background:#ded8f0;overflow:hidden}
+.bar{height:100%;width:0;background:linear-gradient(90deg,#43d6a6,#1fa5ff,#a05aff);border-radius:99px;transition:width .35s}
+.content{padding:22px}.screen{display:none}.screen.active{display:block}
+.start-card{text-align:center;padding:18px 8px 28px}
+.mascot{font-size:5rem;filter:drop-shadow(0 5px 0 #eadcff);animation:bob 2s infinite ease-in-out}
+@keyframes bob{50%{transform:translateY(-9px) rotate(4deg)}}
+.start-card h2{font-size:2rem;color:#6335b6;margin:5px}
+.start-card p{max-width:610px;margin:10px auto 20px;font-size:1.08rem}
+.primary{border:0;border-radius:16px;padding:14px 28px;color:white;font-weight:1000;font-size:1.12rem;background:linear-gradient(100deg,#ff5598,#8b45ef);box-shadow:0 6px 0 #5925a7;transition:.15s}
+.primary:active{transform:translateY(4px);box-shadow:0 2px 0 #5925a7}
+.secondary{border:2px solid #d8cdf5;background:white;color:#6035a8;border-radius:13px;padding:10px 16px;font-weight:900}
+.game-head{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.tag{border-radius:99px;padding:7px 13px;font-weight:1000;background:#e8e0ff;color:#653ab2}
+.question{font-size:clamp(1.3rem,4vw,2rem);font-weight:1000;text-align:center;margin:18px 0 8px}
+.equation{display:flex;align-items:center;justify-content:center;gap:14px;margin:14px 0 18px;flex-wrap:wrap}
+.number-card{min-width:105px;padding:12px 18px;border-radius:20px;text-align:center;color:white;font-size:2.4rem;font-weight:1000;box-shadow:0 6px 0 #0002}
+.n1{background:linear-gradient(140deg,#ff8b4b,#ffbf45)}.n2{background:linear-gradient(140deg,#438bff,#45c8ed)}
+.operator{font-size:2.5rem;font-weight:1000;color:#7545c5}
+.pv-panel{background:#f4f9ff;border:2px dashed #b9d7fa;border-radius:18px;padding:12px;margin:10px auto 18px;max-width:570px}
+.pv-title{text-align:center;font-weight:1000;color:#46618d;margin-bottom:8px}
+.pv-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.pv-col{border-radius:12px;padding:8px;text-align:center;background:white;border:2px solid #e0e9f5}
+.pv-col:nth-child(1){border-color:#ffcf72}.pv-col:nth-child(2){border-color:#80d8ff}.pv-col:nth-child(3){border-color:#ff9fca}
+.pv-col strong{display:block;font-size:.9rem}.pv-digit{font-size:1.45rem;font-weight:1000}.pv-value{font-size:.78rem;color:#657895;font-weight:800}
+.blocks{display:flex;justify-content:center;gap:3px;flex-wrap:wrap;min-height:22px;margin-top:5px}
+.block{width:10px;height:10px;border-radius:3px;background:#ffbd4b}.pv-col:nth-child(2) .block{background:#58c9f4}.pv-col:nth-child(3) .block{background:#ff85b7}
+.prompt{text-align:center;font-weight:900;color:#66758d;margin:4px 0 10px}
+.answers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;max-width:620px;margin:0 auto}
+.answer{border:2px solid #e6def7;border-radius:17px;min-height:68px;font-size:1.65rem;font-weight:1000;color:#26385b;background:linear-gradient(145deg,#fff,#f2efff);box-shadow:0 5px 0 #d7cbed;transition:.12s}
+.answer:hover:not(:disabled){transform:translateY(-3px);box-shadow:0 8px 0 #d7cbed}
+.answer:disabled{cursor:default;opacity:1}.answer.correct{background:#baf5d8;border-color:#4cc98e;box-shadow:0 5px 0 #31a875}.answer.wrong{background:#ffd0d9;border-color:#f27b91;box-shadow:0 5px 0 #dc647b}
+.feedback{display:none;margin:17px auto 0;max-width:620px;padding:13px 16px;border-radius:15px;text-align:center;font-weight:900}
+.feedback.show{display:block}.feedback.good{background:#d8ffeb;color:#126b48}.feedback.bad{background:#ffe1e6;color:#a32c4b}
+.next-row{text-align:center;margin-top:14px}.next{display:none}.next.show{display:inline-block}
+.result{text-align:center;padding:20px 5px}.result .big{font-size:5rem}.result h2{font-size:2rem;color:#6335b6}.result p{font-size:1.1rem}
+.review{margin:18px auto;max-width:620px;background:#f5f1ff;padding:14px;border-radius:15px;text-align:left}
+.sparkle{position:fixed;pointer-events:none;font-size:22px;animation:pop .8s ease-out forwards;z-index:5}
+@keyframes pop{to{transform:translate(var(--x),-120px) rotate(220deg);opacity:0}}
+@media(max-width:560px){body{padding:8px}.hero{padding:20px 12px}.content{padding:15px}.stats{gap:5px;padding:10px}.stat{font-size:.8rem}.stat b{font-size:1.1rem}.number-card{min-width:85px;font-size:2rem;padding:10px}.answers{gap:9px}.answer{min-height:60px;font-size:1.4rem}}
+</style>
+</head>
+<body>
+<div class="game">
+<div class="topbar"><div class="brand">🚀 NUMBER QUEST!</div><div class="pill">🌈 YEAR 2 MATHS ADVENTURE</div></div>
+<div class="shell">
+<div class="hero"><h1>Maths Power-Up!</h1><p>➕ Addition &nbsp; • &nbsp; ➖ Subtraction &nbsp; • &nbsp; 🔟 Place Value</p></div>
+<div class="stats">
+<div class="stat">⭐ SCORE<b id="score">0</b></div><div class="stat">🔥 STREAK<b id="streak">0</b></div><div class="stat">❤️ LIVES<b id="lives">3</b></div><div class="stat">🏆 QUESTION<b id="qcount">0/20</b></div>
+</div>
+<div class="progress-wrap"><div class="progress-label"><span>Adventure progress</span><span id="progressText">Ready?</span></div><div class="track"><div class="bar" id="progress"></div></div></div>
+<div class="content">
+<section class="screen active" id="startScreen"><div class="start-card">
+<div class="mascot">🦄</div><h2>Ready, Number Hero?</h2>
+<p>Travel through the world of numbers! Answer 20 questions about ones, tens and hundreds. Choose the correct answer, collect stars and build your maths streak.</p>
+<p><b>How to play:</b> Look at the numbers, think about the place value, then tap the answer you think is correct. You start with 3 hearts. Keep going and try all 20 questions!</p>
+<button class="primary" onclick="startGame()">🎮 START GAME!</button>
+</div></section>
+<section class="screen" id="quizScreen">
+<div class="game-head"><span class="tag" id="topic">🔟 PLACE VALUE</span><span class="tag" id="difficulty">⭐ LEVEL 1</span></div>
+<div class="question" id="questionText">Can you solve this one?</div><div class="equation" id="equation"></div>
+<div class="pv-panel"><div class="pv-title">🔍 LOOK AT THE PLACE VALUE</div><div class="pv-grid" id="pvGrid"></div></div>
+<div class="prompt">Choose the correct answer!</div><div class="answers" id="answers"></div>
+<div class="feedback" id="feedback" aria-live="polite"></div>
+<div class="next-row"><button class="primary next" id="nextBtn" onclick="nextQuestion()">NEXT QUESTION ➜</button></div>
+</section>
+<section class="screen" id="resultScreen"><div class="result">
+<div class="big" id="resultEmoji">🏆</div><h2 id="resultTitle">Amazing work!</h2><p id="resultMessage"></p><div class="review" id="resultReview"></div>
+<button class="primary" onclick="restartGame()">🔄 PLAY AGAIN</button>
+</div></section>
+</div></div></div>
+<script>
+const questions=[
+{a:23,b:14,op:"+",answer:37,topic:"Tens & Ones",explain:"3 ones + 4 ones = 7 ones. 2 tens + 1 ten = 3 tens."},
+{a:46,b:12,op:"-",answer:34,topic:"Tens & Ones",explain:"6 ones - 2 ones = 4 ones. 4 tens - 1 ten = 3 tens."},
+{a:35,b:22,op:"+",answer:57,topic:"Tens & Ones",explain:"5 ones + 2 ones = 7 ones. 3 tens + 2 tens = 5 tens."},
+{a:68,b:25,op:"-",answer:43,topic:"Tens & Ones",explain:"8 ones - 5 ones = 3 ones. 6 tens - 2 tens = 4 tens."},
+{a:41,b:18,op:"+",answer:59,topic:"Tens & Ones",explain:"1 one + 8 ones = 9 ones. 4 tens + 1 ten = 5 tens."},
+{a:75,b:30,op:"-",answer:45,topic:"Tens & Ones",explain:"5 ones - 0 ones = 5 ones. 7 tens - 3 tens = 4 tens."},
+{a:52,b:27,op:"+",answer:79,topic:"Tens & Ones",explain:"2 ones + 7 ones = 9 ones. 5 tens + 2 tens = 7 tens."},
+{a:89,b:36,op:"-",answer:53,topic:"Tens & Ones",explain:"9 ones - 6 ones = 3 ones. 8 tens - 3 tens = 5 tens."},
+{a:100,b:20,op:"+",answer:120,topic:"Hundreds",explain:"1 hundred + 2 tens = 1 hundred and 2 tens: 120."},
+{a:135,b:20,op:"+",answer:155,topic:"Hundreds",explain:"5 ones + 0 = 5 ones. 3 tens + 2 tens = 5 tens. 1 hundred stays the same."},
+{a:164,b:32,op:"-",answer:132,topic:"Hundreds",explain:"4 - 2 = 2 ones. 6 tens - 3 tens = 3 tens. 1 hundred stays the same."},
+{a:120,b:10,op:"-",answer:110,topic:"Hundreds",explain:"Take away 1 ten from 2 tens. 1 hundred and 1 ten remain: 110."},
+{a:24,b:35,op:"+",answer:59,topic:"Add Ones & Tens",explain:"4 ones + 5 ones = 9 ones. 2 tens + 3 tens = 5 tens."},
+{a:97,b:42,op:"-",answer:55,topic:"Subtract Tens & Ones",explain:"97 - 42 = 55: 7 - 2 = 5 ones and 9 tens - 4 tens = 5 tens."},
+{a:111,b:25,op:"+",answer:136,topic:"Hundreds",explain:"1 one + 5 ones = 6 ones. 1 ten + 2 tens = 3 tens. 1 hundred remains."},
+{a:148,b:26,op:"-",answer:122,topic:"Hundreds",explain:"8 - 6 = 2 ones. 4 tens - 2 tens = 2 tens. 1 hundred remains."},
+{a:63,b:19,op:"+",answer:82,topic:"Add Ones & Tens",explain:"3 + 9 = 12 ones, which is 1 ten and 2 ones. Add the tens: 6 + 1 + 1 = 8 tens. Answer: 82."},
+{a:82,b:27,op:"-",answer:55,topic:"Subtract Ones & Tens",explain:"Regroup 1 ten: 12 - 7 = 5 ones. 7 tens - 2 tens = 5 tens. Answer: 55."},
+{a:125,b:34,op:"+",answer:159,topic:"Hundreds",explain:"5 + 4 = 9 ones. 2 tens + 3 tens = 5 tens. 1 hundred stays. Answer: 159."},
+{a:176,b:42,op:"-",answer:134,topic:"Hundreds",explain:"6 - 2 = 4 ones. 7 tens - 4 tens = 3 tens. 1 hundred stays. Answer: 134."}
+];
+let order=[],index=0,score=0,streak=0,lives=3,locked=false,correctCount=0;
+const $=id=>document.getElementById(id);
+function shuffle(arr){return [...arr].sort(()=>Math.random()-.5)}
+function showScreen(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));$(id).classList.add('active')}
+function startGame(){order=shuffle(questions);index=0;score=0;streak=0;lives=3;correctCount=0;updateStats();showScreen('quizScreen');loadQuestion()}
+function updateStats(){
+$('score').textContent=score;$('streak').textContent=streak;$('lives').textContent='❤️'.repeat(lives)+'♡'.repeat(3-lives);
+$('qcount').textContent=Math.min(index,20)+'/20';$('progress').style.width=(index/20*100)+'%';$('progressText').textContent=index+' of 20 questions';
+}
+function placeDigits(n){const h=Math.floor(n/100),t=Math.floor(n%100/10),o=n%10;return[{name:'HUNDREDS',digit:h,value:h*100},{name:'TENS',digit:t,value:t*10},{name:'ONES',digit:o,value:o}]}
+function placePanel(a,b){
+const da=placeDigits(a),db=placeDigits(b);
+$('pvGrid').innerHTML=[0,1,2].map(i=>{const x=da[i],y=db[i];return `<div class="pv-col"><strong>${x.name}</strong><div class="pv-digit">${x.digit} <span style="color:#9aa8bc;font-size:.9rem">${y.digit}</span></div><div class="pv-value">${x.value} ${y.value?'+ '+y.value:''}</div><div class="blocks">${Array.from({length:Math.min(x.digit,5)},()=>'<i class="block"></i>').join('')}</div></div>`}).join('');
+}
+function makeOptions(q){const opts=new Set([q.answer]);const deltas=shuffle([-10,10,-1,1,-20,20,-2,2,-100,100]);deltas.forEach(d=>{if(opts.size<4&&q.answer+d>=0)opts.add(q.answer+d)});return shuffle([...opts])}
+function loadQuestion(){
+locked=false;const q=order[index];$('topic').textContent='🌈 '+q.topic.toUpperCase();$('difficulty').textContent=index<7?'⭐ LEVEL 1':index<14?'⭐⭐ LEVEL 2':'⭐⭐⭐ LEVEL 3';
+$('questionText').textContent='Can you solve this one?';
+$('equation').innerHTML=`<div class="number-card n1">${q.a}</div><div class="operator">${q.op}</div><div class="number-card n2">${q.b}</div><div class="operator">=</div><div class="number-card" style="background:#b9a1e9">?</div>`;
+placePanel(q.a,q.b);$('feedback').className='feedback';$('feedback').textContent='';$('nextBtn').classList.remove('show');
+$('answers').innerHTML=makeOptions(q).map(n=>`<button class="answer" onclick="chooseAnswer(${n},this)">${n}</button>`).join('');updateStats();
+}
+function chooseAnswer(value,btn){
+if(locked)return;locked=true;const q=order[index],buttons=[...document.querySelectorAll('.answer')];buttons.forEach(b=>b.disabled=true);
+const fb=$('feedback');
+if(value===q.answer){btn.classList.add('correct');score+=10+(streak>=2?5:0);streak++;correctCount++;fb.className='feedback show good';fb.innerHTML='🎉 SUPER STAR! That is correct!<br>'+q.explain;confetti()}
+else{btn.classList.add('wrong');const right=buttons.find(b=>Number(b.textContent)===q.answer);if(right)right.classList.add('correct');lives=Math.max(0,lives-1);streak=0;fb.className='feedback show bad';fb.innerHTML='💪 Good try! The correct answer is <b>'+q.answer+'</b>.<br>'+q.explain}
+$('nextBtn').textContent=index===19?'SEE MY RESULTS 🏆':'NEXT QUESTION ➜';$('nextBtn').classList.add('show');updateStats();
+}
+function nextQuestion(){index++;if(index>=20){finishGame();return}loadQuestion()}
+function finishGame(){
+$('progress').style.width=(index/20*100)+'%';$('progressText').textContent=index+' of 20 questions';$('qcount').textContent=index+'/20';
+const pct=Math.round(correctCount/20*100);$('resultEmoji').textContent=pct>=90?'🏆':pct>=70?'🥇':pct>=50?'🌟':'💪';
+$('resultTitle').textContent=pct>=90?'Maths Champion!':pct>=70?'Fantastic Work!':pct>=50?'Great Effort!':'Keep Practising!';
+$('resultMessage').textContent=`You answered ${correctCount} questions correctly and earned ${score} points. You completed ${index} of 20 questions.`;
+$('resultReview').innerHTML=`<b>YOUR ADVENTURE RESULTS</b><br>⭐ Points: ${score}<br>✅ Correct answers: ${correctCount}<br>🎯 Accuracy: ${pct}%<br><br>${pct>=70?'You are getting stronger at tens, ones and hundreds. Brilliant!':'Practise splitting numbers into hundreds, tens and ones. You can try again!'}`;
+showScreen('resultScreen');
+}
+function restartGame(){showScreen('startScreen');updateStats()}
+function confetti(){const icons=['⭐','✨','🌈','💎','🎉'];for(let i=0;i<13;i++){const el=document.createElement('span');el.className='sparkle';el.textContent=icons[Math.floor(Math.random()*icons.length)];el.style.left=(35+Math.random()*30)+'vw';el.style.top=(45+Math.random()*20)+'vh';el.style.setProperty('--x',(Math.random()*240-120)+'px');document.body.appendChild(el);setTimeout(()=>el.remove(),850)}}
+updateStats();
+</script>
+</body>
+</html>
