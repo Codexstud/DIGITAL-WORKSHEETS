@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Year 5 Computing – Reasoning Worksheet</title>
+<style>
+:root{--navy:#14245b;--blue:#3157d5;--teal:#10a7a0;--orange:#ff9f43;--pink:#f05b86;--bg:#f2f5ff}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:#18213d}
+.hero{background:linear-gradient(120deg,#17265f,#3157d5 60%,#10a7a0);color:white;padding:30px 18px 35px;text-align:center}
+.hero .tag{display:inline-block;background:#ffffff25;border:1px solid #ffffff55;border-radius:30px;padding:7px 14px;font-size:13px;font-weight:bold;letter-spacing:.5px}
+h1{font-size:clamp(25px,5vw,38px);margin:14px 0 8px}.hero p{margin:0;font-size:16px;opacity:.95}
+.wrap{max-width:900px;margin:22px auto;padding:0 14px 40px}
+.info{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
+.info div{background:white;border-radius:14px;padding:13px;text-align:center;box-shadow:0 3px 12px #1a2c6410}
+.info strong{display:block;color:var(--blue);font-size:18px}.info span{font-size:12px;color:#68718b}
+.progressbox{background:white;padding:14px 16px;border-radius:14px;margin-bottom:18px;box-shadow:0 3px 12px #1a2c6410}
+.progressline{height:9px;background:#e7ebfa;border-radius:20px;overflow:hidden;margin-top:9px}.progress{height:100%;width:0;background:linear-gradient(90deg,var(--teal),var(--blue));transition:width .25s}
+.question{background:white;border-radius:17px;padding:20px;margin:14px 0;box-shadow:0 4px 15px #1a2c6410;border:2px solid transparent}
+.qhead{display:flex;align-items:center;gap:10px;margin-bottom:12px}.num{background:#e9efff;color:var(--blue);font-weight:bold;border-radius:10px;padding:8px 11px}.topic{font-size:12px;color:#78819b;font-weight:bold;text-transform:uppercase;letter-spacing:.5px}
+.prompt{font-size:17px;line-height:1.5;font-weight:600;margin:8px 0 15px}
+.options{display:grid;gap:9px}.option{display:flex;align-items:flex-start;gap:10px;padding:12px 13px;border:1.5px solid #e0e5f2;border-radius:12px;cursor:pointer;line-height:1.4;transition:.15s}
+.option:hover{border-color:#8298ed;background:#f7f9ff}.option input{margin-top:3px;accent-color:var(--blue);transform:scale(1.15)}
+.question.correct{border-color:#25a66a}.question.wrong{border-color:#e35d6b}
+.feedback{display:none;margin-top:13px;padding:12px;border-radius:10px;font-size:14px;line-height:1.45}.feedback.show{display:block}.feedback.good{background:#e9f8ef;color:#17633a}.feedback.bad{background:#fff0f1;color:#8e2733}
+.actions{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:24px 0}
+button{border:0;border-radius:12px;padding:14px 22px;font-size:15px;font-weight:bold;cursor:pointer}
+.primary{background:var(--blue);color:white;box-shadow:0 5px 12px #3157d544}.secondary{background:white;color:var(--navy);border:1px solid #d9e0f3}
+#result{display:none;background:white;border-radius:18px;padding:24px;text-align:center;box-shadow:0 5px 18px #1a2c6415;margin-top:20px}
+.score{font-size:42px;font-weight:800;color:var(--blue);margin:8px}
+.resultmsg{font-size:16px;line-height:1.5;color:#4d5875}
+.footer{text-align:center;color:#7c849c;font-size:12px;padding:20px}
+@media(max-width:560px){.info{grid-template-columns:1fr 1fr}.info div:last-child{grid-column:span 2}.question{padding:16px}.prompt{font-size:16px}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="tag">THE CRADLE MONTESSORI SCHOOL</div>
+  <h1>Year 5 Computing Challenge</h1>
+  <p>First Term • Part A • Reasoning Worksheet</p>
+</header>
+<main class="wrap">
+  <section class="info">
+    <div><strong>20</strong><span>Reasoning questions</span></div>
+    <div><strong>Medium</strong><span>Difficulty level</span></div>
+    <div><strong>20 marks</strong><span>1 mark per question</span></div>
+  </section>
+  <section class="progressbox">
+    <div style="display:flex;justify-content:space-between;gap:10px;font-weight:bold;font-size:14px"><span>Your progress</span><span id="count">0 / 20 answered</span></div>
+    <div class="progressline"><div class="progress" id="progress"></div></div>
+  </section>
+  <div id="questions"></div>
+  <div class="actions">
+    <button class="primary" onclick="submitAnswers()">Submit worksheet</button>
+    <button class="secondary" onclick="resetWorksheet()">Start again</button>
+  </div>
+  <section id="result">
+    <div style="font-weight:bold;color:#10a7a0;text-transform:uppercase;letter-spacing:1px">Your result</div>
+    <div class="score" id="score"></div>
+    <div class="resultmsg" id="message"></div>
+    <button class="primary" style="margin-top:18px" onclick="showReview()">Review answers</button>
+  </section>
+  <div class="footer">Think carefully, read each situation and choose the best answer.</div>
+</main>
+<script>
+const data = [
+{topic:"Computer systems",q:"A pupil is playing a game. The game becomes slow when several applications are open, but the saved game is still available after the computer is switched off. Which explanation is most accurate?",o:["The CPU stores the saved game permanently.","RAM temporarily holds the programs in use, while storage keeps saved files.","Storage carries out all calculations for the game.","File management makes the CPU faster."],a:1,e:"RAM temporarily holds data and programs currently being used. Storage keeps files for future use, even when the computer is switched off."},
+{topic:"CPU",q:"A computer is asked to calculate 348 + 276. Which component is mainly responsible for carrying out the calculation and instructions?",o:["Flash drive","CPU","Folder","Monitor"],a:1,e:"The CPU processes data, performs calculations and carries out instructions."},
+{topic:"RAM and storage",q:"Tola types a story but forgets to save it. The computer suddenly switches off. Why might the latest changes be lost?",o:["RAM is temporary and its contents are usually lost when power is off.","The CPU deletes all documents when it calculates.","A folder cannot hold text.","A monitor stores only pictures."],a:0,e:"Unsaved work may only be in RAM. RAM is temporary, unlike storage where files are kept for future use."},
+{topic:"Storage",q:"A teacher wants to keep pupils' projects so they can be opened next week, even after the computer has been shut down. What should the teacher do?",o:["Leave each project open in RAM.","Ask the CPU to remember the projects.","Save the projects to a storage device or cloud storage.","Keep the monitor switched on."],a:2,e:"Storage, such as a hard disk, SSD, flash drive or cloud storage, keeps files for future use."},
+{topic:"File management",q:"A pupil saves 15 assignments directly onto the desktop with names such as 'work1', 'work2' and 'new'. What is the best improvement?",o:["Delete all the assignments.","Rename files meaningfully and place them in a clearly named Year 5 folder.","Move every file into the Recycle Bin.","Keep all files open at the same time."],a:1,e:"Good file management includes meaningful names and saving work in the correct folders."},
+{topic:"File management",q:"Mira has a folder called 'Year 5 Work'. She wants to keep Maths and Computing assignments separate. Which arrangement is best?",o:["Put every file in one folder with no names.","Create Maths and Computing folders inside 'Year 5 Work'.","Save all files with the same filename.","Delete older assignments immediately."],a:1,e:"Folders help organise files and other folders, making work easier to find."},
+{topic:"Computational thinking",q:"A class is planning a school fair. The pupils divide the work into decorations, invitations, games and refreshments. Which part of computational thinking are they using?",o:["Abstraction","Decomposition","Pattern recognition","Storage"],a:1,e:"Decomposition means breaking a large problem into smaller, manageable parts."},
+{topic:"Computational thinking",q:"A pupil notices that washing plates and bowls involves similar steps: applying soap, scrubbing and rinsing. Which thinking skill is being used?",o:["Pattern recognition","Abstraction","File management","Algorithm design"],a:0,e:"Pattern recognition means identifying similarities or things that repeat."},
+{topic:"Computational thinking",q:"When planning how to clean a classroom, a pupil ignores the colour of the walls and focuses on rubbish, dirty desks and the floor. Which skill does this show?",o:["Decomposition","Pattern recognition","Abstraction","Storage"],a:2,e:"Abstraction focuses on important details needed to solve a problem and ignores unnecessary details."},
+{topic:"Computational thinking",q:"A pupil writes the steps for making a sandwich in the correct order so another person can follow them. Which computational thinking part is this?",o:["Algorithm design","Pattern recognition","Abstraction","RAM"],a:0,e:"Algorithm design means creating clear, ordered instructions to solve a problem."},
+{topic:"Algorithms",q:"A pupil writes these instructions: (1) rinse the toothbrush, (2) put toothpaste on it, (3) pick up the toothbrush, (4) brush teeth. What is the main problem?",o:["The instructions contain too many steps.","The steps are not in a sensible order.","The instructions use a computer.","The algorithm has no information."],a:1,e:"A good algorithm must be ordered. The toothbrush should be picked up before toothpaste is added and teeth are brushed."},
+{topic:"Algorithms",q:"An algorithm tells a robot to repeat 'move forward' forever, with no instruction to stop. Which quality of a good algorithm is missing?",o:["Clear","Complete","Finite","Ordered"],a:2,e:"A finite algorithm must eventually come to an end."},
+{topic:"Algorithms",q:"A set of instructions says, 'Do the thing, then put it there.' Why is this a poor algorithm?",o:["It is not clear because the actions and objects are not specified.","It is too short to be an algorithm.","It uses everyday language.","It contains a start instruction."],a:0,e:"A good algorithm should be clear and easy to understand. Vague instructions can confuse the person or computer following them."},
+{topic:"Flowcharts",q:"A pupil is drawing a flowchart for a programme that checks whether a score is at least 50. Which symbol should contain the question 'Is score ≥ 50?'",o:["Oval","Rectangle","Diamond","Arrow"],a:2,e:"A diamond represents a decision. It tests a condition and allows different paths, such as Yes and No."},
+{topic:"Flowcharts",q:"In a flowchart, a rectangle contains the instruction 'Total = A + B'. What does the rectangle represent?",o:["Start or Stop","A process or calculation","A decision","An input or output"],a:1,e:"A rectangle represents a process, such as an action or calculation."},
+{topic:"Flowcharts",q:"A flowchart begins with Start, then asks the user to enter a score. Which symbol is most suitable for the instruction 'Input score'?",o:["Parallelogram","Diamond","Oval","Rectangle"],a:0,e:"A parallelogram represents input or output, such as entering a score or displaying a result."},
+{topic:"Pseudocode",q:"A pupil writes: START, DISPLAY 'Good morning', STOP. What will happen when this pseudocode is followed?",o:["The computer calculates a total.","The programme displays the message 'Good morning' and ends.","The programme asks for a score.","The programme saves a file."],a:1,e:"DISPLAY shows a message. START begins the programme and STOP ends it."},
+{topic:"Pseudocode",q:"A programme must collect the prices of two books and calculate their total. Which instruction should come after the two INPUT instructions?",o:["STOP","DISPLAY 'Hello'","total = price1 + price2","INPUT total again"],a:2,e:"After collecting both prices, the programme adds them: total = price1 + price2."},
+{topic:"Decision making",q:"A programme uses the rule: IF score >= 50 THEN DISPLAY 'PASS' ELSE DISPLAY 'FAIL'. What will it display for a score of exactly 50?",o:["FAIL","PASS","50","Nothing"],a:1,e:"The symbol >= means greater than or equal to. A score of exactly 50 meets the condition, so PASS is displayed."},
+{topic:"Decision making",q:"Using the same rule, a pupil scores 47. Which path should the flowchart follow?",o:["The Yes path to Display PASS","The No path to Display FAIL","Both paths at once","The Start path again"],a:1,e:"47 is less than 50, so the condition is false. The programme follows the No path and displays FAIL."}
+];
+let submitted=false;
+const root=document.getElementById('questions');
+function render(){
+ root.innerHTML='';
+ data.forEach((item,i)=>{
+  const card=document.createElement('section');card.className='question';card.id='q'+i;
+  card.innerHTML=`<div class="qhead"><span class="num">Q${i+1}</span><span class="topic">${item.topic}</span></div><div class="prompt">${item.q}</div><div class="options">${item.o.map((op,j)=>`<label class="option"><input type="radio" name="q${i}" value="${j}" onchange="updateProgress()"><span><b>${String.fromCharCode(65+j)}.</b> ${op}</span></label>`).join('')}</div><div class="feedback" id="f${i}"></div>`;
+  root.appendChild(card);
+ });
+ updateProgress();
+}
+function updateProgress(){
+ let n=data.filter((_,i)=>document.querySelector(`input[name="q${i}"]:checked`)).length;
+ document.getElementById('count').textContent=`${n} / 20 answered`;
+ document.getElementById('progress').style.width=(n/20*100)+'%';
+}
+function submitAnswers(){
+ if(submitted)return;
+ let answered=data.filter((_,i)=>document.querySelector(`input[name="q${i}"]:checked`)).length;
+ if(answered<20){if(!confirm(`You have answered ${answered} of 20 questions. Submit anyway?`))return;}
+ let score=0;
+ data.forEach((item,i)=>{
+  const chosen=document.querySelector(`input[name="q${i}"]:checked`);
+  const card=document.getElementById('q'+i),fb=document.getElementById('f'+i);
+  const correct=chosen && Number(chosen.value)===item.a;
+  if(correct)score++;
+  card.classList.add(correct?'correct':'wrong');
+  fb.className='feedback show '+(correct?'good':'bad');
+  fb.innerHTML=`<b>${correct?'Correct!':'Not quite.'}</b> ${chosen?'Your answer: '+String.fromCharCode(65+Number(chosen.value))+'.':'No answer selected.'}<br><b>Correct answer: ${String.fromCharCode(65+item.a)}.</b> ${item.o[item.a]}<br>${item.e}`;
+ });
+ submitted=true;
+ document.querySelectorAll('input').forEach(x=>x.disabled=true);
+ document.getElementById('score').textContent=`${score} / 20`;
+ let msg=score>=17?'Excellent reasoning! You have a strong understanding of the topics.':score>=13?'Good effort! Review the explanations for the questions you missed.':score>=10?'A fair attempt. Read the feedback and practise the topics again.':'Keep practising. Review the notes and try the worksheet again.';
+ document.getElementById('message').textContent=msg;
+ document.getElementById('result').style.display='block';
+ document.getElementById('result').scrollIntoView({behavior:'smooth'});
+}
+function showReview(){document.getElementById('q0').scrollIntoView({behavior:'smooth'});}
+function resetWorksheet(){
+ if(!confirm('Clear all answers and start again?'))return;
+ submitted=false;document.getElementById('result').style.display='none';render();
+}
+render();
+</script>
+</body>
+</html>
