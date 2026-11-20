@@ -1,219 +1,483 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Year 2 English Digital Worksheet</title>
+<title>Year 3 Maths Adventure</title>
 <style>
-  :root { --navy:#173b68; --blue:#2878c8; --pale:#eef6ff; --gold:#ffc857; --green:#21845b; }
-  * { box-sizing:border-box; }
-  body { margin:0; background:#f1f5f9; color:#1e293b; font-family:Tahoma,Arial,sans-serif; line-height:1.55; }
-  .page { max-width:900px; margin:24px auto; background:#fff; padding:clamp(18px,4vw,40px); border-radius:16px; box-shadow:0 8px 28px #18324b16; }
-  header { background:linear-gradient(135deg,#173b68,#2878c8); color:white; padding:24px; border-radius:14px; margin-bottom:22px; }
-  h1 { margin:0 0 5px; font-size:clamp(24px,4vw,34px); }
-  header p { margin:0; }
-  .student-info { display:grid; grid-template-columns:2fr 1fr; gap:14px; margin:18px 0 24px; }
-  label { font-weight:700; display:block; margin-bottom:6px; }
-  input[type="text"], textarea, select { width:100%; border:1.5px solid #b9c8d8; background:#fff; color:#111827; border-radius:7px; padding:10px 11px; font:inherit; }
-  input[type="text"]:focus, textarea:focus, select:focus { outline:3px solid #bfdbfe; border-color:var(--blue); }
-  .section { border:1px solid #dbe5ef; border-radius:12px; padding:18px; margin:20px 0; }
-  h2 { color:var(--navy); margin:0 0 12px; font-size:22px; }
-  h3 { margin:16px 0 8px; color:#244a75; font-size:17px; }
-  .passage { background:var(--pale); border-left:5px solid var(--blue); border-radius:8px; padding:17px; }
-  .passage p { margin:0 0 9px; }
-  .passage p:last-child { margin-bottom:0; }
-  .q { margin:15px 0; }
-  .q label { font-weight:600; }
-  .short { max-width:430px; }
-  .options { display:flex; flex-wrap:wrap; gap:10px 18px; margin-top:7px; }
-  .options label { display:flex; align-items:center; gap:7px; font-weight:400; margin:0; }
-  input[type="radio"], input[type="checkbox"] { accent-color:var(--blue); width:17px; height:17px; }
-  .hint { font-size:13px; color:#526579; margin-top:5px; }
-  .buttons { display:flex; flex-wrap:wrap; gap:10px; margin-top:24px; }
-  button { border:0; border-radius:8px; padding:12px 18px; font:700 15px Tahoma,Arial,sans-serif; cursor:pointer; }
-  .primary { background:var(--blue); color:white; }
-  .secondary { background:#e2e8f0; color:#1e293b; }
-  .result { display:none; padding:16px; margin-top:18px; border-radius:10px; background:#ecfdf5; border:1px solid #86efac; }
-  .result h2 { color:#166534; }
-  .correct { color:#166534; font-weight:700; }
-  .incorrect { color:#b91c1c; font-weight:700; }
-  footer { text-align:center; color:#64748b; font-size:13px; margin-top:24px; }
-  @media(max-width:600px) { .student-info { grid-template-columns:1fr; } .section { padding:14px; } }
-  @media print { body { background:#fff; } .page { box-shadow:none; margin:0; max-width:none; } .buttons,.result { display:none!important; } input,textarea,select { border:1px solid #777; } }
+*{box-sizing:border-box}
+body{margin:0;background:#f3f0ff;font-family:Arial,sans-serif;color:#252044}
+button{cursor:pointer;font-weight:bold}
+.container{max-width:1000px;margin:auto;padding:20px}
+.hero{background:linear-gradient(120deg,#5126c9,#8748ed,#ed4899);color:white;padding:28px;border-radius:22px;margin-bottom:22px}
+.hero h1{font-size:35px;margin:10px 0}
+.stats{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
+.stat{background:#ffffff30;padding:12px 20px;border-radius:12px}
+.stat strong{display:block;font-size:25px;margin-top:5px}
+h2{margin-bottom:5px}
+.subtitle{color:#777;margin-top:5px}
+.zones{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:15px;margin-top:20px}
+.zone{background:white;border:2px solid #e5ddff;border-radius:18px;padding:20px;text-align:left;transition:.2s}
+.zone:hover{border-color:#8b5cf6;transform:translateY(-4px)}
+.zone .emoji{font-size:38px}
+.zone h3{margin:12px 0 6px}
+.zone p{color:#777;font-size:14px;margin:0}
+.notice{background:#fff3ce;padding:18px;border-radius:15px;margin-top:20px}
+.game,.results{display:none;background:white;border-radius:20px;padding:25px;margin-top:15px}
+.topline{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.back{background:#eee8ff;color:#5728be;padding:10px 15px;border:0;border-radius:10px}
+.progress{height:10px;background:#eee8ff;border-radius:20px;margin:20px 0;overflow:hidden}
+.progress div{height:100%;width:0;background:linear-gradient(90deg,#8b5cf6,#ec4899);transition:.3s}
+.questionbox{background:#f5f1ff;border:2px solid #e5ddff;border-radius:18px;padding:30px;text-align:center;margin:20px 0}
+.level{font-size:12px;font-weight:bold;color:#8052d8}
+.instruction{font-size:23px;font-weight:bold;margin:12px}
+.question{font-size:42px;font-weight:900;color:#5429be;margin:20px 0}
+.hint{color:#777;font-size:14px}
+.answers{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.option{background:white;border:2px solid #ddd6fe;border-radius:13px;padding:17px;font-size:22px;color:#30244c}
+.option:hover{background:#f5f0ff}
+.option.correct{background:#dcfce7;border-color:#22c55e;color:#166534}
+.option.wrong{background:#fee2e2;border-color:#ef4444;color:#991b1b}
+.option:disabled{cursor:default}
+.feedback{padding:15px;border-radius:12px;text-align:center;font-weight:bold;margin-top:18px;display:none}
+.correct-feedback{background:#dcfce7;color:#166534}
+.wrong-feedback{background:#fee2e2;color:#991b1b}
+.next,.play{background:linear-gradient(110deg,#6036d6,#8b5cf6);color:white;border:0;border-radius:12px;padding:15px 25px;margin-top:18px;font-size:16px}
+.next{display:none;float:right}
+.results{text-align:center;padding:35px}
+.trophy{font-size:65px}
+.results h2{font-size:32px;color:#5429be}
+.result-stats{display:flex;justify-content:center;gap:15px;margin:25px 0;flex-wrap:wrap}
+.result-stats div{background:#f4f0ff;padding:18px;border-radius:12px;min-width:100px}
+.result-stats strong{display:block;font-size:25px;color:#5429be}
+footer{text-align:center;color:#aaa;font-size:12px;padding:25px}
+@media(max-width:500px){
+.container{padding:12px}.hero h1{font-size:28px}
+.question{font-size:32px}.questionbox{padding:18px}
+.option{font-size:18px;padding:14px 5px}
+.answers{gap:8px}
+}
 </style>
 </head>
 <body>
-<main class="page">
-  <header>
-    <h1>Year 2 English Digital Worksheet</h1>
-    <p>Reading Comprehension • Rhyming Words • Nouns</p>
-  </header>
+<div class="container">
 
-  <div class="student-info">
-    <div><label for="studentName">Pupil's name</label><input id="studentName" type="text" placeholder="Type your name here"></div>
-    <div><label for="worksheetDate">Date</label><input id="worksheetDate" type="text" placeholder="DD/MM/YYYY"></div>
-  </div>
+<header class="hero">
+<div>THE MATHS QUEST 🚀</div>
+<h1>Maths Adventure!</h1>
+<p>Think • Solve • Score • Become a Maths Champion!</p>
+<div class="stats">
+<div class="stat">YOUR POINTS<strong id="score">0 ⭐</strong></div>
+<div class="stat">SOLVED<strong id="solved">0</strong></div>
+<div class="stat">YOUR STARS<strong id="stars">0 🏆</strong></div>
+</div>
+</header>
 
-  <section class="section">
-    <h2>Part A: Reading Comprehension</h2>
-    <h3>The Helpful Little Girl</h3>
-    <div class="passage">
-      <p>Ada was a little girl who was kind and bright.</p>
-      <p>She helped her mother from morning till night.</p>
-      <p>Every day, she made her bed and kept her room neat.</p>
-      <p>She watered flowers and pulled out weeds beneath her feet.</p>
-      <p>One sunny day, she saw an old woman walking down the street.</p>
-      <p>The woman carried oranges in a basket, but she moved her tired feet.</p>
-      <p>Ada ran to help her and carried the basket with care.</p>
-      <p>The woman smiled and thanked Ada for being kind and fair.</p>
-      <p>She gave Ada three oranges, all juicy and sweet.</p>
-      <p>Ada shared them with her brother, who thought they were a treat!</p>
-      <p>Their mother smiled proudly and said, “You have done what is right.</p>
-      <p>Kindness makes the world a better place and fills our hearts with light.”</p>
-    </div>
+<section id="home">
+<h2>Choose your Maths Zone 🌟</h2>
+<p class="subtitle">Select a challenge to begin your adventure.</p>
 
-    <div class="q"><label for="c1">1. What was the name of the little girl?</label><input id="c1" type="text" data-answer="Ada"></div>
-    <div class="q"><label for="c2">2. What did Ada do to help her mother?</label><textarea id="c2" rows="2" data-answer="She made her bed, kept her room neat, watered flowers and pulled out weeds."></textarea></div>
-    <div class="q"><label for="c3">3. Who did Ada meet on the street?</label><input id="c3" type="text" data-answer="An old woman"></div>
-    <div class="q"><label for="c4">4. What was the old woman carrying?</label><input id="c4" type="text" data-answer="A basket of oranges"></div>
-    <div class="q"><label for="c5">5. How many oranges did the old woman give Ada?</label><input id="c5" type="text" data-answer="Three"></div>
-    <div class="q"><label for="c6">6. Who did Ada share the oranges with?</label><input id="c6" type="text" data-answer="Her brother"></div>
-    <div class="q"><label for="c7">7. Why was Ada's mother proud of her?</label><textarea id="c7" rows="2" data-answer="Because Ada was kind and helpful."></textarea></div>
-    <div class="q"><label for="c8">8. What lesson can we learn from the story?</label><textarea id="c8" rows="2" data-answer="We should be kind and help others."></textarea></div>
-  </section>
+<div class="zones">
+<button class="zone" onclick="startGame('count')">
+<div class="emoji">🔢</div>
+<h3>Counting Quest</h3>
+<p>Count in 2s, 5s, 10s and 100s.</p>
+</button>
 
-  <section class="section">
-    <h2>Part B: Rhyming Words</h2>
-    <p>Rhyming words have the same or similar ending sounds, such as <strong>cat</strong> and <strong>hat</strong>.</p>
-    <h3>1. Find a rhyming word in the passage.</h3>
-    <div class="q"><label for="r1">1. Bright rhymes with:</label><input id="r1" type="text" data-answer="right|night|light"></div>
-    <div class="q"><label for="r2">2. Neat rhymes with:</label><input id="r2" type="text" data-answer="feet|street|sweet|treat"></div>
-    <div class="q"><label for="r3">3. Street rhymes with:</label><input id="r3" type="text" data-answer="feet|neat|sweet|treat"></div>
-    <div class="q"><label for="r4">4. Care rhymes with:</label><input id="r4" type="text" data-answer="fair"></div>
-    <div class="q"><label for="r5">5. Sweet rhymes with:</label><input id="r5" type="text" data-answer="neat|feet|street|treat"></div>
+<button class="zone" onclick="startGame('multiply')">
+<div class="emoji">✖️</div>
+<h3>Multiplication Mission</h3>
+<p>Multiplication tables of 2, 5 and 10.</p>
+</button>
 
-    <h3>2. Choose the correct rhyming word.</h3>
-    <div class="q"><label>6. Which word rhymes with <em>cat</em>?</label><div class="options">
-      <label><input type="radio" name="r6" value="Cup"> Cup</label><label><input type="radio" name="r6" value="Hat" data-correct="true"> Hat</label><label><input type="radio" name="r6" value="Dog"> Dog</label></div></div>
-    <div class="q"><label>7. Which word rhymes with <em>sun</em>?</label><div class="options">
-      <label><input type="radio" name="r7" value="Run" data-correct="true"> Run</label><label><input type="radio" name="r7" value="Sit"> Sit</label><label><input type="radio" name="r7" value="Bed"> Bed</label></div></div>
-    <div class="q"><label>8. Which word rhymes with <em>tree</em>?</label><div class="options">
-      <label><input type="radio" name="r8" value="Free" data-correct="true"> Free</label><label><input type="radio" name="r8" value="Try"> Try</label><label><input type="radio" name="r8" value="Top"> Top</label></div></div>
-    <div class="q"><label>9. Which word rhymes with <em>book</em>?</label><div class="options">
-      <label><input type="radio" name="r9" value="Back"> Back</label><label><input type="radio" name="r9" value="Look" data-correct="true"> Look</label><label><input type="radio" name="r9" value="Bake"> Bake</label></div></div>
-    <div class="q"><label>10. Which word rhymes with <em>cake</em>?</label><div class="options">
-      <label><input type="radio" name="r10" value="Make" data-correct="true"> Make</label><label><input type="radio" name="r10" value="Cook"> Cook</label><label><input type="radio" name="r10" value="Kick"> Kick</label></div></div>
-  </section>
+<button class="zone" onclick="startGame('partition')">
+<div class="emoji">🧩</div>
+<h3>Partitioning Planet</h3>
+<p>Hundreds, tens and ones.</p>
+</button>
 
-  <section class="section">
-    <h2>Part C: Nouns</h2>
-    <p>A <strong>noun</strong> is a naming word. It names a person, place, animal or thing. Examples: <em>girl, school, dog, book</em>.</p>
-    <h3>1. Find the nouns.</h3>
-    <div class="q"><label for="n1">1. Write two names of people from the passage.</label><input id="n1" type="text" placeholder="Example: Ada, ..." data-answer="Ada, mother|Ada and mother|Ada, her mother|Ada and her mother|Ada, Ben|Ada and Ben"></div>
-    <div class="q"><label for="n2">2. Write the name of one place mentioned in the passage.</label><input id="n2" type="text" data-answer="Room|street|world|house|garden"></div>
-    <div class="q"><label for="n3">3. Write the name of one thing the old woman carried.</label><input id="n3" type="text" data-answer="Basket"></div>
-    <div class="q"><label for="n4">4. Write the name of one fruit in the passage.</label><input id="n4" type="text" data-answer="Orange|Oranges"></div>
+<button class="zone" onclick="startGame('add')">
+<div class="emoji">➕</div>
+<h3>Addition Adventure</h3>
+<p>Add multiples of 5, 10, 50 and 100.</p>
+</button>
 
-    <h3>2. Choose the correct answer.</h3>
-    <div class="q"><label>5. Which of these is a noun?</label><div class="options">
-      <label><input type="radio" name="n5" value="Run"> Run</label><label><input type="radio" name="n5" value="Happy"> Happy</label><label><input type="radio" name="n5" value="Teacher" data-correct="true"> Teacher</label></div></div>
-    <div class="q"><label>6. Which word names a place?</label><div class="options">
-      <label><input type="radio" name="n6" value="School" data-correct="true"> School</label><label><input type="radio" name="n6" value="Jump"> Jump</label><label><input type="radio" name="n6" value="Soft"> Soft</label></div></div>
-    <div class="q"><label>7. Which word names an animal?</label><div class="options">
-      <label><input type="radio" name="n7" value="Quickly"> Quickly</label><label><input type="radio" name="n7" value="Rabbit" data-correct="true"> Rabbit</label><label><input type="radio" name="n7" value="Sing"> Sing</label></div></div>
-    <div class="q"><label>8. Which word names a thing?</label><div class="options">
-      <label><input type="radio" name="n8" value="Pencil" data-correct="true"> Pencil</label><label><input type="radio" name="n8" value="Beautiful"> Beautiful</label><label><input type="radio" name="n8" value="Walk"> Walk</label></div></div>
-    <div class="q"><label>9. Tick all the nouns.</label><div class="options">
-      <label><input type="checkbox" name="n9" value="book" data-correct="true"> Book</label><label><input type="checkbox" name="n9" value="run"> Run</label><label><input type="checkbox" name="n9" value="doctor" data-correct="true"> Doctor</label><label><input type="checkbox" name="n9" value="blue"> Blue</label><label><input type="checkbox" name="n9" value="market" data-correct="true"> Market</label></div></div>
-    <div class="q"><label for="n10">10. Write one sentence containing a noun. Underline the noun by putting it in CAPITAL LETTERS.</label><textarea id="n10" rows="2" placeholder="Example: The GIRL reads a book."></textarea></div>
-  </section>
+<button class="zone" onclick="startGame('subtract')">
+<div class="emoji">➖</div>
+<h3>Subtraction Safari</h3>
+<p>Subtract multiples of 5, 10, 50 and 100.</p>
+</button>
 
-  <section class="section">
-    <h2>Part D: True or False</h2>
-    <div class="q"><label>1. Ada was a kind girl.</label><div class="options"><label><input type="radio" name="t1" value="True" data-correct="true"> True</label><label><input type="radio" name="t1" value="False"> False</label></div></div>
-    <div class="q"><label>2. Ada refused to help the old woman.</label><div class="options"><label><input type="radio" name="t2" value="True"> True</label><label><input type="radio" name="t2" value="False" data-correct="true"> False</label></div></div>
-    <div class="q"><label>3. The old woman gave Ada three oranges.</label><div class="options"><label><input type="radio" name="t3" value="True" data-correct="true"> True</label><label><input type="radio" name="t3" value="False"> False</label></div></div>
-    <div class="q"><label>4. Ada shared the oranges with her brother.</label><div class="options"><label><input type="radio" name="t4" value="True" data-correct="true"> True</label><label><input type="radio" name="t4" value="False"> False</label></div></div>
-    <div class="q"><label>5. Ada's mother was angry with her.</label><div class="options"><label><input type="radio" name="t5" value="True"> True</label><label><input type="radio" name="t5" value="False" data-correct="true"> False</label></div></div>
-  </section>
+<button class="zone" onclick="startGame('mixed')">
+<div class="emoji">🏆</div>
+<h3>Champion Challenge</h3>
+<p>Questions from all five topics.</p>
+</button>
+</div>
 
-  <div class="buttons">
-    <button class="primary" type="button" onclick="markWorksheet()">Mark My Answers</button>
-    <button class="secondary" type="button" onclick="window.print()">Print Worksheet</button>
-    <button class="secondary" type="button" onclick="downloadAnswers()">Download My Answers</button>
-    <button class="secondary" type="button" onclick="resetWorksheet()">Clear Answers</button>
-  </div>
-  <div class="result" id="result" aria-live="polite">
-    <h2 id="scoreHeading">Your results</h2>
-    <p id="scoreText"></p>
-    <p><strong>Remember:</strong> Read each question carefully and try your best.</p>
-    <div id="feedback"></div>
-  </div>
-  <footer>Year 2 English • Complete every section before submitting your answers.</footer>
-</main>
+<div class="notice">
+<strong>🌟 Your mission</strong>
+<p>Answer 10 questions in each zone. Earn 10 points for every correct answer. There is no timer. Take your time and think!</p>
+</div>
+</section>
+
+<section class="game" id="game">
+<div class="topline">
+<button class="back" onclick="goHome()">← All zones</button>
+<strong id="zoneName">COUNTING QUEST</strong>
+<strong id="qnumber">1 / 10</strong>
+</div>
+
+<div class="progress"><div id="bar"></div></div>
+
+<div class="questionbox">
+<div class="level" id="level">LEVEL 1 · WARM UP</div>
+<div class="instruction" id="instruction">Find the missing number</div>
+<div class="question" id="question"></div>
+<div class="hint" id="hint"></div>
+</div>
+
+<div class="answers" id="answers"></div>
+<div class="feedback" id="feedback"></div>
+<button class="next" id="next" onclick="nextQuestion()">Next question →</button>
+<div style="clear:both"></div>
+</section>
+
+<section class="results" id="results">
+<div class="trophy" id="trophy">🏆</div>
+<h2 id="resultTitle">Amazing work!</h2>
+<p id="resultText"></p>
+<div class="result-stats">
+<div>CORRECT<strong id="finalCorrect">0</strong></div>
+<div>POINTS<strong id="finalPoints">0</strong></div>
+<div>STARS<strong id="finalStars">0</strong></div>
+</div>
+<p id="review"></p>
+<button class="play" onclick="startGame(currentZone)">Play Again ↻</button>
+<br>
+<button class="back" style="margin-top:12px" onclick="goHome()">Return to Maths Zones</button>
+</section>
+
+<footer>MATHS ADVENTURE • YEAR 3 • LEARN THROUGH PLAY</footer>
+</div>
+
 <script>
-function norm(s) { return (s || '').toLowerCase().trim().replace(/[.,!?;:]/g,'').replace(/\s+/g,' '); }
-function markWorksheet() {
-  let score = 0, total = 0, feedback = [];
-  document.querySelectorAll('[data-correct="true"]').forEach(el => {
-    if (el.type === 'radio') {
-      const group = document.querySelectorAll('input[name="'+el.name+'"]');
-      if ([...group].some(x => x.checked)) {
-        total++;
-        const chosen = [...group].find(x => x.checked);
-        if (chosen && chosen.dataset.correct === 'true') score++;
-      }
-    }
-  });
-  // Score each multiple-choice radio group once
-  const radioNames = [...new Set([...document.querySelectorAll('input[type=radio][data-correct]')].map(x=>x.name))];
-  radioNames.forEach(name => {
-    const group = [...document.querySelectorAll('input[name="'+name+'"]')];
-    if (!group.some(x=>x.checked)) total--; // unanswered is not included in attempted score
-  });
-  // Text answers: give simple exact/accepted-answer checking where possible
-  document.querySelectorAll('input[data-answer], textarea[data-answer]').forEach(el => {
-    const val = norm(el.value);
-    if (!val) return;
-    total++;
-    const accepted = el.dataset.answer.split('|').map(norm);
-    if (accepted.includes(val) || accepted.some(a => a && val.includes(a) && a.length > 4)) score++;
-    else feedback.push(el.previousElementSibling ? el.previousElementSibling.textContent + ' — check your answer.' : 'Review one of your written answers.');
-  });
-  // Checkbox question is correct only if all intended choices, and no incorrect choices, are selected
-  const checks = [...document.querySelectorAll('input[name="n9"]')];
-  if (checks.some(x=>x.checked)) {
-    total++;
-    if (checks.filter(x=>x.checked).every(x=>x.dataset.correct==='true') && checks.filter(x=>x.dataset.correct==='true').every(x=>x.checked)) score++;
-  }
-  document.getElementById('result').style.display = 'block';
-  document.getElementById('scoreHeading').textContent = 'Your results';
-  document.getElementById('scoreText').textContent = 'Automatically marked score: ' + score + ' out of ' + total + ' attempted auto-marked questions. Written answers may need a teacher to review them.';
-  document.getElementById('feedback').textContent = feedback.slice(0,5).join(' ');
-  document.getElementById('result').scrollIntoView({behavior:'smooth',block:'center'});
+const names={
+count:"COUNTING QUEST",
+multiply:"MULTIPLICATION MISSION",
+partition:"PARTITIONING PLANET",
+add:"ADDITION ADVENTURE",
+subtract:"SUBTRACTION SAFARI",
+mixed:"CHAMPION CHALLENGE"
+};
+
+let currentZone="count";
+let questions=[];
+let index=0;
+let correct=0;
+let points=0;
+let totalPoints=0;
+let totalSolved=0;
+let totalStars=0;
+let locked=false;
+
+const $=id=>document.getElementById(id);
+
+function random(min,max){
+return Math.floor(Math.random()*(max-min+1))+min;
 }
-function downloadAnswers() {
-  const lines = ['Year 2 English Digital Worksheet', 'Pupil: ' + (document.getElementById('studentName').value || ''), 'Date: ' + (document.getElementById('worksheetDate').value || ''), ''];
-  document.querySelectorAll('.section').forEach(section => {
-    lines.push(section.querySelector('h2')?.innerText || 'Section');
-    section.querySelectorAll('.q').forEach(q => {
-      const label = q.querySelector('label')?.innerText || '';
-      const fields = [...q.querySelectorAll('input[type=text], textarea, select')];
-      let answers = fields.map(x => x.value).filter(Boolean);
-      const radios = [...q.querySelectorAll('input[type=radio]:checked')].map(x => x.parentElement.innerText.trim());
-      const checks = [...q.querySelectorAll('input[type=checkbox]:checked')].map(x => x.parentElement.innerText.trim());
-      lines.push(label + ' ' + [...answers, ...radios, ...checks].join(', '));
-    });
-    lines.push('');
-  });
-  const blob = new Blob([lines.join('\\n')], {type:'text/plain;charset=utf-8'});
-  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'year-2-english-answers.txt'; a.click(); URL.revokeObjectURL(a.href);
+
+function pick(arr){
+return arr[random(0,arr.length-1)];
 }
-function resetWorksheet() {
-  if (!confirm('Clear all your answers?')) return;
-  document.querySelectorAll('input[type=text], textarea').forEach(x=>x.value='');
-  document.querySelectorAll('input[type=radio], input[type=checkbox]').forEach(x=>x.checked=false);
-  document.getElementById('result').style.display='none';
+
+function shuffle(arr){
+return arr.sort(()=>Math.random()-.5);
+}
+
+function format(n){
+return n.toLocaleString("en-GB");
+}
+
+function makeOptions(answer,step=5){
+let options=new Set([answer]);
+
+while(options.size<4){
+let n=answer+pick([-3,-2,-1,1,2,3])*step;
+if(n>=0) options.add(n);
+}
+return shuffle([...options]);
+}
+
+function question(type){
+
+if(type==="count"){
+let step=pick([2,5,10,100]);
+let start=random(1,12)*step;
+let missing=random(1,4);
+
+let seq=Array.from({length:5},(_,i)=>start+i*step);
+let answer=seq[missing];
+seq[missing]="?";
+
+return {
+instruction:"Find the missing number",
+visual:seq.join("   |   "),
+hint:"Count forwards in "+step+"s.",
+answer:answer,
+options:makeOptions(answer,step)
+};
+}
+
+if(type==="multiply"){
+let table=pick([2,5,10]);
+let n=random(2,12);
+let answer=n*table;
+let style=random(1,3);
+
+let visual=style===1
+?table+" × "+n+" = ?"
+:style===2
+?"? × "+table+" = "+answer
+:n+" groups of "+table+" = ?";
+
+return {
+instruction:"Solve the multiplication challenge",
+visual:visual,
+hint:"Think of equal groups or skip counting.",
+answer:style===2?n:answer,
+options:makeOptions(style===2?n:answer,5)
+};
+}
+
+if(type==="partition"){
+let n=random(1,9)*100+random(0,9)*10+random(0,9);
+let h=Math.floor(n/100)*100;
+let t=Math.floor((n%100)/10)*10;
+let u=n%10;
+let style=random(1,3);
+
+if(style===1){
+let answer=n;
+let wrong=[
+(h/10)+t+u,
+h+(t/10)+u,
+h+t+(u*10)
+];
+return {
+instruction:"Which is the correct partition?",
+visual:format(n),
+hint:"Think about hundreds, tens and ones.",
+answer:h+" + "+t+" + "+u,
+options:shuffle([
+h+" + "+t+" + "+u,
+...wrong.map((x,i)=>[
+(h/10)+" + "+t+" + "+u,
+h+" + "+(t/10)+" + "+u,
+h+" + "+t+" + "+(u*10)
+][i])
+])
+};
+}
+
+if(style===2){
+let digit=pick([
+{value:h,label:"hundreds"},
+{value:t,label:"tens"},
+{value:u,label:"ones"}
+]);
+return {
+instruction:"What is the value of the "+digit.label+"?",
+visual:format(n),
+hint:"Look carefully at the position of the digit.",
+answer:digit.value,
+options:makeOptions(digit.value,10)
+};
+}
+
+return {
+instruction:"Which number is made from these parts?",
+visual:h+" + "+t+" + "+u,
+hint:"Combine the hundreds, tens and ones.",
+answer:n,
+options:makeOptions(n,10)
+};
+}
+
+let step=pick([5,10,50,100]);
+let a=random(2,12)*step;
+let b=random(1,6)*step;
+
+if(type==="add"){
+return {
+instruction:"Solve the addition problem",
+visual:format(a)+" + "+format(b)+" = ?",
+hint:"Count on using the larger number.",
+answer:a+b,
+options:makeOptions(a+b,step)
+};
+}
+
+b=Math.min(b,a);
+
+return {
+instruction:"Solve the subtraction problem",
+visual:format(a)+" − "+format(b)+" = ?",
+hint:"Count backwards or find the difference.",
+answer:a-b,
+options:makeOptions(a-b,step)
+};
+}
+
+function generateQuestion(){
+let type=currentZone==="mixed"
+?pick(["count","multiply","partition","add","subtract"])
+:currentZone;
+
+return question(type);
+}
+
+function startGame(zone){
+currentZone=zone;
+index=0;
+correct=0;
+points=0;
+questions=[];
+
+for(let i=0;i<10;i++){
+questions.push(generateQuestion());
+}
+
+$("home").style.display="none";
+$("results").style.display="none";
+$("game").style.display="block";
+
+showQuestion();
+}
+
+function showQuestion(){
+locked=false;
+
+let q=questions[index];
+
+$("zoneName").textContent=names[currentZone];
+$("qnumber").textContent=(index+1)+" / 10";
+$("bar").style.width=(index*10)+"%";
+
+$("level").textContent=
+index<3?"LEVEL 1 · WARM UP":
+index<7?"LEVEL 2 · THINKING TIME":
+"LEVEL 3 · SUPER CHALLENGE";
+
+$("instruction").textContent=q.instruction;
+$("question").textContent=q.visual;
+$("hint").textContent=q.hint;
+
+$("feedback").style.display="none";
+$("next").style.display="none";
+
+$("answers").innerHTML="";
+
+q.options.forEach(option=>{
+let button=document.createElement("button");
+button.className="option";
+button.textContent=option;
+
+button.onclick=()=>checkAnswer(button,option);
+
+$("answers").appendChild(button);
+});
+}
+
+function checkAnswer(button,value){
+if(locked)return;
+locked=true;
+
+let q=questions[index];
+let isCorrect=String(value)===String(q.answer);
+
+document.querySelectorAll("#answers button").forEach(btn=>{
+btn.disabled=true;
+
+if(String(btn.textContent)===String(q.answer)){
+btn.classList.add("correct");
+}
+});
+
+if(!isCorrect){
+button.classList.add("wrong");
+}
+
+let feedback=$("feedback");
+feedback.style.display="block";
+
+if(isCorrect){
+correct++;
+points+=10;
+totalPoints+=10;
+totalStars++;
+
+feedback.className="feedback correct-feedback";
+feedback.innerHTML="🎉 BRILLIANT! That is correct! +10 points";
+
+}else{
+feedback.className="feedback wrong-feedback";
+feedback.innerHTML="💡 Not quite! The correct answer is <strong>"+q.answer+"</strong>. Keep learning!";
+}
+
+totalSolved++;
+
+$("score").textContent=totalPoints+" ⭐";
+$("solved").textContent=totalSolved;
+$("stars").textContent=totalStars+" 🏆";
+
+$("next").style.display="block";
+$("next").textContent=index===9?"See my results 🏆":"Next question →";
+}
+
+function nextQuestion(){
+if(index<9){
+index++;
+showQuestion();
+}else{
+finishGame();
+}
+}
+
+function finishGame(){
+$("game").style.display="none";
+$("results").style.display="block";
+
+$("finalCorrect").textContent=correct+"/10";
+$("finalPoints").textContent=points;
+$("finalStars").textContent=correct;
+
+$("trophy").textContent=
+correct===10?"🏆":
+correct>=7?"🥇":
+correct>=4?"🌟":"💪";
+
+$("resultTitle").textContent=
+correct===10?"PERFECT SCORE!":
+correct>=7?"FANTASTIC WORK!":
+correct>=4?"WELL DONE!":"KEEP PRACTISING!";
+
+$("resultText").textContent=
+"You answered "+correct+" out of 10 questions correctly in "+names[currentZone]+".";
+
+$("review").textContent=
+correct>=7
+?"You are becoming a Maths Champion! 🌟"
+:"Practise this topic again to improve your score. Every attempt makes you better!";
+
+$("bar").style.width="100%";
+}
+
+function goHome(){
+$("game").style.display="none";
+$("results").style.display="none";
+$("home").style.display="block";
 }
 </script>
 </body>
